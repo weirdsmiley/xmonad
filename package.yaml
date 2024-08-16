@@ -1,0 +1,50 @@
+name:                xmonad-conf
+version:             0.1.0.0
+github:              "weirdsmiley/xmonad-conf"
+license:             BSD-3-Clause
+author:              "Manas"
+maintainer:          "manas18244@iiitd.ac.in"
+copyright:           "MIT"
+
+extra-source-files:
+- README.md
+- CHANGELOG.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            software
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/weirdsmiley/xmonad-conf#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- xmonad-contrib
+
+ghc-options:
+- -Wall
+- -Wcompat
+- -Widentities
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wmissing-export-lists
+- -Wmissing-home-modules
+- -Wpartial-fields
+- -Wredundant-constraints
+
+source-dirs: src
+
+executables:
+  xmonad:
+    main: xmonad.hs
+    dependencies:
+      - xmonad
+      - xmonad-contrib
+      - containers
+  xmobar:
+    main: xmobar.hs
+    dependencies:
+      - xmobar
+    ghc-options: -rtsopts -threaded -with-rtsopts=-N

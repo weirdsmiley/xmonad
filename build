@@ -1,0 +1,14 @@
+#!/bin/sh
+
+SRC_DIR=$HOME/.config/xmonad
+WM=xmonad
+
+unset STACK_YAML
+FAIL=0
+
+cd $SRC_DIR
+stack install 2>.log || FAIL=1
+
+ln -f -T $(stack exec -- which $WM) $1 2>.log || FAIL=2
+exit $FAIL
+
