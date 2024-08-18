@@ -15,14 +15,13 @@ config =
     , additionalFonts = ["xft:Material Icons:size=8:antialias=true"]
     , allDesktops = True
     , position = Static {xpos = 10, ypos = 1040, width = 1900, height = 25}
-    , lowerOnStart = True
+    , lowerOnStart = False
     , hideOnStart = False
     , pickBroadest = False
     , persistent = True
     , alpha = 100
     , fgColor = "white"
-    -- , bgColor = "#d5dbdb"
-    , bgColor = "#FF91AF"
+    , bgColor = "#0795e3"
     , commands =
         [ Run XMonadLog
         , Run
@@ -133,4 +132,3 @@ config =
 
 main :: IO ()
 main = xmobar config
-
