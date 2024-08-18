@@ -83,6 +83,7 @@ import XMonad.Layout.MultiColumns (multiCol)
 import XMonad.Layout.MultiToggle (EOT(EOT), Toggle(Toggle), (??), mkToggle)
 import XMonad.Layout.MultiToggle.Instances (StdTransformers(NBFULL, NOBORDERS))
 import XMonad.Layout.NoBorders (Ambiguity(OnlyScreenFloat), lessBorders)
+import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Reflect (reflectHoriz)
 import XMonad.Layout.Renamed (Rename(Replace), renamed)
 import XMonad.Layout.ResizableThreeColumns
@@ -151,6 +152,16 @@ import XMonad.Util.Ungrab (unGrab)
 -- certain contrib modules.
 --
 myTerminal = "kitty"
+
+myNamedTerminal name = myTerminal ++ " --title " ++ name
+
+-- My custom terminal pads
+--
+myCodeSprintTerm = myNamedTerminal "Codesprint"
+
+myWritingTerm = myNamedTerminal "Writing"
+
+myResearchTerm = myNamedTerminal "Research"
 
 myBrowser = "firefox"
 
@@ -470,13 +481,20 @@ myTabConfig =
     , decoWidth = maxBound
     }
 
-myLayout =
-  tiled
-    ||| twoByThreeOnRight
-    ||| Mirror tiled
-    ||| tall
-    ||| full
-    ||| multiColWithGaps
+myLayout
+  -- onWorkspace "1" twoByThreeOnRight
+  --   $ onWorkspace "2" multiColWithGaps
+  --   $ onWorkspaces ["3", "4"] tiled $
+ =
+  mkToggle (NOBORDERS ?? NBFULL ?? EOT)
+    . avoidStruts
+    . lessBorders OnlyScreenFloat
+    $ tiled
+        ||| twoByThreeOnRight
+        ||| Mirror tiled
+        ||| tall
+        ||| full
+        ||| multiColWithGaps
   where
     multiColWithGaps = rn "Columns" . addGaps $ multiCol [1] 1 0.01 (-0.5)
     full = rn "Full" . addGaps $ Full
@@ -497,7 +515,7 @@ myLayout =
       addTabs shrinkText myTabConfig . subLayout [] (Simplest ||| Accordion)
         $ layout
     dragWindows layout = windowNavigation . draggingVisualizer $ layout
-    addGaps layout = mySpacing myGaps . dragWindows $ layout
+    addGaps layout = mySpacing myGaps $ layout
 
 ------------------------------------------------------------------------
 -- Scratchpad
@@ -551,6 +569,9 @@ myManageHook =
     , className =? "steam" -?> doShift (myWorkspaces !! 7)
     , className =? "qemu" -?> doShift (myWorkspaces !! 8)
     , className =? "sioyek" -?> doShift (myWorkspaces !! 1)
+    , title =? "Codesprint" -?> doShift (myWorkspaces !! 0)
+    , title =? "Writing" -?> doShift (myWorkspaces !! 1)
+    , title =? "Research" -?> doShift (myWorkspaces !! 2)
     , className
         =? "VirtualBox Manager"
         <||> className
@@ -712,7 +733,9 @@ myStartupHook = do
   -- spawnOnce "nm-applet"
   spawnOnce "redshift -O 2600"
   spawnOnce "/home/manas/workspace/scripts/change-wallpaper.sh"
-  spawnOnce myTerminal
+  spawnOnce myCodeSprintTerm
+  spawnOnce myWritingTerm
+  spawnOnce myResearchTerm
   spawnOnce myBrowser
   spawnOnce myPdfViewer
   -- spawnOnce "telegram-desktop"
@@ -756,7 +779,7 @@ myConfig =
                         , unsafeSpawn
                             (myLauncher
                                ++ " -show combi -combi-modi window,drun -modi combi -show-icons"))
-                      , ("M-s", unGrab *> spawn "scrot")
+                      , ("M-s", unGrab *> spawn "scrot -s")
                       ]
 
 ------------------------------------------------------------------------
