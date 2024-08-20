@@ -516,7 +516,7 @@ myLayout
       addTabs shrinkText myTabConfig . subLayout [] (Simplest ||| Accordion)
         $ layout
     dragWindows layout = windowNavigation . draggingVisualizer $ layout
-    addGaps layout = mySpacing myGaps $ layout
+    addGaps = mySpacing myGaps
 
 ------------------------------------------------------------------------
 -- Scratchpad
@@ -571,7 +571,7 @@ myManageHook =
     , className =? "qemu" -?> doShift (myWorkspaces !! 8)
     , className =? "sioyek" -?> doShift (myWorkspaces !! 1)
     , title =? "QEMU" -?> doCenterFloat
-    , title =? "Codesprint" -?> doShift (myWorkspaces !! 0)
+    , title =? "Codesprint" -?> doShift (head myWorkspaces)
     , title =? "Writing" -?> doShift (myWorkspaces !! 1)
     , title =? "Research" -?> doShift (myWorkspaces !! 2)
     , className
@@ -793,7 +793,7 @@ main
   -- do
   -- let acMh :: ManageHook
   --     acMh = reader W.focusWindow >>= doF
- = xmonad $ ewmhFullscreen $ ewmh $ docks $ xmobarProp $ myConfig
+ = xmonad $ ewmhFullscreen $ ewmh $ docks $ xmobarProp myConfig
 
 -- main = do
 --   xmonad . withSB mySB . ewmhFullscreen . ewmh . docks $ myConfig
