@@ -491,6 +491,7 @@ myLayout
     . lessBorders OnlyScreenFloat
     $ tiled
         ||| twoByThreeOnRight
+        ||| twoByThreeOnLeft
         ||| Mirror tiled
         ||| tall
         ||| full
@@ -732,7 +733,7 @@ myStartupHook = do
   -- spawnOnce "notify-send"
   -- spawnOnce "nm-applet"
   spawnOnce "redshift -O 2600"
-  spawnOnce "/home/manas/workspace/scripts/change-wallpaper.sh"
+  -- spawnOnce "/home/manas/workspace/scripts/change-wallpaper.sh"
   spawnOnce myCodeSprintTerm
   spawnOnce myWritingTerm
   spawnOnce myResearchTerm
