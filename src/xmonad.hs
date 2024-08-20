@@ -570,6 +570,7 @@ myManageHook =
     , className =? "steam" -?> doShift (myWorkspaces !! 7)
     , className =? "qemu" -?> doShift (myWorkspaces !! 8)
     , className =? "sioyek" -?> doShift (myWorkspaces !! 1)
+    , title =? "QEMU" -?> doCenterFloat
     , title =? "Codesprint" -?> doShift (myWorkspaces !! 0)
     , title =? "Writing" -?> doShift (myWorkspaces !! 1)
     , title =? "Research" -?> doShift (myWorkspaces !! 2)
