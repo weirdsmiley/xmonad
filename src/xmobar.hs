@@ -14,12 +14,12 @@ config =
     { font = "xft:Hack:size=8:antialias=true"
     , additionalFonts = ["xft:Material Icons:size=8:antialias=true"]
     , allDesktops = True
-    , position = Static {xpos = 10, ypos = 1040, width = 1900, height = 25}
+    , position = Static {xpos = 0, ypos = 1050, width = 1920, height = 20}
     , lowerOnStart = False
     , hideOnStart = False
     , pickBroadest = False
     , persistent = True
-    , alpha = 100
+    , alpha = 180
     , fgColor = "white"
     , bgColor = "#0795e3"
     , commands =
@@ -39,29 +39,6 @@ config =
                 [("/", "<free>/<size>")]
                 ["-L", "20", "-H", "50", "-m", "1", "-p", "3"]
                 20
-        , Run
-            $ Battery
-                [ "-t"
-                , "<acstatus>"
-                , "--Low"
-                , "30"
-                , "--High"
-                , "90"
-                , "--low"
-                , "red"
-                , "--normal"
-                , "yellow"
-                , "--high"
-                , "green"
-                , "--"
-                , "-o"
-                , "<fn=1>\xe1a4</fn> <left>% (<timeleft>)"
-                , "-O"
-                , "<fn=1>\xe1a3</fn>"
-                , "-i"
-                , "<fn=1>\xe1a4</fn>"
-                ]
-                50
         , Run
             $ Weather
                 "VIDP"
@@ -126,7 +103,7 @@ config =
         , Run $ Date "%a %_d %b %Y <fc=yellow>%H:%M:%S</fc>" "date" 10
         ]
     , template =
-        " %VIDP% | %wlp3s0% }{ %kbd% | %hw% | %date% | %multicpu% | %multicoretemp% | %memory% | %disku% | %battery% "
+        " %XMonadLog% | %VIDP% | %wlp3s0% }{ %kbd% | %date% | %multicpu% | %multicoretemp% | %memory% | %disku% "
     , alignSep = "}{"
     }
 
