@@ -26,6 +26,9 @@ source-repository head
 executable xmobar
   main-is: xmobar.hs
   other-modules:
+      Layout
+      Preferences
+      Theme.Font
       Theme.Theme
       Theme.Xresources
       Paths_xmonad_conf
@@ -37,12 +40,16 @@ executable xmobar
   build-depends:
       base >=4.7 && <5
     , xmobar
+    , xmonad
     , xmonad-contrib
   default-language: Haskell2010
 
 executable xmonad
   main-is: xmonad.hs
   other-modules:
+      Layout
+      Preferences
+      Theme.Font
       Theme.Theme
       Theme.Xresources
       Paths_xmonad_conf

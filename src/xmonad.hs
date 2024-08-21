@@ -11,6 +11,7 @@ module Main
 import Control.Monad (liftM2)
 import qualified Data.Map as M
 import Data.Monoid (All)
+import Layout (myLayout)
 import System.Exit (exitSuccess)
 import Theme.Theme
   ( base00
@@ -481,43 +482,42 @@ myTabConfig =
     , decoWidth = maxBound
     }
 
-myLayout
-  -- onWorkspace "1" twoByThreeOnRight
-  --   $ onWorkspace "2" multiColWithGaps
-  --   $ onWorkspaces ["3", "4"] tiled $
- =
-  mkToggle (NOBORDERS ?? NBFULL ?? EOT)
-    . avoidStruts
-    . lessBorders OnlyScreenFloat
-    $ tiled
-        ||| twoByThreeOnRight
-        ||| twoByThreeOnLeft
-        ||| Mirror tiled
-        ||| tall
-        ||| full
-        ||| multiColWithGaps
-  where
-    multiColWithGaps = rn "Columns" . addGaps $ multiCol [1] 1 0.01 (-0.5)
-    full = rn "Full" . addGaps $ Full
-    tall = rn "Tall" . addGaps $ ResizableTall nmaster delta ratio []
-    threeCol = addGaps $ ThreeCol nmaster delta ratio
-    twoByThreeOnRight =
-      rn "2-by-3 (right)" . addGaps $ reflectHoriz $ Tall nmaster delta (2 / 3)
-    twoByThreeOnLeft = rn "2-by-3 (left)" . addGaps $ Tall nmaster delta (2 / 3)
-    tiled = rn "Tiled" . addGaps $ Tall nmaster delta ratio
-    nmaster = 1 -- Default number of windows in the master pane
-    ratio = 1 / 2 -- Default proportion of screen occupied by master pane
-    delta = 3 / 100 -- Percent of screen to increment by when resizing panes
-    mySpacing ::
-         Integer -> l a -> ModifiedLayout XMonad.Layout.Spacing.Spacing l a
-    mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
-    rn n = renamed [Replace n]
-    mkTabbed layout =
-      addTabs shrinkText myTabConfig . subLayout [] (Simplest ||| Accordion)
-        $ layout
-    dragWindows layout = windowNavigation . draggingVisualizer $ layout
-    addGaps = mySpacing myGaps
-
+-- myLayout
+--   -- onWorkspace "1" twoByThreeOnRight
+--   --   $ onWorkspace "2" multiColWithGaps
+--   --   $ onWorkspaces ["3", "4"] tiled $
+--  =
+--   mkToggle (NOBORDERS ?? NBFULL ?? EOT)
+--     . avoidStruts
+--     . lessBorders OnlyScreenFloat
+--     $ tiled
+--         ||| twoByThreeOnRight
+--         ||| twoByThreeOnLeft
+--         ||| Mirror tiled
+--         ||| tall
+--         ||| full
+--         ||| multiColWithGaps
+--   where
+--     multiColWithGaps = rn "Columns" . addGaps $ multiCol [1] 1 0.01 (-0.5)
+--     full = rn "Full" . addGaps $ Full
+--     tall = rn "Tall" . addGaps $ ResizableTall nmaster delta ratio []
+--     threeCol = addGaps $ ThreeCol nmaster delta ratio
+--     twoByThreeOnRight =
+--       rn "2-by-3 (right)" . addGaps $ reflectHoriz $ Tall nmaster delta (2 / 3)
+--     twoByThreeOnLeft = rn "2-by-3 (left)" . addGaps $ Tall nmaster delta (2 / 3)
+--     tiled = rn "Tiled" . addGaps $ Tall nmaster delta ratio
+--     nmaster = 1 -- Default number of windows in the master pane
+--     ratio = 1 / 2 -- Default proportion of screen occupied by master pane
+--     delta = 3 / 100 -- Percent of screen to increment by when resizing panes
+--     mySpacing ::
+--          Integer -> l a -> ModifiedLayout XMonad.Layout.Spacing.Spacing l a
+--     mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
+--     rn n = renamed [Replace n]
+--     mkTabbed layout =
+--       addTabs shrinkText myTabConfig . subLayout [] (Simplest ||| Accordion)
+--         $ layout
+--     dragWindows layout = windowNavigation . draggingVisualizer $ layout
+--     addGaps = mySpacing myGaps
 ------------------------------------------------------------------------
 -- Scratchpad
 --
@@ -570,7 +570,6 @@ myManageHook =
     , className =? "steam" -?> doShift (myWorkspaces !! 7)
     , className =? "qemu" -?> doShift (myWorkspaces !! 8)
     , className =? "sioyek" -?> doShift (myWorkspaces !! 1)
-    , title =? "QEMU" -?> doCenterFloat
     , title =? "Codesprint" -?> doShift (head myWorkspaces)
     , title =? "Writing" -?> doShift (myWorkspaces !! 1)
     , title =? "Research" -?> doShift (myWorkspaces !! 2)
@@ -727,8 +726,8 @@ mySB =
 myStartupHook :: X ()
 myStartupHook = do
   setDefaultCursor xC_left_ptr
-  -- spawnOnce
-  --   "feh --no-fehbg --bg-scale /home/manas/.wallpaper/pixel-cityscapes-9y.jpg"
+  spawnOnce
+    "feh --no-fehbg --bg-scale /home/manas/.wallpaper/gazing-beyond-neon-peaks-jo.jpg"
   -- spawn "feh --bg-scale --randomize --no-fehbg ~/Pictures/Wallpapers/*"
   spawnOnce "picom --config /home/manas/.config/picom/picom.conf"
   -- spawnOnce "notify-send"
@@ -760,6 +759,16 @@ myStartupHook = do
   --      ++ "' --tint-level 255 --grow-gravity NE --icon-gravity NW --icon-size 20 --sticky --window-type dock --window-strut top --skip-taskbar")
   -- spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 0 --transparent true --alpha 0 --tint 0x2c323a  --height 22 --iconspacing 5 --distance 2,2 --distancefrom top,right"
 
+myDecoratedLayout layout
+  -- onWorkspace "1" twoByThreeOnRight
+  --   $ onWorkspace "2" multiColWithGaps
+  --   $ onWorkspaces ["3", "4"] tiled $
+ =
+  mkToggle (NOBORDERS ?? NBFULL ?? EOT)
+    . avoidStruts
+    . lessBorders OnlyScreenFloat
+    $ layout
+
 myConfig =
   def
     { terminal = myTerminal
@@ -771,7 +780,7 @@ myConfig =
     , normalBorderColor = myNormalBorderColor
     , focusedBorderColor = myFocusedBorderColor
     -- , keys = myKeys
-    , layoutHook = myLayout
+    , layoutHook = myDecoratedLayout myLayout
     , manageHook = myManageHook
     , handleEventHook = myHandleEventHook
     , startupHook = myStartupHook
