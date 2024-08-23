@@ -171,9 +171,9 @@ myBrowser = "firefox"
 myPdfViewer = "/home/manas/.local/bin/sioyek"
 
 -- Fonts
-myRegularFont = "Noto Sans 10"
+myRegularFont = "Fira Code Light 10"
 
-myMonospaceFont = "Hack Regular 9"
+myMonospaceFont = "Fira Code Regular 9"
 
 -- My launcher
 --

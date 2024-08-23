@@ -11,7 +11,7 @@ instance Exec HelloWorld where
 config :: Config
 config =
   defaultConfig
-    { font = "xft:Hack Regular:size=6:antialias=true"
+    { font = "xft:Fira Code Light:size=6:antialias=true"
     , additionalFonts =
         ["xft:Font Awesome 6 Free Regular:size=6:antialias=true"]
     , allDesktops = True
@@ -170,9 +170,14 @@ config =
                 50
         , Run $ Date "%a %_d %b %Y <fc=#ff79c6>%I:%M:%S %p</fc> %Z" "date" 10
         , Run $ Com "uname" ["-s", "-r"] "kernel" 0
+        -- , Run
+        --     $ Com
+        --         ["<action=`gnome-pomodoro` button=1>Pomodoro</action>"]
+        --         "pomodoro"
+        --         0
         ]
     , template =
-        " %XMonadLog% }{ %wlp4s0%  ▪  %multicpu% %cpufreq% %multicoretemp%  ▪  %memory%  ▪  %disku%  ▪  %VIDP%  ▪  %date% "
+        " %XMonadLog% }{ %wlp4s0%  ▪  %multicpu% %cpufreq% %multicoretemp%  ▪  %memory%  ▪  %disku%  ▪  %VIDP%  ▪  %date%"
     , alignSep = "}{"
     }
 
