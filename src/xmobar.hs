@@ -11,19 +11,20 @@ instance Exec HelloWorld where
 config :: Config
 config =
   defaultConfig
-    { font = "xft:Hack:size=8:antialias=true"
-    , additionalFonts = ["xft:Material Icons:size=8:antialias=true"]
+    { font = "xft:Hack:size=6:antialias=true"
+    , additionalFonts = ["xft:Material Icons:size=6:antialias=true"]
     , allDesktops = True
-    , position = Static {xpos = 0, ypos = 1050, width = 1920, height = 20}
-    , lowerOnStart = False
+    , position = Static {xpos = 10, ypos = 1050, width = 1900, height = 20}
+    , lowerOnStart = True
     , hideOnStart = False
     , pickBroadest = False
     , persistent = True
-    , alpha = 180
+    , alpha = 255
     , fgColor = "white"
-    , bgColor = "#0795e3"
+    , bgColor = "#282828"
     , commands =
-        [ Run XMonadLog
+        [ Run HelloWorld
+        , Run XMonadLog
         , Run
             $ Memory
                 [ "-t"
@@ -33,29 +34,63 @@ config =
                 , "1024"
                 ]
                 10
-        , Run HelloWorld
         , Run
             $ DiskU
                 [("/", "<free>/<size>")]
                 ["-L", "20", "-H", "50", "-m", "1", "-p", "3"]
                 20
         , Run
-            $ Weather
-                "VIDP"
+            $ Battery
                 [ "-t"
-                , "<station>: <tempC>°C <skyCondition>"
-                , "-L"
-                , "25"
-                , "-H"
-                , "40"
-                , "--normal"
-                , "green"
-                , "--high"
-                , "red"
+                , "<acstatus>"
+                , "--Low"
+                , "30"
+                , "--High"
+                , "90"
                 , "--low"
-                , "lightblue"
+                , "red"
+                , "--normal"
+                , "yellow"
+                , "--high"
+                , "green"
+                , "--"
+                , "-o"
+                , "<fn=1>\xe1a4</fn> <left>% (<timeleft>)"
+                , "-O"
+                , "<fn=1>\xe1a3</fn>"
+                , "-i"
+                , "<fn=1>\xe1a4</fn>"
                 ]
-                36000
+                50
+        , Run
+            $ WeatherX
+                "VIDP"
+                [ ("clear", "🌣")
+                , ("sunny", "🌣")
+                , ("mostly clear", "🌤")
+                , ("mostly sunny", "🌤")
+                , ("partly sunny", "⛅")
+                , ("fair", "🌑")
+                , ("cloudy", "☁")
+                , ("overcast", "☁")
+                , ("partly cloudy", "⛅")
+                , ("mostly cloudy", "🌧")
+                , ("considerable cloudiness", "⛈")
+                ]
+                [ "-t"
+                , "<fn=2><skyConditionS></fn> <tempC>° <rh>%  <windKmh> (<hour>)"
+                , "-L"
+                , "10"
+                , "-H"
+                , "25"
+                , "--normal"
+                , "black"
+                , "--high"
+                , "#ffd63a"
+                , "--low"
+                , "#21fdff"
+                ]
+                18000
         , Run
             $ Network
                 "wlp3s0"
@@ -64,7 +99,7 @@ config =
         , Run
             $ MultiCpu
                 [ "-t"
-                , "<fn=1>\xe30d</fn> <total>% <vbar>"
+                , "<fn=1>\xe30d</fn> <total>%"
                 , "--Low"
                 , "10" -- units: %
                 , "--High"
@@ -81,15 +116,15 @@ config =
         , Run
             $ MultiCoreTemp
                 [ "-t"
-                , "Temp: <avg>°C"
+                , "<avg>°C"
                 , "-L"
-                , "50"
+                , "40"
                 , "-H"
                 , "85"
                 , "-l"
-                , "green"
+                , "#21fdff"
                 , "-n"
-                , "yellow"
+                , "white"
                 , "-h"
                 , "red"
                 , "--"
@@ -100,12 +135,28 @@ config =
                 ]
                 50
         , Run $ Kbd []
-        , Run $ Date "%a %_d %b %Y <fc=yellow>%H:%M:%S</fc>" "date" 10
+        , Run
+            $ CpuFreq
+                [ "-t"
+                , "<cpu0> GHz"
+                , "-L"
+                , "0"
+                , "-H"
+                , "5"
+                , "-l"
+                , "lightblue"
+                , "-n"
+                , "white"
+                , "-h"
+                , "orange"
+                ]
+                50
+        , Run $ Date "%a %_d %b %Y <fc=white>%H:%M:%S</fc>" "date" 10
         ]
     , template =
-        " %XMonadLog% | %VIDP% | %wlp3s0% }{ %kbd% | %date% | %multicpu% | %multicoretemp% | %memory% | %disku% "
+        " %XMonadLog% }{ %kbd% ▪ %VIDP% ▪ %date% ▪ %multicpu% %cpufreq% %multicoretemp% ▪ %memory% ▪ %disku% "
     , alignSep = "}{"
     }
 
 main :: IO ()
-main = xmobar config
+main = configFromArgs config >>= xmobar

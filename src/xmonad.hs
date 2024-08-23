@@ -5,9 +5,6 @@ module Main
   ( main
   ) where
 
---
--- Imports
---
 import Control.Monad (liftM2)
 import qualified Data.Map as M
 import Data.Monoid (All)
@@ -64,7 +61,7 @@ import XMonad.Hooks.ManageHelpers
   , isFullscreen
   , transience
   )
-import XMonad.Hooks.StatusBar (StatusBarConfig, statusBarProp, withSB)
+import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
   ( PP(..)
   , filterOutWsPP
@@ -138,6 +135,11 @@ import XMonad.Util.ClickableWorkspaces (clickablePP)
 import XMonad.Util.Cursor (setDefaultCursor)
 import XMonad.Util.DynamicScratchpads (makeDynamicSP, spawnDynamicSP)
 import XMonad.Util.EZConfig
+
+--
+-- Imports
+--
+import XMonad.Util.Loggers
 import XMonad.Util.NamedScratchpad
   ( NamedScratchpad(NS)
   , customFloating
@@ -145,7 +147,7 @@ import XMonad.Util.NamedScratchpad
   , namedScratchpadManageHook
   , scratchpadWorkspaceTag
   )
-import XMonad.Util.Run (safeSpawn, unsafeSpawn)
+import XMonad.Util.Run
 import XMonad.Util.SpawnOnce (spawnOnce)
 import XMonad.Util.Ungrab (unGrab)
 
@@ -739,6 +741,7 @@ myStartupHook = do
   spawnOnce myResearchTerm
   spawnOnce myBrowser
   spawnOnce myPdfViewer
+  spawnOnce "xmobar"
   -- spawnOnce "telegram-desktop"
   -- spawnOnce "/opt/Discord/Discord"
   spawnOnce "zoom"
@@ -793,6 +796,39 @@ myConfig =
                       , ("M-s", unGrab *> spawn "scrot -s")
                       ]
 
+myXmobarPP :: PP
+myXmobarPP =
+  def
+    { ppSep = magenta " ▪ "
+    , ppTitleSanitize = xmobarStrip
+    , ppCurrent = wrap " " "" . xmobarBorder "Bottom" "#8be9fd" 2
+    , ppHidden = white . wrap " " ""
+    , ppHiddenNoWindows = lowWhite . wrap " " ""
+    , ppUrgent = red . wrap (yellow "!") (yellow "!")
+    , ppOrder = \[ws, l, _, wins] -> [ws, l, wins]
+    , ppExtras = [logTitles formatFocused formatUnfocused]
+    }
+  where
+    formatFocused = wrap (white "") (white "") . magenta . ppWindow
+    formatUnfocused = wrap (lowWhite "") (lowWhite "") . blue . ppWindow
+    -- | Windows should have *some* title, which should not not exceed a
+    -- sane length.
+    ppWindow :: String -> String
+    ppWindow =
+      xmobarRaw
+        . (\w ->
+             if null w
+               then "Untitled"
+               else w)
+        . shorten 20
+    blue, lowWhite, magenta, red, white, yellow :: String -> String
+    magenta = xmobarColor "#ff79c6" ""
+    blue = xmobarColor "#bd93f9" ""
+    white = xmobarColor "#f8f8f2" ""
+    yellow = xmobarColor "#f1fa8c" ""
+    red = xmobarColor "#ff5555" ""
+    lowWhite = xmobarColor "#bbbbbb" ""
+
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 -- Run xmonad with the settings you specify. No need to modify this.
@@ -802,10 +838,17 @@ main
   -- do
   -- let acMh :: ManageHook
   --     acMh = reader W.focusWindow >>= doF
- = xmonad $ ewmhFullscreen $ ewmh $ docks $ xmobarProp myConfig
+ =
+  xmonad
+    . ewmhFullscreen
+    . ewmh
+    . docks
+    . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey
+    $ myConfig
 
 -- main = do
---   xmonad . withSB mySB . ewmhFullscreen . ewmh . docks $ myConfig
+--   xmproc <- spawnPipe "xmobar ~/.config/xmonad/src/xmobar.hs"
+--   xmonad . ewmhFullscreen . ewmh . docks $ myConfig
 ------------------------------------------------------------------------
 -- | Finally, a copy of the default bindings in simple textual tabular format.
 help :: String

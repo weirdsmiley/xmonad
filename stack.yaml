@@ -58,7 +58,7 @@ flags:
     with_weather: true
     with_dbus: false
     with_mpris: false
-    with_inotify: false
+    with_inotify: true
     with_nl80211: false
     with_iwlib: false
     with_datezone: false
