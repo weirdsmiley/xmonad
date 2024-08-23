@@ -11,11 +11,12 @@ instance Exec HelloWorld where
 config :: Config
 config =
   defaultConfig
-    { font = "xft:Hack:size=6:antialias=true"
-    , additionalFonts = ["xft:Material Icons:size=6:antialias=true"]
+    { font = "xft:Hack Regular:size=6:antialias=true"
+    , additionalFonts =
+        ["xft:Font Awesome 6 Free Regular:size=6:antialias=true"]
     , allDesktops = True
     -- , position = Static {xpos = 10, ypos = 1050, width = 1900, height = 20}
-    , position = Static {xpos = 10, ypos = 10, width = 1900, height = 20}
+    , position = Static {xpos = 10, ypos = 10, width = 1900, height = 30}
     , lowerOnStart = True
     , hideOnStart = False
     , pickBroadest = False
@@ -29,9 +30,12 @@ config =
         , Run
             $ Memory
                 [ "-t"
-                , "<fn=1>\xe322</fn> <usedratio>% <usedvbar>"
+                , "<fn=1>\xe322</fn> <usedratio>% (<used>G)"
+                -- , "<usedratio>% (<used> G)"
+                , "-d"
+                , "1"
                 , "--"
-                , "scale"
+                , "--scale"
                 , "1024"
                 ]
                 10
@@ -100,7 +104,7 @@ config =
         , Run
             $ MultiCpu
                 [ "-t"
-                , "<fn=1>\xe30d</fn> <total>%"
+                , "<fn=1>\xf2db</fn> <total>%"
                 , "--Low"
                 , "10" -- units: %
                 , "--High"
