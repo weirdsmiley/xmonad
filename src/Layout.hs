@@ -51,13 +51,19 @@ myTabConfig =
     }
 
 myLayout =
-  tiled
-    ||| twoByThreeOnRight
-    ||| twoByThreeOnLeft
-    ||| Mirror tiled
-    ||| tall
-    ||| full
-    ||| multiColWithGaps
+  onWorkspace "1" twoByThreeOnRight
+    $ onWorkspace "2" multiColWithGaps
+    $ onWorkspaces ["3", "4"] tiled
+    $ mkToggle (NOBORDERS ?? NBFULL ?? EOT)
+        . avoidStruts
+        . lessBorders OnlyScreenFloat
+    $ tiled
+        ||| twoByThreeOnRight
+        ||| twoByThreeOnLeft
+        ||| Mirror tiled
+        ||| tall
+        ||| full
+        ||| multiColWithGaps
   where
     multiColWithGaps = rn "Columns" . addGaps $ multiCol [1] 1 0.01 (-0.5)
     full = rn "Full" . addGaps $ Full

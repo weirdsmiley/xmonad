@@ -759,16 +759,15 @@ myStartupHook = do
   --      ++ "' --tint-level 255 --grow-gravity NE --icon-gravity NW --icon-size 20 --sticky --window-type dock --window-strut top --skip-taskbar")
   -- spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 0 --transparent true --alpha 0 --tint 0x2c323a  --height 22 --iconspacing 5 --distance 2,2 --distancefrom top,right"
 
-myDecoratedLayout layout
-  -- onWorkspace "1" twoByThreeOnRight
-  --   $ onWorkspace "2" multiColWithGaps
-  --   $ onWorkspaces ["3", "4"] tiled $
- =
-  mkToggle (NOBORDERS ?? NBFULL ?? EOT)
-    . avoidStruts
-    . lessBorders OnlyScreenFloat
-    $ layout
-
+-- myDecoratedLayout layout
+--   -- onWorkspace "1" twoByThreeOnRight
+--   --   $ onWorkspace "2" multiColWithGaps
+--   --   $ onWorkspaces ["3", "4"] tiled $
+--  =
+--   mkToggle (NOBORDERS ?? NBFULL ?? EOT)
+--     . avoidStruts
+--     . lessBorders OnlyScreenFloat
+--     $ layout
 myConfig =
   def
     { terminal = myTerminal
@@ -780,7 +779,7 @@ myConfig =
     , normalBorderColor = myNormalBorderColor
     , focusedBorderColor = myFocusedBorderColor
     -- , keys = myKeys
-    , layoutHook = myDecoratedLayout myLayout
+    , layoutHook = myLayout
     , manageHook = myManageHook
     , handleEventHook = myHandleEventHook
     , startupHook = myStartupHook
