@@ -738,7 +738,7 @@ myStartupHook = do
   spawnOnce myResearchTerm
   spawnOnce myBrowser
   spawnOnce myPdfViewer
-  spawnOnce "xmobar"
+  spawnOnce "/home/manas/.local/bin/xmobar"
   -- spawnOnce "telegram-desktop"
   -- spawnOnce "/opt/Discord/Discord"
   spawnOnce "zoom"
