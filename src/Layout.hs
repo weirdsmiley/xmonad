@@ -28,7 +28,6 @@ import XMonad.Layout.SubLayouts
 import XMonad.Layout.Tabbed
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.WindowNavigation
-import XMonad.Prompt
 
 myGaps :: Num p => p
 myGaps = 5
@@ -51,42 +50,6 @@ myTabConfig =
     , decoWidth = maxBound
     }
 
--- myLayout ::
---      XMonad.Layout.MultiToggle.MultiToggle
---        (XMonad.Layout.MultiToggle.HCons
---           StdTransformers
---           (XMonad.Layout.MultiToggle.HCons StdTransformers EOT))
---        (ModifiedLayout
---           XMonad.Hooks.ManageDocks.AvoidStruts
---           (ModifiedLayout
---              (XMonad.Layout.NoBorders.ConfigurableBorder Ambiguity)
---              (Choose
---                 (ModifiedLayout Rename (ModifiedLayout Spacing Tall))
---                 (Choose
---                    (ModifiedLayout
---                       Rename
---                       (ModifiedLayout
---                          Spacing
---                          (ModifiedLayout XMonad.Layout.Reflect.Reflect Tall)))
---                    (Choose
---                       (ModifiedLayout Rename (ModifiedLayout Spacing Tall))
---                       (Choose
---                          (Mirror
---                             (ModifiedLayout Rename (ModifiedLayout Spacing Tall)))
---                          (Choose
---                             (ModifiedLayout
---                                Rename
---                                (ModifiedLayout Spacing ResizableTall))
---                             (Choose
---                                (ModifiedLayout
---                                   Rename
---                                   (ModifiedLayout Spacing Full))
---                                (ModifiedLayout
---                                   Rename
---                                   (ModifiedLayout
---                                      Spacing
---                                      XMonad.Layout.MultiColumns.MultiCol))))))))))
---        Window
 myLayout =
   tiled
     ||| twoByThreeOnRight

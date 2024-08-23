@@ -197,9 +197,6 @@ myClickJustFocuses = False
 myBorderWidth :: Dimension
 myBorderWidth = 2
 
-myGaps :: Num p => p
-myGaps = 5
-
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
 -- ("right alt"), which does not conflict with emacs keybindings. The
@@ -810,7 +807,7 @@ myXmobarPP =
     }
   where
     formatFocused = wrap (white "") (white "") . magenta . ppWindow
-    formatUnfocused = wrap (lowWhite "") (lowWhite "") . blue . ppWindow
+    formatUnfocused = wrap (grey "") (grey "") . grey . ppWindow
     -- | Windows should have *some* title, which should not not exceed a
     -- sane length.
     ppWindow :: String -> String
@@ -828,6 +825,7 @@ myXmobarPP =
     yellow = xmobarColor "#f1fa8c" ""
     red = xmobarColor "#ff5555" ""
     lowWhite = xmobarColor "#bbbbbb" ""
+    grey = xmobarColor "#808080" ""
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.

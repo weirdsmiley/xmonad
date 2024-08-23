@@ -14,14 +14,15 @@ config =
     { font = "xft:Hack:size=6:antialias=true"
     , additionalFonts = ["xft:Material Icons:size=6:antialias=true"]
     , allDesktops = True
-    , position = Static {xpos = 10, ypos = 1050, width = 1900, height = 20}
+    -- , position = Static {xpos = 10, ypos = 1050, width = 1900, height = 20}
+    , position = Static {xpos = 10, ypos = 10, width = 1900, height = 20}
     , lowerOnStart = True
     , hideOnStart = False
     , pickBroadest = False
     , persistent = True
-    , alpha = 255
+    , alpha = 110
     , fgColor = "white"
-    , bgColor = "#282828"
+    , bgColor = "#5501c3"
     , commands =
         [ Run HelloWorld
         , Run XMonadLog
@@ -154,7 +155,7 @@ config =
         , Run $ Date "%a %_d %b %Y <fc=white>%H:%M:%S</fc>" "date" 10
         ]
     , template =
-        " %XMonadLog% }{ %kbd% ▪ %VIDP% ▪ %date% ▪ %multicpu% %cpufreq% %multicoretemp% ▪ %memory% ▪ %disku% "
+        " %XMonadLog% }{ %kbd%  ▪  %VIDP%  ▪  %date%  ▪  %multicpu% %cpufreq% %multicoretemp%  ▪  %memory%  ▪  %disku% "
     , alignSep = "}{"
     }
 
