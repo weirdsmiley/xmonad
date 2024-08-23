@@ -98,8 +98,20 @@ config =
                 18000
         , Run
             $ Network
-                "wlp3s0"
-                ["-L", "0", "-H", "10240", "--normal", "red", "--high", "green"]
+                "wlp4s0"
+                [ "-t"
+                , "<dev>: <rx> | <tx>"
+                , "-L"
+                , "0"
+                , "-H"
+                , "10240"
+                , "--normal"
+                , "red"
+                , "--high"
+                , "green"
+                , "-S"
+                , "True"
+                ]
                 10
         , Run
             $ MultiCpu
@@ -156,10 +168,11 @@ config =
                 , "orange"
                 ]
                 50
-        , Run $ Date "%a %_d %b %Y <fc=white>%H:%M:%S</fc>" "date" 10
+        , Run $ Date "%a %_d %b %Y <fc=#ff79c6>%I:%M:%S %p</fc> %Z" "date" 10
+        , Run $ Com "uname" ["-s", "-r"] "kernel" 0
         ]
     , template =
-        " %XMonadLog% }{ %kbd%  ▪  %VIDP%  ▪  %date%  ▪  %multicpu% %cpufreq% %multicoretemp%  ▪  %memory%  ▪  %disku% "
+        " %XMonadLog% }{ %wlp4s0%  ▪  %VIDP%  ▪  %date%  ▪  %multicpu% %cpufreq% %multicoretemp%  ▪  %memory%  ▪  %disku% "
     , alignSep = "}{"
     }
 
