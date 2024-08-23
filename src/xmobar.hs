@@ -15,8 +15,8 @@ config =
     , additionalFonts =
         ["xft:Font Awesome 6 Free Regular:size=6:antialias=true"]
     , allDesktops = True
-    -- , position = Static {xpos = 10, ypos = 1050, width = 1900, height = 20}
-    , position = Static {xpos = 10, ypos = 10, width = 1900, height = 30}
+    , position = Static {xpos = 10, ypos = 1050, width = 1900, height = 20}
+    -- , position = Static {xpos = 10, ypos = 10, width = 1900, height = 30}
     , lowerOnStart = True
     , hideOnStart = False
     , pickBroadest = False

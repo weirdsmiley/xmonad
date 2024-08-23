@@ -798,7 +798,7 @@ myXmobarPP =
   def
     { ppSep = magenta " ▪ "
     , ppTitleSanitize = xmobarStrip
-    , ppCurrent = wrap " " "" . xmobarBorder "Bottom" "#8be9fd" 2
+    , ppCurrent = wrap " " "" . xmobarBorder "Top" "#8be9fd" 2
     , ppHidden = white . wrap " " ""
     , ppHiddenNoWindows = lowWhite . wrap " " ""
     , ppUrgent = red . wrap (yellow "!") (yellow "!")

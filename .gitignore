@@ -1,4 +1,5 @@
 .stack-work/
 *~
 .log
-/TODO.md
+TODO.md
+/tmp/
