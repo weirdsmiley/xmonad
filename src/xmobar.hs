@@ -15,8 +15,8 @@ config =
     , additionalFonts =
         ["xft:Font Awesome 6 Free Regular:size=6:antialias=true"]
     , allDesktops = True
-    , position = Static {xpos = 10, ypos = 1050, width = 1900, height = 20}
-    -- , position = Static {xpos = 10, ypos = 10, width = 1900, height = 30}
+    -- , position = Static {xpos = 10, ypos = 1050, width = 1900, height = 20}
+    , position = Static {xpos = 10, ypos = 10, width = 1900, height = 30}
     , lowerOnStart = True
     , hideOnStart = False
     , pickBroadest = False
@@ -83,7 +83,7 @@ config =
                 , ("considerable cloudiness", "⛈")
                 ]
                 [ "-t"
-                , "<fn=2><skyConditionS></fn> <tempC>° <rh>%  <windKmh> (<hour>)"
+                , "<fn=2><skyConditionS></fn> <tempC>° <rh>% <windKmh>Km/h"
                 , "-L"
                 , "10"
                 , "-H"
@@ -106,9 +106,9 @@ config =
                 , "-H"
                 , "10240"
                 , "--normal"
-                , "red"
+                , "#ff79c6"
                 , "--high"
-                , "green"
+                , "lightgreen"
                 , "-S"
                 , "True"
                 ]
@@ -172,7 +172,7 @@ config =
         , Run $ Com "uname" ["-s", "-r"] "kernel" 0
         ]
     , template =
-        " %XMonadLog% }{ %wlp4s0%  ▪  %VIDP%  ▪  %date%  ▪  %multicpu% %cpufreq% %multicoretemp%  ▪  %memory%  ▪  %disku% "
+        " %XMonadLog% }{ %wlp4s0%  ▪  %multicpu% %cpufreq% %multicoretemp%  ▪  %memory%  ▪  %disku%  ▪  %VIDP%  ▪  %date% "
     , alignSep = "}{"
     }
 
