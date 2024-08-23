@@ -790,6 +790,7 @@ myConfig =
                             (myLauncher
                                ++ " -show combi -combi-modi window,drun -modi combi -show-icons"))
                       , ("M-s", unGrab *> spawn "scrot -s")
+                      , ("M-f", unGrab *> spawn "scrot")
                       ]
 
 myXmobarPP :: PP
