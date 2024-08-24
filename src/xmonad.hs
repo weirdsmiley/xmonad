@@ -558,6 +558,8 @@ myStartupHook = do
   -- spawnOnce "telegram-desktop"
   -- spawnOnce "/opt/Discord/Discord"
   spawnOnce "zoom"
+  spawnOnce "Discord"
+  spawnOnce "telegram-desktop"
   -- spawnOnce "steam"
   -- spawnOnce "gammastep-indicator"
   -- spawnOnce "greenclip daemon"
