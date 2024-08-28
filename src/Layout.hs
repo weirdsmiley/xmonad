@@ -5,6 +5,7 @@ module Layout
   ( myLayout
   ) where
 
+import Preferences
 import Theme.Theme (base00, base07, base08, basebg, basefg, myFont)
 import XMonad
 import XMonad.Actions.TiledWindowDragging (dragWindow)
@@ -29,9 +30,6 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.WindowNavigation
 
-myGaps :: Num p => p
-myGaps = 5
-
 ------------------------------------------------------------------------
 -- Tab theme
 myTabConfig :: Theme
@@ -51,7 +49,7 @@ myTabConfig =
     }
 
 myLayout =
-  onWorkspace "1" twoByThreeOnRight
+  onWorkspace "1" (twoByThreeOnRight ||| twoByThreeOnLeft)
     $ onWorkspace "2" multiColWithGaps
     $ onWorkspaces ["3", "4"] tiled
     $ mkToggle (NOBORDERS ?? NBFULL ?? EOT)
@@ -85,3 +83,12 @@ myLayout =
         $ layout
     dragWindows layout = windowNavigation . draggingVisualizer $ layout
     addGaps = mySpacing myGaps
+-- myDecoratedLayout layout
+--   -- onWorkspace "1" twoByThreeOnRight
+--   --   $ onWorkspace "2" multiColWithGaps
+--   --   $ onWorkspaces ["3", "4"] tiled $
+--  =
+--   mkToggle (NOBORDERS ?? NBFULL ?? EOT)
+--     . avoidStruts
+--     . lessBorders OnlyScreenFloat
+--     $ layout

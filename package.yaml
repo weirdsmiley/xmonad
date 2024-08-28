@@ -22,7 +22,9 @@ description:         Please see the README on GitHub at <https://github.com/weir
 dependencies:
 - base >= 4.7 && < 5
 - xmonad
+- xmobar
 - xmonad-contrib
+- containers
 
 ghc-options:
 - -Wall

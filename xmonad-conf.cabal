@@ -26,11 +26,14 @@ source-repository head
 executable xmobar
   main-is: xmobar.hs
   other-modules:
+      Keybindings
       Layout
+      Plugins.Pomodoro
       Preferences
       Theme.Font
       Theme.Theme
       Theme.Xresources
+      Workspaces
       Paths_xmonad_conf
   autogen-modules:
       Paths_xmonad_conf
@@ -39,6 +42,7 @@ executable xmobar
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -rtsopts -threaded -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , containers
     , xmobar
     , xmonad
     , xmonad-contrib
@@ -47,11 +51,14 @@ executable xmobar
 executable xmonad
   main-is: xmonad.hs
   other-modules:
+      Keybindings
       Layout
+      Plugins.Pomodoro
       Preferences
       Theme.Font
       Theme.Theme
       Theme.Xresources
+      Workspaces
       Paths_xmonad_conf
   autogen-modules:
       Paths_xmonad_conf
@@ -61,6 +68,7 @@ executable xmonad
   build-depends:
       base >=4.7 && <5
     , containers
+    , xmobar
     , xmonad
     , xmonad-contrib
   default-language: Haskell2010

@@ -1,3 +1,4 @@
+import Plugins.Pomodoro
 import Xmobar
 
 data HelloWorld =
@@ -27,6 +28,7 @@ config =
     , commands =
         [ Run HelloWorld
         , Run XMonadLog
+        , Run $ PomodoroSession Start
         , Run
             $ Memory
                 [ "-t"
@@ -100,7 +102,7 @@ config =
             $ Network
                 "wlp4s0"
                 [ "-t"
-                , "<dev>: <rx> | <tx>"
+                , "<fn=1>\xf1eb</fn> ↓<rx> ↑<tx>"
                 , "-L"
                 , "0"
                 , "-H"
@@ -169,17 +171,28 @@ config =
                 ]
                 50
         , Run $ Date "%a %_d %b %Y <fc=#ff79c6>%I:%M:%S %p</fc> %Z" "date" 10
-        , Run $ Com "uname" ["-s", "-r"] "kernel" 0
+        , Run
+            $ Com
+                "/bin/sh"
+                [ "-c"
+                , "if [[ $(bluetoothctl show | awk -F': ' '/Powered:/ { print $2 }') == 'yes' ]]; then echo on; else echo off; fi"
+                ]
+                "bluetooth"
+                1
+        -- , Run $ Com "uname" ["-s", "-r"] "kernel" 0
+        -- , Run $ Com "gnome-pomodoro" ["--start"] "pom" 0
         -- , Run
-        --     $ Com
-        --         ["<action=`gnome-pomodoro` button=1>Pomodoro</action>"]
-        --         "pomodoro"
-        --         0
+        --     $ CommandReader
+        --         ("exec " <> "~/.config/xmonad/scripts/playerctl.sh")
+        --         "playerctl"
+        -- , Run
+        --     $ Com "⏵" ["<action=`gnome-pomodoro` button=1>Pomodoro</action>"] 0
         ]
     , template =
-        " %XMonadLog% }{ %wlp4s0%  ▪  %multicpu% %cpufreq% %multicoretemp%  ▪  %memory%  ▪  %disku%  ▪  %VIDP%  ▪  %date%"
+        "<hspace=10/>%pomodoro% ▪ %XMonadLog% }{ %wlp4s0%  ▪  %multicpu% %cpufreq% %multicoretemp%  ▪  %memory%  ▪  %disku%  ▪  %VIDP%  ▪  %date%<hspace=10/>"
     , alignSep = "}{"
     }
 
 main :: IO ()
 main = configFromArgs config >>= xmobar
+-- <hspace=10/><action=`gnome-pomodoro --start` button=1>⏵</action>
