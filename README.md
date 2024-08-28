@@ -5,10 +5,10 @@
 ## Installation
 
 ```bash
-$ mkdir -p $HOME/.config/xmonad
-$ git clone https://github.com/weirdsmiley/xmonad $HOME/.config/xmonad/
-$ cd $HOME/.config/xmonad
-$ stack install
+mkdir -p $HOME/.config/xmonad
+git clone https://github.com/weirdsmiley/xmonad $HOME/.config/xmonad/
+cd $HOME/.config/xmonad
+stack install
 ```
 
 This will install the built `xmonad` and `xmobar` in `$HOME/.local/bin/`.
