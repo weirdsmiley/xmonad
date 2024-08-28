@@ -1,5 +1,6 @@
 # XMonad Configuration
 
+![XMonad Preview](./preview/xmonad.png)
 
 ## Installation
 
