@@ -14,6 +14,7 @@ import XMonad.Layout
 import XMonad.Layout.Accordion (Accordion(Accordion))
 import XMonad.Layout.DraggingVisualizer (draggingVisualizer)
 import XMonad.Layout.LayoutModifier (ModifiedLayout)
+import XMonad.Layout.Magnifier
 import XMonad.Layout.MultiColumns (MultiCol, multiCol)
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
@@ -50,7 +51,7 @@ myTabConfig =
 
 myLayout =
   onWorkspace "1" (twoByThreeOnRight ||| twoByThreeOnLeft)
-    $ onWorkspace "2" multiColWithGaps
+    $ onWorkspace "2" (multiColWithGaps ||| magnifiedMultiColWithGaps)
     $ onWorkspaces ["3", "4"] tiled
     $ mkToggle (NOBORDERS ?? NBFULL ?? EOT)
         . avoidStruts
@@ -64,6 +65,8 @@ myLayout =
         ||| multiColWithGaps
   where
     multiColWithGaps = rn "Columns" . addGaps $ multiCol [1] 1 0.01 (-0.5)
+    magnifiedMultiColWithGaps =
+      rn "Columns" . addGaps $ magnifiercz' 2.0 $ multiCol [1] 1 0.01 (-0.5)
     full = rn "Full" . addGaps $ Full
     tall = rn "Tall" . addGaps $ ResizableTall nmaster delta ratio []
     threeCol = addGaps $ ThreeCol nmaster delta ratio
