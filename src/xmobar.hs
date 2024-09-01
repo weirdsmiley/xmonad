@@ -1,20 +1,15 @@
+import Plugins.Bluetooth
 import Plugins.Pomodoro
 import Xmobar
-
-data HelloWorld =
-  HelloWorld
-  deriving (Show, Read)
-
-instance Exec HelloWorld where
-  alias HelloWorld = "hw"
-  run HelloWorld = return "<fc=red>Hello World!</fc>"
 
 config :: Config
 config =
   defaultConfig
     { font = "xft:Fira Code Light:size=6:antialias=true"
     , additionalFonts =
-        ["xft:Font Awesome 6 Free Regular:size=6:antialias=true"]
+        [ "xft:Font Awesome 6 Free-Regular-400:size=6:antialias=true"
+        , "Material Icons:style=Regular"
+        ]
     , allDesktops = True
     -- , position = Static {xpos = 10, ypos = 1050, width = 1900, height = 20}
     , position = Static {xpos = 10, ypos = 10, width = 1900, height = 30}
@@ -26,8 +21,7 @@ config =
     , fgColor = "white"
     , bgColor = "#5501c3"
     , commands =
-        [ Run HelloWorld
-        , Run XMonadLog
+        [ Run XMonadLog
         , Run $ PomodoroSession Start
         , Run
             $ Memory
@@ -99,10 +93,24 @@ config =
                 ]
                 18000
         , Run
+            $ Volume
+                "default"
+                "Master"
+                [ "-t"
+                , "<fn=2>\xe050</fn> <volume> <volumevbar>"
+                , "-L"
+                , "0"
+                , "-M"
+                , "40"
+                , "-H"
+                , "70"
+                ]
+                10
+        , Run
             $ Network
                 "wlp4s0"
                 [ "-t"
-                , "<fn=1>\xf1eb</fn> ↓<rx> ↑<tx>"
+                , "<fn=2>\xe63e</fn> ↓<rx> ↑<tx>"
                 , "-L"
                 , "0"
                 , "-H"
@@ -189,7 +197,7 @@ config =
         --     $ Com "⏵" ["<action=`gnome-pomodoro` button=1>Pomodoro</action>"] 0
         ]
     , template =
-        "<hspace=10/>%pomodoro% ▪ %XMonadLog% }{ %wlp4s0%  ▪  %multicpu% %cpufreq% %multicoretemp%  ▪  %memory%  ▪  %disku%  ▪  %VIDP%  ▪  %date%<hspace=10/>"
+        "<hspace=10/>%pomodoro%  ▪  %XMonadLog% }{ %wlp4s0%  ▪  %default:Master%  ▪  %multicpu% %cpufreq% %multicoretemp%  ▪  %memory%  ▪  %disku%  ▪  %VIDP%  ▪  %date%<hspace=10/>"
     , alignSep = "}{"
     }
 

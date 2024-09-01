@@ -53,7 +53,7 @@ flags:
     with_xpm: true
     with_threaded: true
     with_rtsopts: true
-    with_alsa: false
+    with_alsa: true
     with_mpd: false
     with_weather: true
     with_dbus: false
