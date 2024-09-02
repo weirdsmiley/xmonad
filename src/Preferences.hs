@@ -83,9 +83,10 @@ startupApps =
   , myBrowser
   , myPdfViewer
   , Preferences.xmobar
-  , "/opt/Discord/Discord"
+  , "Discord"
   , "zoom"
   , "telegram-desktop"
+  , "gnome-boxes"
   -- , "steam"
   ]
 
@@ -153,7 +154,7 @@ myManageHook =
         =? "VirtualBox Manager"
         <||> className
         =? "gnome-boxes"
-        -?> doShift (myWorkspaces !! 6)
+        -?> doShift (myWorkspaces !! 8)
     ]
     <+> namedScratchpadManageHook myScratchpads
 
