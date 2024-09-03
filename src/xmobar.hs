@@ -183,7 +183,7 @@ config =
             $ Com
                 "/bin/sh"
                 [ "-c"
-                , "if [[ $(bluetoothctl show | awk -F': ' '/Powered:/ { print $2 }') == 'yes' ]]; then echo on; else echo off; fi"
+                , "if [[ $(bluetoothctl show | awk -F': ' '/Powered:/ { print $2 }') == 'yes' ]]; then echo \"<fc=lightgreen><fn=2>\xe1a8</fn></fc>\"; else echo \"<fn=2>\xe1a9</fn>\"; fi"
                 ]
                 "bluetooth"
                 1
@@ -197,7 +197,7 @@ config =
         --     $ Com "⏵" ["<action=`gnome-pomodoro` button=1>Pomodoro</action>"] 0
         ]
     , template =
-        "<hspace=10/>%pomodoro%  ▪  %XMonadLog% }{ %wlp4s0%  ▪  %default:Master%  ▪  %multicpu% %cpufreq% %multicoretemp%  ▪  %memory%  ▪  %disku%  ▪  %VIDP%  ▪  %date%<hspace=10/>"
+        "<hspace=10/>%pomodoro%  ▪  %XMonadLog% }{ %wlp4s0% %bluetooth% ▪  %default:Master%  ▪  %multicpu% %cpufreq% %multicoretemp%  ▪  %memory%  ▪  %disku%  ▪  %VIDP%  ▪  %date%<hspace=10/>"
     , alignSep = "}{"
     }
 
