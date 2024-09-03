@@ -33,7 +33,7 @@ sessionAliases Stop = "stop"
 sessionCmds :: PomodoroStatus -> IO String
 sessionCmds Start =
   return
-    "<action=`gnome-pomodoro --pause-resume` button=1><fc=#ff79c6>〇</fc></action>"
+    "<action=`gnome-pomodoro --pause-resume` button=1><fn=1><fc=#ff79c6>\xf017</fc></fn></action>"
 sessionCmds Pause =
   return
     "<action=`gnome-pomodoro --resume` button=1><fc=#ff79c6>⏸</fc></action>"
