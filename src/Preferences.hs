@@ -27,6 +27,8 @@ myBrowser = "firefox"
 
 myPdfViewer = "/home/manas/.local/bin/sioyek"
 
+myScreenShotter = "scrot"
+
 -- Fonts
 myRegularFont = "Noto Sans 10"
 

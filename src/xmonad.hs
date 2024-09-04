@@ -203,14 +203,6 @@ myConfig =
     , startupHook = myStartupHook
     , logHook = myLogHook
     }
-    -- `additionalKeysP` [ ("M-t", spawn myTerminal)
-    --                   , ( "M-d"
-    --                     , unsafeSpawn
-    --                         (myLauncher
-    --                            ++ " -show combi -combi-modi window,drun -modi combi -show-icons"))
-    --                   , ("M-s", unGrab *> spawn "scrot -s")
-    --                   , ("M-f", unGrab *> spawn "scrot")
-    --                   ]
 
 myXmobarPP :: PP
 myXmobarPP =

@@ -89,9 +89,12 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
       -- Lock screen
       , ((modm, xK_l), unGrab *> safeSpawn "xsecurelock" [])
       -- Screenshot keychords -- FIXME: Not working
-      , ((0, xK_Print), unGrab *> safeSpawn "shotclip" ["-f"])
-      , ((0 .|. controlMask, xK_Print), unGrab *> safeSpawn "shotclip" ["-u"])
-      , ((0 .|. shiftMask, xK_Print), unGrab *> safeSpawn "shotclip" ["-s"])
+      , ( (0, xK_Print)
+        , unGrab *> safeSpawn myScreenShotter ["-f", "--quality", "100"])
+      , ( (0 .|. controlMask, xK_Print)
+        , unGrab *> safeSpawn myScreenShotter ["-u", "--quality", "100"])
+      , ( (0 .|. shiftMask, xK_Print)
+        , unGrab *> safeSpawn myScreenShotter ["-s", "--quality", "100"])
       ]
         ++
           -- mod-[1..9], Switch to workspace N
