@@ -37,7 +37,7 @@ myMonospaceFont = "Fira Code Regular 9"
 -- Rofi launcher
 myLauncher :: String
 myLauncher =
-  "rofi -theme ~/.config/rofi/slate.rasi -width 424 -lines 8"
+  "rofi -theme ~/.config/rofi/themes/slate.rasi -width 424 -lines 8"
     ++ " -font '"
     ++ myRegularFont
     ++ "'"
