@@ -26,7 +26,7 @@ config =
         , Run
             $ Memory
                 [ "-t"
-                , "<fn=1>\xe322</fn> <usedratio>% (<used>G)"
+                , "<fc=#ff79c6><fn=1>\xe322</fn></fc> <usedratio>% (<used>G)"
                 -- , "<usedratio>% (<used> G)"
                 , "-d"
                 , "1"
@@ -37,8 +37,8 @@ config =
                 10
         , Run
             $ DiskU
-                [("/", "<free>/<size>")]
-                ["-L", "20", "-H", "50", "-m", "1", "-p", "3"]
+                [("/", "<fc=#ff79c6><fn=2>\xe1db</fn></fc> <free>/<size>")]
+                ["-L", "50", "-H", "900", "-m", "1", "-p", "3"]
                 20
         , Run
             $ Battery
@@ -97,7 +97,7 @@ config =
                 "default"
                 "Master"
                 [ "-t"
-                , "<fn=2>\xe050</fn> <volume> <volumevbar>"
+                , "<fc=#ff79c6><fn=2>\xe050</fn></fc> <volume>"
                 , "-L"
                 , "0"
                 , "-M"
@@ -110,7 +110,7 @@ config =
             $ Network
                 "wlp4s0"
                 [ "-t"
-                , "<fn=2>\xe63e</fn> ↓<rx> ↑<tx>"
+                , "<fc=#ff79c6><fn=2>\xe63e</fn></fc> ↓<rx> ↑<tx>"
                 , "-L"
                 , "0"
                 , "-H"
@@ -126,17 +126,17 @@ config =
         , Run
             $ MultiCpu
                 [ "-t"
-                , "<fn=1>\xf2db</fn> <total>%"
+                , "<fc=#ff79c6><fn=1>\xf2db</fn></fc> <total>%"
                 , "--Low"
                 , "10" -- units: %
                 , "--High"
-                , "85" -- units: %
+                , "90" -- units: %
                 , "--low"
                 , "white"
                 , "--normal"
                 , "yellow"
                 , "--high"
-                , "red"
+                , "lightred"
                 ]
                 20
         -- cpu core temperature monitor
@@ -197,7 +197,7 @@ config =
         --     $ Com "⏵" ["<action=`gnome-pomodoro` button=1>Pomodoro</action>"] 0
         ]
     , template =
-        "<hspace=10/>%pomodoro%  ▪  %XMonadLog% }{ %wlp4s0% %bluetooth% ▪  %default:Master%  ▪  %multicpu% %cpufreq% %multicoretemp%  ▪  %memory%  ▪  %disku%  ▪  %VIDP%  ▪  %date%<hspace=10/>"
+        "<hspace=10/>%pomodoro%  %XMonadLog% }{ %wlp4s0% %bluetooth%  %default:Master%  %multicpu% %cpufreq% %multicoretemp%  %memory%  %disku%  %VIDP%  %date%<hspace=10/>"
     , alignSep = "}{"
     }
 
