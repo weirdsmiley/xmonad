@@ -75,7 +75,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
            ("printf \""
               ++ help
               ++ "\" | zenity --text-info --title='XMonad Keybindings' "))
-      -- Toggle fullscreen -- FIXME: Haven't tested this?
+      -- Toggle fullscreen -- TODO: This won't work in set PerWorkspace hooks.
      , ((modm, xK_f), sendMessage $ Toggle NBFULL)
       -- Toggle gaps
      , ( (modm, xK_g)
@@ -85,7 +85,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
        , namedScratchpadAction myScratchpads "terminal")
       -- Lock screen
      , ((modm, xK_l), unGrab *> safeSpawn "xsecurelock" [])
-      -- Screenshot keychords -- FIXME: Not working
+      -- Screenshot keychords
      , ( (0, xK_Print)
        , unGrab *> safeSpawn myScreenShotter ["-f", "--quality", "100"])
      , ( (0 .|. controlMask, xK_Print)
@@ -120,7 +120,6 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
     nonEmptyNSP =
       hiddenWS :&: Not emptyWS :&: ignoringWSs [scratchpadWorkspaceTag]
 
--- TODO: keychords for various kinds of screen shots
 ------------------------------------------------------------------------
 -- XPrompt
 --
