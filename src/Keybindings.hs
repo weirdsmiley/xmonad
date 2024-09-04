@@ -1,5 +1,6 @@
 module Keybindings
   ( myKeys
+  , myMouseBindings
   , myXPConfig
   ) where
 

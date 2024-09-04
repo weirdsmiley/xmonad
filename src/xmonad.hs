@@ -193,7 +193,10 @@ myConfig =
     , workspaces = myWorkspaces
     , normalBorderColor = myNormalBorderColor
     , focusedBorderColor = myFocusedBorderColor
+    -- Keybindings
     , keys = myKeys
+    , mouseBindings = myMouseBindings
+    -- Layouts
     , layoutHook = myLayout
     , manageHook = myManageHook
     , handleEventHook = myHandleEventHook
