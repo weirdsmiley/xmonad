@@ -85,7 +85,7 @@ config =
                 , "-H"
                 , "25"
                 , "--normal"
-                , "black"
+                , "lightblue"
                 , "--high"
                 , "#ffd63a"
                 , "--low"
