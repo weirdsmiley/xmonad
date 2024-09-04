@@ -52,7 +52,7 @@ myTabConfig =
 myLayout =
   onWorkspace "1" (twoByThreeOnRight ||| twoByThreeOnLeft)
     $ onWorkspace "2" (multiColWithGaps ||| magnifiedMultiColWithGaps)
-    $ onWorkspaces ["3", "4"] tiled
+    $ onWorkspace "3" tiled
     $ mkToggle (NOBORDERS ?? NBFULL ?? EOT)
         . avoidStruts
         . lessBorders OnlyScreenFloat
