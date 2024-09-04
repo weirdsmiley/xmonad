@@ -7,8 +7,8 @@ import qualified XMonad.StackSet as W
 import XMonad.Util.NamedScratchpad
 
 -- Function to name terminals
--- named terminals to rule them all
--- named terminals to find them
+-- > Named terminals to rule them all,
+-- > Named terminals to find them
 myNamedTerminal name = myTerminal ++ " --title " ++ name
 
 myTerminal, myCodeSprintTerm, myWritingTerm, myResearchTerm, myBrowser, myRegularFont, myMonospaceFont, myPdfViewer, myWallpaper ::
@@ -37,10 +37,11 @@ myMonospaceFont = "Fira Code Regular 9"
 -- Rofi launcher
 myLauncher :: String
 myLauncher =
-  "rofi -theme ~/.config/rofi/slate.rasi -width 624 -lines 12"
+  "rofi -theme ~/.config/rofi/slate.rasi -width 424 -lines 8"
     ++ " -font '"
     ++ myRegularFont
     ++ "'"
+    ++ " -show combi -combi-modi window,drun -modi combi -show-icons"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse, myClickJustFocuses :: Bool
@@ -89,7 +90,7 @@ startupApps =
   , "zoom"
   , "telegram-desktop"
   , "gnome-boxes"
-  -- , "steam"
+  , "steam"
   ]
 
 -- Apply any configurations only on current workspace and not on all workspaces.
@@ -151,6 +152,7 @@ myManageHook =
     , title =? "Research" -?> doShift (myWorkspaces !! 2)
     , title =? "Pomodoro" -?> doCenterFloat
     , title =? "Camera" -?> doCenterFloat
+    , title =? "Boxes" -?> doShift (myWorkspaces !! 8)
     , className =? "gnome-calculator" -?> doCenterFloat
     , className
         =? "VirtualBox Manager"
@@ -160,9 +162,6 @@ myManageHook =
     ]
     <+> namedScratchpadManageHook myScratchpads
 
-------------------------------------------------------------------------
--- Scratchpad
---
 myScratchpads :: [NamedScratchpad]
 myScratchpads
                  -- run a terminal inside scratchpad

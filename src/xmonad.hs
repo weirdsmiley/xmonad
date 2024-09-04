@@ -77,8 +77,8 @@ myHandleEventHook =
              <||> className
              =? "re")
 
--- myLogHook = refocusLastLogHook >> nsHideOnFocusLoss myScratchpads
 myLogHook :: X ()
+-- myLogHook = refocusLastLogHook >> nsHideOnFocusLoss myScratchpads
 myLogHook
   | Preferences.applyOnlyOnCurrentWS = fadeInactiveCurrentWSLogHook fadeAmount
   | otherwise = fadeInactiveLogHook fadeAmount
@@ -238,10 +238,6 @@ myXmobarPP =
     lowWhite = xmobarColor "#bbbbbb" ""
     grey = xmobarColor "#808080" ""
 
-------------------------------------------------------------------------
--- Now run xmonad with all the defaults we set up.
--- Run xmonad with the settings you specify. No need to modify this.
---
 main :: IO ()
 main =
   xmonad
@@ -250,4 +246,3 @@ main =
     . docks
     . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey
     $ myConfig
---- vim:ft=haskell:expandtab

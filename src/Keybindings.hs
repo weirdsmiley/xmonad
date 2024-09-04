@@ -29,95 +29,92 @@ import qualified XMonad.StackSet as W
 import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run (safeSpawn, unsafeSpawn)
 
--- These keybindings are for jumping to recently-used window instead of
--- moving in cycle.
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@XConfig {XMonad.modMask = modm} =
   M.fromList
-    $ [ ((modm .|. controlMask, xK_Right), nextMatch Forward (className =? ""))
-      , ((modm .|. controlMask, xK_Left), nextMatch Backward (className =? ""))
+    $
+      -- FIXME: Jump to windows in recently-used order
+     [ ((modm .|. controlMask, xK_Right), nextMatch Forward (className =? ""))
+     , ((modm .|. controlMask, xK_Left), nextMatch Backward (className =? ""))
       -- Open rofi launcher
-      , ( (modm, xK_d)
-        , unsafeSpawn
-            (myLauncher
-               ++ " -show combi -combi-modi window,drun -modi combi -show-icons"))
+     , ((modm, xK_d), unsafeSpawn (myLauncher))
       -- Open new terminal
-      , ((modm .|. shiftMask, xK_Return), spawn myTerminal)
+     , ((modm .|. shiftMask, xK_Return), spawn myTerminal)
       -- Rotate through the available layout algorithms
-      , ((modm, xK_space), sendMessage NextLayout)
+     , ((modm, xK_space), sendMessage NextLayout)
       -- Close focused window
-      , ((modm, xK_c), kill1)
+     , ((modm, xK_c), kill1)
       -- Focus on previous window
-      , ((modm, xK_k), windows W.focusUp)
+     , ((modm, xK_k), windows W.focusUp)
       -- Focus on next window
-      , ((modm, xK_j), windows W.focusDown)
+     , ((modm, xK_j), windows W.focusDown)
       -- Focus on master window
-      , ((modm, xK_m), windows W.focusMaster)
+     , ((modm, xK_m), windows W.focusMaster)
       -- TODO: Focus to most recent window
       -- , ((modm, xK_Tab), moveTo Next nonEmptyNSP)
-      , ((modm, xK_Tab), windows W.focusDown)
+     , ((modm, xK_Tab), windows W.focusDown)
       -- Swap focused window with master
-      , ((modm, xK_s), promote)
+     , ((modm, xK_s), promote)
       -- TODO: This will do the opposite in twoByThreeLayout kinds.
       -- Shrink master area
-      , ((modm .|. shiftMask, xK_h), sendMessage Shrink)
+     , ((modm .|. shiftMask, xK_h), sendMessage Shrink)
       -- Expand master area
-      , ((modm .|. shiftMask, xK_l), sendMessage Expand)
+     , ((modm .|. shiftMask, xK_l), sendMessage Expand)
       -- Push floating window back to tiling
-      , ((modm, xK_t), withFocused $ windows . W.sink)
+     , ((modm, xK_t), withFocused $ windows . W.sink)
       -- Push all floating windows back to tiling
-      , ((modm .|. shiftMask, xK_t), sinkAll)
+     , ((modm .|. shiftMask, xK_t), sinkAll)
       -- Quit XMonad
-      , ( (modm .|. shiftMask, xK_q)
-        , confirmPrompt myXPConfig "Quit" $ io exitSuccess)
+     , ( (modm .|. shiftMask, xK_q)
+       , confirmPrompt myXPConfig "Quit" $ io exitSuccess)
       -- Restart XMonad
-      , ((modm, xK_q), unsafeSpawn "xmonad --recompile; xmonad --restart")
+     , ((modm, xK_q), unsafeSpawn "xmonad --recompile; xmonad --restart")
       -- Show all keybindings
-      , ( (modm .|. shiftMask, xK_slash)
-        , unsafeSpawn
-            ("printf \""
-               ++ help
-               ++ "\" | zenity --text-info --title='XMonad Keybindings' "))
+     , ( (modm .|. shiftMask, xK_slash)
+       , unsafeSpawn
+           ("printf \""
+              ++ help
+              ++ "\" | zenity --text-info --title='XMonad Keybindings' "))
       -- Toggle fullscreen -- FIXME: Haven't tested this?
-      , ((modm, xK_f), sendMessage $ Toggle NBFULL)
+     , ((modm, xK_f), sendMessage $ Toggle NBFULL)
       -- Toggle gaps
-      , ( (modm, xK_g)
-        , sequence_ [toggleScreenSpacingEnabled, toggleWindowSpacingEnabled])
+     , ( (modm, xK_g)
+       , sequence_ [toggleScreenSpacingEnabled, toggleWindowSpacingEnabled])
       -- Open Scratchpad
-      , ( (modm .|. controlMask, xK_Return)
-        , namedScratchpadAction myScratchpads "terminal")
+     , ( (modm .|. controlMask, xK_Return)
+       , namedScratchpadAction myScratchpads "terminal")
       -- Lock screen
-      , ((modm, xK_l), unGrab *> safeSpawn "xsecurelock" [])
+     , ((modm, xK_l), unGrab *> safeSpawn "xsecurelock" [])
       -- Screenshot keychords -- FIXME: Not working
-      , ( (0, xK_Print)
-        , unGrab *> safeSpawn myScreenShotter ["-f", "--quality", "100"])
-      , ( (0 .|. controlMask, xK_Print)
-        , unGrab *> safeSpawn myScreenShotter ["-u", "--quality", "100"])
-      , ( (0 .|. shiftMask, xK_Print)
-        , unGrab *> safeSpawn myScreenShotter ["-s", "--quality", "100"])
-      ]
-        ++
+     , ( (0, xK_Print)
+       , unGrab *> safeSpawn myScreenShotter ["-f", "--quality", "100"])
+     , ( (0 .|. controlMask, xK_Print)
+       , unGrab *> safeSpawn myScreenShotter ["-u", "--quality", "100"])
+     , ( (0 .|. shiftMask, xK_Print)
+       , unGrab *> safeSpawn myScreenShotter ["-s", "--quality", "100"])
+     ]
+       ++
           -- mod-[1..9], Switch to workspace N
           -- mod-shift-[1..9], Move client to workspace N
           --
-         [ ((m .|. modm, k), windows $ f i)
-         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
-         , (f, m) <-
-             [ (W.greedyView, 0)
-             , (W.shift, shiftMask)
-             , (liftM2 (.) W.greedyView W.shift, controlMask)
-             ]
-         ]
-        ++
+        [ ((m .|. modm, k), windows $ f i)
+        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+        , (f, m) <-
+            [ (W.greedyView, 0)
+            , (W.shift, shiftMask)
+            , (liftM2 (.) W.greedyView W.shift, controlMask)
+            ]
+        ]
+       ++
           -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
           -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
           --
           --
-         [ ( (m .|. modm, key)
-           , screenWorkspace sc >>= flip whenJust (windows . f))
-         | (key, sc) <- zip [xK_w, xK_e, xK_r] [0 ..]
-         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
-         ]
+        [ ( (m .|. modm, key)
+          , screenWorkspace sc >>= flip whenJust (windows . f))
+        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0 ..]
+        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
+        ]
   where
     nonNSP = ignoringWSs [scratchpadWorkspaceTag]
     nonEmptyNSP =

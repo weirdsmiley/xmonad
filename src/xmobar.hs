@@ -27,7 +27,6 @@ config =
             $ Memory
                 [ "-t"
                 , "<fc=#ff79c6><fn=1>\xe322</fn></fc> <usedratio>% (<used>G)"
-                -- , "<usedratio>% (<used> G)"
                 , "-d"
                 , "1"
                 , "--"
@@ -139,7 +138,6 @@ config =
                 , "lightred"
                 ]
                 20
-        -- cpu core temperature monitor
         , Run
             $ MultiCoreTemp
                 [ "-t"
@@ -187,14 +185,6 @@ config =
                 ]
                 "bluetooth"
                 1
-        -- , Run $ Com "uname" ["-s", "-r"] "kernel" 0
-        -- , Run $ Com "gnome-pomodoro" ["--start"] "pom" 0
-        -- , Run
-        --     $ CommandReader
-        --         ("exec " <> "~/.config/xmonad/scripts/playerctl.sh")
-        --         "playerctl"
-        -- , Run
-        --     $ Com "⏵" ["<action=`gnome-pomodoro` button=1>Pomodoro</action>"] 0
         ]
     , template =
         "<hspace=10/>%pomodoro%  %XMonadLog% }{ %wlp4s0% %bluetooth%  %default:Master%  %multicpu% %cpufreq% %multicoretemp%  %memory%  %disku%  %VIDP%  %date%<hspace=10/>"
@@ -203,4 +193,3 @@ config =
 
 main :: IO ()
 main = configFromArgs config >>= xmobar
--- <hspace=10/><action=`gnome-pomodoro --start` button=1>⏵</action>

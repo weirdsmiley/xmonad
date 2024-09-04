@@ -86,12 +86,3 @@ myLayout =
         $ layout
     dragWindows layout = windowNavigation . draggingVisualizer $ layout
     addGaps = mySpacing myGaps
--- myDecoratedLayout layout
---   -- onWorkspace "1" twoByThreeOnRight
---   --   $ onWorkspace "2" multiColWithGaps
---   --   $ onWorkspaces ["3", "4"] tiled $
---  =
---   mkToggle (NOBORDERS ?? NBFULL ?? EOT)
---     . avoidStruts
---     . lessBorders OnlyScreenFloat
---     $ layout
