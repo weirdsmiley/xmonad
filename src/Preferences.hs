@@ -184,3 +184,7 @@ myNormalBorderColor, myFocusedBorderColor :: String
 myNormalBorderColor = "black"
 
 myFocusedBorderColor = "grey"
+
+-- Control how long XMonadLog should show application name in xmobar.
+myXMonadLogAppLength :: Int
+myXMonadLogAppLength = 20

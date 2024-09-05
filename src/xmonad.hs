@@ -228,7 +228,7 @@ myXmobarPP =
              if null w
                then "Untitled"
                else w)
-        . shorten 20
+        . shorten myXMonadLogAppLength
     blue, lowWhite, magenta, red, white, yellow :: String -> String
     magenta = xmobarColor "#ff79c6" ""
     blue = xmobarColor "#bd93f9" ""
