@@ -130,6 +130,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         ++ (resizeChords modm)
         ++ (focusChords modm)
         ++ screenshotChords
+        ++ (applicationChords modm)
         ++ (workspaceChords conf)
   where
     nonNSP = ignoringWSs [scratchpadWorkspaceTag]
