@@ -6,7 +6,7 @@ module Layout
   ) where
 
 import Preferences
-import Theme.Theme (base00, base07, base08, basebg, basefg, myFont)
+import Theme.Theme
 import XMonad
 import XMonad.Actions.TiledWindowDragging (dragWindow)
 import XMonad.Hooks.ManageDocks
@@ -19,6 +19,7 @@ import XMonad.Layout.MultiColumns (MultiCol, multiCol)
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.NoBorders
+import XMonad.Layout.NoFrillsDecoration
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Reflect
 import XMonad.Layout.Renamed
@@ -49,6 +50,36 @@ myTabConfig =
     , decoWidth = maxBound
     }
 
+blue = "#268bd2"
+
+yellow = "#b58900"
+
+red = "#dc322f"
+
+active = blue
+
+activeWarn = red
+
+topbar = 10
+
+-- this is a "fake title" used as a highlight bar in lieu of full borders
+-- (I find this a cleaner and less visually intrusive solution)
+-- ack:
+-- https://github.com/altercation/dotfiles-tilingwm/blob/31e23a75eebdedbc4336e7826800586617d7d27d/.xmonad/xmonad.hs#L519
+topBarTheme =
+  def
+    { fontName = myMonospaceFont
+    , inactiveBorderColor = base03
+    , inactiveColor = base03
+    , inactiveTextColor = base03
+    , activeBorderColor = active
+    , activeColor = active
+    , activeTextColor = active
+    , urgentBorderColor = red
+    , urgentTextColor = yellow
+    , decoHeight = topbar
+    }
+
 myLayout =
   onWorkspace "1" (twoByThreeOnRight ||| twoByThreeOnLeft)
     $ onWorkspace "2" (multiColWithGaps ||| magnifiedMultiColWithGaps)
@@ -64,16 +95,23 @@ myLayout =
         ||| full
         ||| multiColWithGaps
   where
-    multiColWithGaps = rn "Columns" . addGaps $ multiCol [1] 1 0.01 (-0.5)
+    multiColWithGaps =
+      rn "Columns" . addTopBar . addGaps $ multiCol [1] 1 0.01 (-0.5)
     magnifiedMultiColWithGaps =
-      rn "Columns" . addGaps $ magnifiercz' 2.0 $ multiCol [1] 1 0.01 (-0.5)
-    full = rn "Full" . addGaps $ Full
-    tall = rn "Tall" . addGaps $ ResizableTall nmaster delta ratio []
-    threeCol = addGaps $ ThreeCol nmaster delta ratio
+      rn "Columns" . addTopBar . addGaps
+        $ magnifiercz' 2.0
+        $ multiCol [1] 1 0.01 (-0.5)
+    full = rn "Full" . addTopBar . addGaps $ Full
+    tall =
+      rn "Tall" . addTopBar . addGaps $ ResizableTall nmaster delta ratio []
+    threeCol = addTopBar . addGaps $ ThreeCol nmaster delta ratio
     twoByThreeOnRight =
-      rn "2-by-3 (right)" . addGaps $ reflectHoriz $ Tall nmaster delta (2 / 3)
-    twoByThreeOnLeft = rn "2-by-3 (left)" . addGaps $ Tall nmaster delta (2 / 3)
-    tiled = rn "Tiled" . addGaps $ Tall nmaster delta ratio
+      rn "2-by-3 (right)" . addTopBar . addGaps
+        $ reflectHoriz
+        $ Tall nmaster delta (2 / 3)
+    twoByThreeOnLeft =
+      rn "2-by-3 (left)" . addTopBar . addGaps $ Tall nmaster delta (2 / 3)
+    tiled = rn "Tiled" . addTopBar . addGaps $ Tall nmaster delta ratio
     nmaster = 1 -- Default number of windows in the master pane
     ratio = 1 / 2 -- Default proportion of screen occupied by master pane
     delta = 3 / 100 -- Percent of screen to increment by when resizing panes
@@ -86,3 +124,4 @@ myLayout =
         $ layout
     dragWindows layout = windowNavigation . draggingVisualizer $ layout
     addGaps = mySpacing myGaps
+    addTopBar = noFrillsDeco shrinkText topBarTheme

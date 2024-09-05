@@ -60,7 +60,7 @@ myClickJustFocuses = False
 -- Width of the window border in pixels.
 --
 myBorderWidth :: Dimension
-myBorderWidth = 2
+myBorderWidth = 0
 
 myGaps :: Num p => p
 myGaps = 5
