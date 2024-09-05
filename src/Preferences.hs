@@ -25,6 +25,13 @@ myResearchTerm = myNamedTerminal "Research"
 
 myBrowser = "firefox"
 
+myKanboardProfile = "Kanboard"
+
+-- This url is opened in myBrowser (kiosk-mode, and myKanboardProfile) with a
+-- keybinding.
+myKanboardUrl =
+  "http://localhost:8081/?controller=Bigboard&action=index&plugin=Bigboard"
+
 myPdfViewer = "/home/manas/.local/bin/sioyek"
 
 myScreenShotter = "scrot"
@@ -153,6 +160,7 @@ myManageHook =
     , title =? "Pomodoro" -?> doCenterFloat
     , title =? "Camera" -?> doCenterFloat
     , title =? "Boxes" -?> doShift (myWorkspaces !! 8)
+    , className =? "Kanboard" -?> doFullFloat
     , className =? "gnome-calculator" -?> doCenterFloat
     , className
         =? "VirtualBox Manager"

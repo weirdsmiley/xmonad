@@ -125,6 +125,19 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         , namedScratchpadAction myScratchpads "terminal")
       -- Lock screen
       , ((modm, xK_l), unGrab *> safeSpawn "xsecurelock" [])
+      -- Open Kanboard session
+      , ( (modm, xK_x)
+        , unGrab
+            *> safeSpawn
+                 myBrowser
+                 [ "--class"
+                 , myKanboardProfile
+                 , "--new-window"
+                 , "--kiosk"
+                 , "-P"
+                 , myKanboardProfile
+                 , myKanboardUrl
+                 ])
       ]
         ++ (layoutChords modm)
         ++ (resizeChords modm)
