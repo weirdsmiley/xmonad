@@ -8,7 +8,8 @@ config =
     { font = "xft:Fira Code Light:size=6:antialias=true"
     , additionalFonts =
         [ "xft:Font Awesome 6 Free-Regular-400:size=6:antialias=true"
-        , "Material Icons:style=Regular"
+        , "xft:Material Icons:style=Regular:size=6:antialias=true"
+        , "xft:0xProto Nerd Font:style=Regular:size=6:antialias=true"
         ]
     , allDesktops = True
     -- , position = Static {xpos = 10, ypos = 1050, width = 1900, height = 20}
@@ -26,7 +27,7 @@ config =
         , Run
             $ Memory
                 [ "-t"
-                , "<fc=#ff79c6><fn=1>\xe322</fn></fc> <usedratio>% (<used>G)"
+                , "<fc=#ff79c6><fn=2>\xf035b</fn></fc> <usedratio>% (<used>G)"
                 , "-d"
                 , "1"
                 , "--"
@@ -109,7 +110,7 @@ config =
             $ Network
                 "wlp4s0"
                 [ "-t"
-                , "<fc=#ff79c6><fn=2>\xe63e</fn></fc> ↓<rx> ↑<tx>"
+                , "<fc=#ff79c6><fn=2>\xf05a9</fn></fc> ↓<rx> ↑<tx>"
                 , "-L"
                 , "0"
                 , "-H"
@@ -125,7 +126,7 @@ config =
         , Run
             $ MultiCpu
                 [ "-t"
-                , "<fc=#ff79c6><fn=1>\xf2db</fn></fc> <total>%"
+                , "<fc=#ff79c6><fn=2>\xf4bc</fn></fc>  <total>%"
                 , "--Low"
                 , "10" -- units: %
                 , "--High"
