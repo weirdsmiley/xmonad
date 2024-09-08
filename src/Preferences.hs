@@ -93,7 +93,7 @@ startupApps =
   , myBrowser
   , myPdfViewer
   , Preferences.xmobar
-  , "Discord"
+  , "/opt/Discord/Discord"
   , "zoom"
   , "telegram-desktop"
   , "gnome-boxes"
