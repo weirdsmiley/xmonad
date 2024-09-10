@@ -97,7 +97,7 @@ config =
                 "default"
                 "Master"
                 [ "-t"
-                , "<fc=#ff79c6><fn=2>\xe050</fn></fc> <volume>"
+                , "<action=`amixer set Master 5%+` button=4><action=`amixer set Master 5%-` button=5><fc=#ff79c6><fn=2>\xe050</fn></fc> <volume></action></action>"
                 , "-L"
                 , "0"
                 , "-M"
