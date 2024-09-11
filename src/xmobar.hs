@@ -186,9 +186,11 @@ config =
                 ]
                 "bluetooth"
                 1
+        , Run
+            $ Uptime ["-t", "<fc=#ff79c6><days> <hours></fc>", "-S", "True"] 10
         ]
     , template =
-        "<hspace=10/>%pomodoro%  %XMonadLog% }{ %wlp4s0% %bluetooth%  %default:Master%  %multicpu% %cpufreq% %multicoretemp%  %memory%  %disku%  %VIDP%  %date%<hspace=10/>"
+        "<hspace=10/>%pomodoro% %uptime%  %XMonadLog% }{ %wlp4s0% %bluetooth%  %default:Master%  %multicpu% %cpufreq% %multicoretemp%  %memory%  %disku%  %VIDP%  %date%<hspace=10/>"
     , alignSep = "}{"
     }
 
