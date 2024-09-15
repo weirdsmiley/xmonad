@@ -90,6 +90,10 @@ workspaceChords conf@XConfig {XMonad.modMask = modm} =
      | (key, sc) <- zip [xK_w, xK_e, xK_r] [0 ..]
      , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
      ]
+    ++
+     -- Move back and forth between recently used workspace
+     -- Using super modifier.
+     [((mod4Mask, xK_Tab), toggleWS)]
 
 --------------------------------------------------------------------------------
 -- Keychords for standalone applications.
