@@ -93,11 +93,10 @@ startupApps =
   , myBrowser
   , myPdfViewer
   , Preferences.xmobar
-  , "/opt/Discord/Discord"
+  , "Discord"
   , "zoom"
   , "telegram-desktop"
   , "gnome-boxes"
-  , "steam"
   ]
 
 -- Apply any configurations only on current workspace and not on all workspaces.
