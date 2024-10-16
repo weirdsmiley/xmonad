@@ -153,6 +153,7 @@ myManageHook =
     , className =? "steam" -?> doShift (myWorkspaces !! 7)
     , className =? "qemu" -?> doShift (myWorkspaces !! 8)
     , className =? "sioyek" -?> doShift (myWorkspaces !! 1)
+    , className =? "Zathura" -?> doShift (myWorkspaces !! 1)
     , title =? "Codesprint" -?> doShift (head myWorkspaces)
     , title =? "Writing" -?> doShift (myWorkspaces !! 1)
     , title =? "Research" -?> doShift (myWorkspaces !! 2)
