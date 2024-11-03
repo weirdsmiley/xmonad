@@ -93,7 +93,8 @@ startupApps =
   , myBrowser
   , myPdfViewer
   , Preferences.xmobar
-  , "Discord"
+  , "/opt/Discord/Discord"
+  , "/opt/Zulip-5.11.1-x86_64.AppImage"
   , "zoom"
   , "telegram-desktop"
   , "gnome-boxes"
@@ -149,6 +150,7 @@ myManageHook =
     , className =? "firefox" -?> doShift (myWorkspaces !! 1)
     , className =? "zoom" -?> doShift (myWorkspaces !! 4)
     , className =? "discord" -?> doShift (myWorkspaces !! 5)
+    , className =? "zulip" -?> doShift (myWorkspaces !! 7)
     , title =? "Telegram" -?> doShift (myWorkspaces !! 6)
     , className =? "steam" -?> doShift (myWorkspaces !! 7)
     , className =? "qemu" -?> doShift (myWorkspaces !! 8)
