@@ -37,7 +37,7 @@ config =
                 10
         , Run
             $ DiskU
-                [("/", "<fc=#ff79c6><fn=2>\xe1db</fn></fc> <free>/<size>")]
+                [("/", "<fc=#ff79c6><fn=2>\xf3da</fn></fc> <free>/<size>")]
                 ["-L", "50", "-H", "900", "-m", "1", "-p", "3"]
                 20
         , Run
@@ -97,7 +97,7 @@ config =
                 "default"
                 "Master"
                 [ "-t"
-                , "<action=`amixer set Master toggle` button=1><action=`amixer set Master 5%+` button=4><action=`amixer set Master 5%-` button=5><fc=#ff79c6><fn=2>\xe050</fn></fc> <volume></action></action></action>"
+                , "<action=`amixer set Master toggle` button=1><action=`amixer set Master 5%+` button=4><action=`amixer set Master 5%-` button=5><fc=#ff79c6><fn=2>\xf028 </fn></fc> <volume></action></action></action>"
                 , "-L"
                 , "0"
                 , "-M"
