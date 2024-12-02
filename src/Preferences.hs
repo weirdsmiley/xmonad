@@ -177,7 +177,7 @@ myScratchpads
                  -- run a terminal inside scratchpad
  = [NS "terminal" spawnTerm findTerm manageTerm]
   where
-    spawnTerm = myTerminal ++ " -c scratchpad"
+    spawnTerm = myTerminal ++ " --class scratchpad"
     findTerm = className =? "scratchpad"
     manageTerm = customFloating $ W.RationalRect (1 / 6) (1 / 8) (2 / 3) (3 / 4)
 
