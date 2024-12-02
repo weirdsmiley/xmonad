@@ -99,7 +99,7 @@ workspaceChords conf@XConfig {XMonad.modMask = modm} =
 -- Keychords for standalone applications.
 applicationChords modm =
   [ ((modm, xK_d), unsafeSpawn (myLauncher)) -- Open rofi launcher
-  , ((modm, xK_Return), spawn myTerminal) -- Open new terminal
+  , ((modm .|. shiftMask, xK_Return), spawn myTerminal) -- Open new terminal
   , ((modm, xK_b), spawn myBrowser) -- Open browser
   ]
 
