@@ -125,7 +125,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
       , ( (modm, xK_g)
         , sequence_ [toggleScreenSpacingEnabled, toggleWindowSpacingEnabled])
       -- Open Scratchpad
-      , ( (modm .|. controlMask, xK_Return)
+      , ( (modm, xK_Return)
         , namedScratchpadAction myScratchpads "terminal")
       -- Lock screen
       , ((modm, xK_l), unGrab *> safeSpawn "xsecurelock" [])
