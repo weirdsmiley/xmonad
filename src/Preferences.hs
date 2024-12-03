@@ -177,7 +177,7 @@ myScratchpads
                  -- run a terminal inside scratchpad
  = [NS "terminal" spawnTerm findTerm manageTerm]
   where
-    spawnTerm = myTerminal ++ " --class scratchpad"
+    spawnTerm = myTerminal ++ " --class scratchpad --session ~/.config/kitty/sessions/xmonad-scratchpad"
     findTerm = className =? "scratchpad"
     manageTerm = customFloating $ W.RationalRect (1 / 6) (1 / 8) (2 / 3) (3 / 4)
 
