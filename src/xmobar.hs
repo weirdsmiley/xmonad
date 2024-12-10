@@ -107,8 +107,26 @@ config =
                 ]
                 10
         , Run
+            $ DynNetwork
+                [ "--template"
+                , "<fc=#ff79c6><fn=2>\xf05a9</fn>  <dev></fc> ↓<rx> ↑<tx>"
+                , "-L"
+                , "0"
+                , "-H"
+                , "10240"
+                , "--low"
+                , "lightred"
+                , "--normal"
+                , "#ff79c6"
+                , "--high"
+                , "lightgreen"
+                , "-S"
+                , "True"
+                ]
+                10
+        , Run
             $ Network
-                "wlp4s0"
+                "enp2s0" -- Figure out dynamically TH?
                 [ "-t"
                 , "<fc=#ff79c6><fn=2>\xf05a9</fn></fc> ↓<rx> ↑<tx>"
                 , "-L"
@@ -190,7 +208,7 @@ config =
             $ Uptime ["-t", "<fc=#ff79c6><days> <hours></fc>", "-S", "True"] 10
         ]
     , template =
-        "<hspace=10/>%pomodoro% %uptime%  %XMonadLog% }{ %wlp4s0% %bluetooth%  %default:Master%  %multicpu% %cpufreq% %multicoretemp%  %memory%  %disku%  %VIDP%  %date%<hspace=10/>"
+        "<hspace=10/>%pomodoro% %uptime%  %XMonadLog% }{ %dynnetwork% %bluetooth%  %default:Master%  %multicpu% %cpufreq% %multicoretemp%  %memory%  %disku%  %VIDP%  %date%<hspace=10/>"
     , alignSep = "}{"
     }
 
