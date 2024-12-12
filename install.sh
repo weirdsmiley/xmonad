@@ -26,7 +26,7 @@ EOF
 fi
 
 # Install configurations to ~/.config
-cp -r ../xmonad/ ~/.config/
+cp -r ../xmonad/ ~/.config/xmonad
 
 # TODO: provide wallpapers in repo
 
