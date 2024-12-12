@@ -2,16 +2,6 @@
 
 ## Installation script
 
-# For backup, append a random string as extension. Uses the same string for all
-# backups for one iteration.
-EXT=$(head -c 4 /dev/urandom | base64 | tr -dc 'a-zA-Z')
-
-make_backup() {
-  if [ -e "$1" ]; then
-    mv $1 $1.$EXT
-  fi
-}
-
 DISTRO=$(cat /etc/*-release | grep 'ID=' | awk -F'=' 'NR==1 { print $2 }')
 
 # Install appropriate fonts
@@ -36,15 +26,9 @@ EOF
 fi
 
 # Install configurations to ~/.config
-if [ -d "~/.config/xmonad/" ]; then
-  make_backup ~/.config/xmonad
-fi
 cp -r ../xmonad/ ~/.config/
 
 # TODO: provide wallpapers in repo
 
-if [ -e "~/.xinitrc" ]; then
-  make_backup ~/.xinitrc
-fi
-echo "exec xmonad" >> ~/.xinitrc
+echo "exec xmonad" > ~/.xinitrc
 echo "exec xmobar" >> ~/.xinitrc
