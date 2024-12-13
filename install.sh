@@ -9,11 +9,13 @@ if [ $DISTRO == "fedora" ]; then
   sudo dnf install \
     google-noto-sans-fonts \
     fira-code-fonts \
-    fontawesome-6-free-fonts
+    fontawesome-6-free-fonts \
+    alsa-utils libXScrnSaver libXft libXpm cairo pango
 elif [ $DISTRO == "artix" ] || [ $DISTRO == "arch" ]; then
   sudo pacman -S noto-fonts \
     ttf-fira-code \
-    ttf-font-awesome
+    ttf-font-awesome \
+    alsa-utils libxss libxft libxpm cairo pango
 else
 cat << EOF
 Automated font installation isn't supported for $DISTRO.
