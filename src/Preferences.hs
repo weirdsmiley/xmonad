@@ -44,7 +44,7 @@ myMonospaceFont = "Fira Code Regular 9"
 -- Rofi launcher
 myLauncher :: String
 myLauncher =
-  "rofi -theme ~/.config/rofi/themes/slate.rasi -width 424 -lines 8"
+  "rofi -width 424 -lines 8"
     ++ " -font '"
     ++ myRegularFont
     ++ "'"
@@ -177,7 +177,9 @@ myScratchpads
                  -- run a terminal inside scratchpad
  = [NS "terminal" spawnTerm findTerm manageTerm]
   where
-    spawnTerm = myTerminal ++ " --class scratchpad --session ~/.config/kitty/sessions/xmonad-scratchpad"
+    spawnTerm =
+      myTerminal
+        ++ " --class scratchpad --session ~/.config/kitty/sessions/xmonad-scratchpad"
     findTerm = className =? "scratchpad"
     manageTerm = customFloating $ W.RationalRect (1 / 6) (1 / 8) (2 / 3) (3 / 4)
 
