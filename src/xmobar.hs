@@ -115,7 +115,7 @@ config =
                 , "-H"
                 , "10240"
                 , "--low"
-                , "lightred"
+                , "#ffcccb"
                 , "--normal"
                 , "#ff79c6"
                 , "--high"
@@ -154,7 +154,7 @@ config =
                 , "--normal"
                 , "yellow"
                 , "--high"
-                , "lightred"
+                , "#ffcccb"
                 ]
                 20
         , Run
