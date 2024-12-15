@@ -27,6 +27,9 @@ import XMonad.Prompt.ConfirmPrompt (confirmPrompt)
 import XMonad.Prompt.FuzzyMatch
 import qualified XMonad.StackSet as W
 import XMonad.Util.NamedScratchpad
+  ( namedScratchpadAction
+  , scratchpadWorkspaceTag
+  )
 import XMonad.Util.Run (safeSpawn, unsafeSpawn)
 
 --------------------------------------------------------------------------------
@@ -93,7 +96,7 @@ workspaceChords conf@XConfig {XMonad.modMask = modm} =
     ++
      -- Move back and forth between recently used workspace
      -- Using super modifier.
-     [((mod4Mask, xK_Tab), toggleWS)]
+     [((mod4Mask, xK_Tab), toggleWS' [scratchpadWorkspaceTag])]
 
 --------------------------------------------------------------------------------
 -- Keychords for standalone applications.
@@ -125,8 +128,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
       , ( (modm, xK_g)
         , sequence_ [toggleScreenSpacingEnabled, toggleWindowSpacingEnabled])
       -- Open Scratchpad
-      , ( (modm, xK_Return)
-        , namedScratchpadAction myScratchpads "terminal")
+      , ((modm, xK_Return), namedScratchpadAction myScratchpads "terminal")
       -- Lock screen
       , ((modm, xK_l), unGrab *> safeSpawn "xsecurelock" [])
       -- Open Kanboard session
