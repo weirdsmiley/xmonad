@@ -81,10 +81,6 @@ nightLight = "redshift -O 2600"
 
 xmobar = "/home/manas/.local/bin/xmobar"
 
--- This script swaps escape with caps lock keym, and also changes this key to
--- act as a ctrl key when held.
-swapEscape = "/home/manas/workspace/scripts/swap-escape.sh"
-
 -- Applications to boot at startup. They are only spawned once.
 startupApps :: [String]
 startupApps =
@@ -102,7 +98,6 @@ startupApps =
   , "zoom"
   , "telegram-desktop"
   , "gnome-boxes"
-  , swapEscape
   ]
 
 -- Apply any configurations only on current workspace and not on all workspaces.
