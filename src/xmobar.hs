@@ -37,7 +37,7 @@ config =
                 10
         , Run
             $ DiskU
-                [("/", "<fc=#ff79c6><fn=2>\xf3da</fn></fc> <free>/<size>")]
+                [("/", "<fc=#ff79c6><fn=1>\xf1c0</fn></fc> <free>/<size>")]
                 ["-L", "50", "-H", "900", "-m", "1", "-p", "3"]
                 20
         , Run
