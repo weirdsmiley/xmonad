@@ -93,8 +93,9 @@ startupApps =
   , myBrowser
   , myPdfViewer
   , Preferences.xmobar
-  , "/opt/Discord/Discord"
-  , "/opt/Zulip-5.11.1-x86_64.AppImage"
+  , "Discord"
+  , "Zulip"
+  , "gimp"
   , "zoom"
   , "telegram-desktop"
   , "gnome-boxes"
@@ -147,21 +148,21 @@ myManageHook =
     , className =? "Ibus-extension-gtk3" -?> doFloat
     , isFullscreen -?> doFullFloat
     , isDialog -?> doCenterFloat
-    , className =? "firefox" -?> doShift (myWorkspaces !! 1)
-    , className =? "zoom" -?> doShift (myWorkspaces !! 4)
-    , className =? "discord" -?> doShift (myWorkspaces !! 5)
-    , className =? "zulip" -?> doShift (myWorkspaces !! 7)
-    , title =? "Telegram" -?> doShift (myWorkspaces !! 6)
-    , className =? "steam" -?> doShift (myWorkspaces !! 7)
-    , className =? "qemu" -?> doShift (myWorkspaces !! 8)
-    , className =? "sioyek" -?> doShift (myWorkspaces !! 1)
-    , className =? "Zathura" -?> doShift (myWorkspaces !! 1)
     , title =? "Codesprint" -?> doShift (head myWorkspaces)
     , title =? "Writing" -?> doShift (myWorkspaces !! 1)
+    , className =? "sioyek" -?> doShift (myWorkspaces !! 1)
+    , className =? "Zathura" -?> doShift (myWorkspaces !! 1)
     , title =? "Research" -?> doShift (myWorkspaces !! 2)
+    , className =? "zoom" -?> doShift (myWorkspaces !! 4)
+    , className =? "discord" -?> doShift (myWorkspaces !! 5)
+    , className =? "Zulip" -?> doShift (myWorkspaces !! 5)
+    , title =? "Telegram" -?> doShift (myWorkspaces !! 6)
+    , className =? "steam" -?> doShift (myWorkspaces !! 7)
+    , className =? "gimp" -?> doShift (myWorkspaces !! 7)
+    , className =? "qemu" -?> doShift (myWorkspaces !! 8)
+    , title =? "Boxes" -?> doShift (myWorkspaces !! 8)
     , title =? "Pomodoro" -?> doCenterFloat
     , title =? "Camera" -?> doCenterFloat
-    , title =? "Boxes" -?> doShift (myWorkspaces !! 8)
     , className =? "Kanboard" -?> doFullFloat
     , className =? "gnome-calculator" -?> doCenterFloat
     , className
