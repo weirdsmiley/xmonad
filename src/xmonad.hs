@@ -180,7 +180,7 @@ mySB =
 
 myStartupHook :: X ()
 myStartupHook = do
-  setDefaultCursor xC_left_ptr
+  -- setDefaultCursor xC_left_ptr
   last $ map spawnOnce startupApps
 
 myConfig =

@@ -86,6 +86,7 @@ startupApps :: [String]
 startupApps =
   [ "feh --no-fehbg --bg-scale " ++ myWallpaper
   , "picom --config /home/manas/.config/picom/picom.conf"
+  , "xrdb -merge /home/manas/.Xresources"
   , nightLight
   , myCodeSprintTerm
   , myWritingTerm
