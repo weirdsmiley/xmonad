@@ -30,13 +30,11 @@ import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.WindowSwallowing
 import XMonad.Util.ClickableWorkspaces
 import XMonad.Util.Cursor
-import XMonad.Util.DynamicScratchpads
 import XMonad.Util.EZConfig
 import XMonad.Util.Loggers
 import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
-import XMonad.Util.Ungrab
 import XMonad.Util.WindowProperties
 
 ------------------------------------------------------------------------
