@@ -144,6 +144,8 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
                  , myKanboardProfile
                  , myKanboardUrl
                  ])
+      -- Toggle a window floating in center
+      , ((modm, xK_p), withFocused toggleFloat)
       ]
         ++ (layoutChords modm)
         ++ (resizeChords modm)
@@ -183,6 +185,16 @@ myXPConfig =
     , searchPredicate = fuzzyMatch
     , sorter = fuzzySort
     }
+
+-- Set a window in centered floating mode.
+-- TODO: Floating mode is always on top of all other windows.
+toggleFloat :: Window -> X ()
+toggleFloat w =
+  windows
+    (\s ->
+       if M.member w (W.floating s)
+         then W.sink w s
+         else W.float w (W.RationalRect (1 / 4) (1 / 4) (1 / 2) (1 / 2)) s)
 
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
