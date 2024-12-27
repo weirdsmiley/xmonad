@@ -49,7 +49,7 @@ focusChords modm =
   [ ((modm, xK_c), kill1) -- Close focused window
   , ((modm, xK_k), windows W.focusUp) -- Focus on previous window
   , ((modm, xK_j), windows W.focusDown) -- Focus on next window
-  , ((modm, xK_m), windows W.focusMaster) -- Focus on master window
+  -- , ((modm, xK_m), windows W.focusMaster) -- Focus on master window
   , ((modm, xK_s), promote) -- Swap focused window with master
   -- TODO: Focus to most recent window
   -- , ((modm, xK_Tab), moveTo Next nonEmptyNSP)
@@ -107,6 +107,10 @@ applicationChords modm =
   ]
 
 --------------------------------------------------------------------------------
+-- Sound related chords
+soundChords modm = [((modm, xK_m), spawn "amixer set Master toggle")]
+
+--------------------------------------------------------------------------------
 -- All keybindings
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@XConfig {XMonad.modMask = modm} =
@@ -152,6 +156,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         ++ (focusChords modm)
         ++ screenshotChords
         ++ (applicationChords modm)
+        ++ (soundChords modm)
         ++ (workspaceChords conf)
   where
     nonNSP = ignoringWSs [scratchpadWorkspaceTag]
