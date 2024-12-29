@@ -6,11 +6,11 @@ import Xmobar
 config :: Config
 config =
   defaultConfig
-    { font = "xft:Fira Code Light:size=6:antialias=true"
+    { font = "Open Sans SemiBold 10"
     , additionalFonts =
-        [ "xft:Font Awesome 6 Free-Regular-400:size=6:antialias=true"
-        , "xft:Material Icons:style=Regular:size=6:antialias=true"
-        , "xft:0xProto Nerd Font:style=Regular:size=6:antialias=true"
+        [ "Font Awesome 6 Free-Regular-400 10"
+        , "Material Icons Regular 10"
+        , "0xProto Nerd Font Regular 10"
         ]
     , allDesktops = True
     -- , position = Static {xpos = 10, ypos = 1050, width = 1900, height = 20}
