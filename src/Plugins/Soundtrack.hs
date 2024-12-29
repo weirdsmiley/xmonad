@@ -38,4 +38,6 @@ instance Exec Soundtrack where
   run Soundtrack = do
     artist <- getArtist
     track <- getTrack
-    return $ track ++ " - " ++ artist
+    if length artist == 0
+      then return $ ""
+      else return $ track ++ " - " ++ artist
