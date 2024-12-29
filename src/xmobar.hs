@@ -1,5 +1,6 @@
 import Plugins.Bluetooth
 import Plugins.Pomodoro
+import Plugins.Soundtrack
 import Xmobar
 
 config :: Config
@@ -23,6 +24,7 @@ config =
     , bgColor = "#5501c3"
     , commands =
         [ Run XMonadLog
+        , Run Soundtrack
         , Run $ PomodoroSession Start
         , Run
             $ Memory
@@ -208,7 +210,7 @@ config =
             $ Uptime ["-t", "<fc=#ff79c6><days> <hours></fc>", "-S", "True"] 10
         ]
     , template =
-        "<hspace=10/>%pomodoro% %uptime%  %XMonadLog% }{ %dynnetwork% %bluetooth%  %default:Master%  %multicpu% %cpufreq% %multicoretemp%  %memory%  %disku%  %VIDP%  %date%<hspace=10/>"
+        "<hspace=10/>%pomodoro% %uptime%  %XMonadLog% }{ %dynnetwork% %bluetooth%  %default:Master%  %soundtrack% %multicpu% %cpufreq% %multicoretemp%  %memory%  %disku%  %VIDP%  %date%<hspace=10/>"
     , alignSep = "}{"
     }
 

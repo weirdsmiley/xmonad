@@ -30,6 +30,7 @@ executable xmobar
       Layout
       Plugins.Bluetooth
       Plugins.Pomodoro
+      Plugins.Soundtrack
       Preferences
       Theme.Font
       Theme.Theme
@@ -44,6 +45,7 @@ executable xmobar
   build-depends:
       base >=4.7 && <5
     , containers
+    , process
     , xmobar
     , xmonad
     , xmonad-contrib
@@ -56,6 +58,7 @@ executable xmonad
       Layout
       Plugins.Bluetooth
       Plugins.Pomodoro
+      Plugins.Soundtrack
       Preferences
       Theme.Font
       Theme.Theme
@@ -70,6 +73,7 @@ executable xmonad
   build-depends:
       base >=4.7 && <5
     , containers
+    , process
     , xmobar
     , xmonad
     , xmonad-contrib
