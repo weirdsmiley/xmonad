@@ -99,7 +99,7 @@ config =
                 "default"
                 "Master"
                 [ "-t"
-                , "<action=`amixer set Master toggle` button=1><action=`amixer set Master 5%+` button=4><action=`amixer set Master 5%-` button=5><fc=#ff79c6><fn=2>\xf028 </fn></fc> <volume></action></action></action>"
+                , "<action=`amixer set Master toggle` button=1><action=`amixer set Master 5%+` button=4><action=`amixer set Master 5%-` button=5><fc=#ff79c6><fn=2>\xf028</fn></fc> <volume></action></action></action>"
                 , "-L"
                 , "0"
                 , "-M"
