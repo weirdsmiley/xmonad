@@ -18,13 +18,16 @@ trim = reverse . dropWhile (== '\n') . reverse
 getArtist :: IO String
 getArtist = do
   artist <- readProcess "playerctl" ["metadata", "artist"] ""
-  return $ trim artist
+  return $ takeWhile (/= ',') . trim $ artist
 
 -- Returns the title track that is being played.
 getTrack :: IO String
 getTrack = do
-  title <- readProcess "playerctl" ["metadata", "title"] ""
-  return $ trim title
+  track <-
+    readProcess "playerctl" ["metadata", "title"] "" >>= \x -> return (trim x)
+  if length track > 14
+    then return $ take 14 track ++ "..."
+    else return track
 
 data Soundtrack =
   Soundtrack
