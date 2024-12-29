@@ -1,4 +1,32 @@
-module Preferences where
+module Preferences
+  ( myTerminal
+  , myNamedTerminal
+  , myCodeSprintTerm
+  , myWritingTerm
+  , myResearchTerm
+  , myBrowser
+  , myRegularFont
+  , myMonospaceFont
+  , myPdfViewer
+  , myWallpaper
+  , myKanboardProfile
+  , myKanboardUrl
+  , myLauncher
+  , myScratchpads
+  , myScreenShotter
+  , myGaps
+  , myManageHook
+  , myXMonadLogAppLength
+  , myFocusedBorderColor
+  , myNormalBorderColor
+  , altMask
+  , myBorderWidth
+  , myClickJustFocuses
+  , myFocusFollowsMouse
+  , fadeAmount
+  , startupApps
+  , applyOnlyOnCurrentWS
+  ) where
 
 import Workspaces
 import XMonad

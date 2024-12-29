@@ -1,4 +1,6 @@
-module Workspaces where
+module Workspaces
+  ( myWorkspaces
+  ) where
 
 import XMonad
 
