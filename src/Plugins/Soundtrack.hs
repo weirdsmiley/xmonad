@@ -41,12 +41,19 @@ instance Exec Soundtrack where
     track <- getTrack
     if null artist
       then return ""
-      else return $ "<fc=#28ff74>" ++ track ++ " - " ++ artist ++ "</fc>"
+      else return
+             $ "<fc=white,#208945> "
+                 ++ track
+                 ++ " - "
+                 ++ artist
+                 ++ " "
+                 ++ show Controller
+                 ++ "</fc>"
 
 -- Soundtrack controller
 data Controller =
   Controller
-  deriving (Read, Show)
+  deriving (Read)
 
 play = " <action=`playerctl play`><fn=1>\xf04b</fn></action> "
 
@@ -56,8 +63,7 @@ forward = " <action=`playerctl next`><fn=1>\xf04e</fn></action> "
 
 backward = " <action=`playerctl previous`><fn=1>\xf04a</fn></action> "
 
-instance Exec Controller where
-  alias _ = "controller"
-  run _ =
-    return
-      $ "<fc=white,#208945>" ++ backward ++ play ++ pause ++ forward ++ "</fc>"
+-- TODO: Move this into a Show instance and embed this controller directly in
+-- Soundtrack.
+instance Show Controller where
+  show Controller = backward ++ play ++ pause ++ forward
