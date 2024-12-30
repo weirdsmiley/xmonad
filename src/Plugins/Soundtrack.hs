@@ -59,4 +59,5 @@ backward = " <action=`playerctl previous`><fn=1>\xf04a</fn></action> "
 instance Exec Controller where
   alias _ = "controller"
   run _ =
-    return $ "<fc=#208945>" ++ backward ++ play ++ pause ++ forward ++ "</fc>"
+    return
+      $ "<fc=white,#208945>" ++ backward ++ play ++ pause ++ forward ++ "</fc>"
