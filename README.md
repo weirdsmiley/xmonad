@@ -2,6 +2,8 @@
 
 ![XMonad Preview](./preview/xmonad.png)
 
+![System Preview](./preview/fastfetch.png)
+
 ## Installation
 
 ```bash
