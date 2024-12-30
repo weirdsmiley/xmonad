@@ -20,7 +20,7 @@ config =
     , pickBroadest = False
     , persistent = True
     , alpha = 110
-    , fgColor = "white"
+    , fgColor = "#f8f8f8"
     , bgColor = "#5501c3"
     , commands =
         [ Run XMonadLog
