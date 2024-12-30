@@ -4,6 +4,7 @@ module Plugins.Soundtrack
   ( getArtist
   , getTrack
   , Soundtrack(..)
+  , Controller(..)
   ) where
 
 import System.Process
@@ -40,4 +41,22 @@ instance Exec Soundtrack where
     track <- getTrack
     if null artist
       then return ""
-      else return $ track ++ " - " ++ artist
+      else return $ "<fc=#28ff74>" ++ track ++ " - " ++ artist ++ "</fc>"
+
+-- Soundtrack controller
+data Controller =
+  Controller
+  deriving (Read, Show)
+
+play = " <action=`playerctl play`><fn=1>\xf04b</fn></action> "
+
+pause = " <action=`playerctl pause`><fn=1>\xf04c</fn></action> "
+
+forward = " <action=`playerctl next`><fn=1>\xf04e</fn></action> "
+
+backward = " <action=`playerctl previous`><fn=1>\xf04a</fn></action> "
+
+instance Exec Controller where
+  alias _ = "controller"
+  run _ =
+    return $ "<fc=#208945>" ++ backward ++ play ++ pause ++ forward ++ "</fc>"

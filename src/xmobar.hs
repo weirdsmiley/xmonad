@@ -25,6 +25,7 @@ config =
     , commands =
         [ Run XMonadLog
         , Run Soundtrack
+        , Run Controller
         , Run $ PomodoroSession Start
         , Run
             $ Memory
@@ -210,7 +211,7 @@ config =
             $ Uptime ["-t", "<fc=#ff79c6><days> <hours></fc>", "-S", "True"] 10
         ]
     , template =
-        "<hspace=10/>%pomodoro% %uptime%  %XMonadLog% }{ %dynnetwork% %bluetooth%  %default:Master%  %soundtrack% %multicpu% %cpufreq% %multicoretemp%  %memory%  %disku%  %VIDP%  %date%<hspace=10/>"
+        "<hspace=10/>%pomodoro% %uptime%  %XMonadLog% }{ %dynnetwork% %bluetooth%  %default:Master% %soundtrack% %controller% %multicpu% %cpufreq% %multicoretemp%  %memory%  %disku%  %VIDP%  %date%<hspace=10/>"
     , alignSep = "}{"
     }
 
