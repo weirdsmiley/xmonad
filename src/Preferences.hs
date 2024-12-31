@@ -194,6 +194,7 @@ myManageHook =
     , title =? "Camera" -?> doCenterFloat
     , className =? "Kanboard" -?> doFullFloat
     , className =? "gnome-calculator" -?> doCenterFloat
+    , title =? "Bluetooth Devices" -?> doCenterFloat
     , className
         =? "VirtualBox Manager"
         <||> className
