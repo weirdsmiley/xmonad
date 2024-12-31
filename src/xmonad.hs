@@ -91,10 +91,10 @@ mySB =
     (clickablePP
        =<< dynamicIconsPP
              myIconConfig
-             (filterOutWsPP [scratchpadWorkspaceTag] myXmobarPP))
+             (filterOutWsPP [scratchpadWorkspaceTag] myXmobarPPForSB))
   where
-    myXmobarPP :: PP
-    myXmobarPP =
+    myXmobarPPForSB :: PP
+    myXmobarPPForSB =
       def
         { ppSep = magenta " "
         , ppTitleSanitize = xmobarStrip
@@ -103,7 +103,7 @@ mySB =
         , ppHidden = lowWhite . wrap "" "" . xmobarFont 2
         , ppWsSep = xmobarColor "" background "  "
         , ppTitle =
-            magenta . xmobarAction "xdotool key Super+shift+c" "2" . shorten 40
+            magenta . xmobarAction "xdotool key Super+shift+c" "2" . shrink 40
     -- , ppOrder         = \[ws, l, t, ex] -> [ws, l, ex, t]
     -- , ppExtras        = [xmobarColorL base01 background windowCount]
         , ppLayout =
@@ -118,8 +118,8 @@ mySB =
                    _ -> "?")
         }
       where
-        shorten :: Int -> String -> String
-        shorten = shorten' "…"
+        shrink :: Int -> String -> String
+        shrink = shorten' "…"
         wrapSep :: String -> String
         wrapSep =
           wrap

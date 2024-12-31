@@ -37,7 +37,7 @@ import XMonad.Util.NamedScratchpad
 -- Function to name terminals
 -- > Named terminals to rule them all,
 -- > Named terminals to find them
-myNamedTerminal name = myTerminal ++ " --title " ++ name
+myNamedTerminal xs = myTerminal ++ " --title " ++ xs
 
 myTerminal, myCodeSprintTerm, myWritingTerm, myResearchTerm, myBrowser, myRegularFont, myMonospaceFont, myPdfViewer, myWallpaper ::
      String

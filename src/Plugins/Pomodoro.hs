@@ -1,6 +1,9 @@
 --- This plugin is an interface for gnome-pomodoro application to control
 --- functionalities on xmobar using mouse actions.
-module Plugins.Pomodoro where
+module Plugins.Pomodoro
+  ( PomodoroSession(..)
+  , PomodoroStatus(..)
+  ) where
 
 import Xmobar
 
