@@ -41,7 +41,7 @@ executable xmobar
       Paths_xmonad_conf
   hs-source-dirs:
       src
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -fno-warn-missing-signatures -Wno-unused-imports -Wno-unused-top-binds -Wno-unused-local-binds -rtsopts -threaded -with-rtsopts=-N
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-signatures -Wno-unused-imports -Wno-unused-top-binds -Wno-unused-local-binds -rtsopts -threaded -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
     , containers
@@ -69,7 +69,7 @@ executable xmonad
       Paths_xmonad_conf
   hs-source-dirs:
       src
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -fno-warn-missing-signatures -Wno-unused-imports -Wno-unused-top-binds -Wno-unused-local-binds
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-signatures -Wno-unused-imports -Wno-unused-top-binds -Wno-unused-local-binds
   build-depends:
       base >=4.7 && <5
     , containers
