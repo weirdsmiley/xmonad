@@ -101,7 +101,7 @@ workspaceChords conf@XConfig {XMonad.modMask = modm} =
 --------------------------------------------------------------------------------
 -- Keychords for standalone applications.
 applicationChords modm =
-  [ ((modm, xK_d), unsafeSpawn (myLauncher)) -- Open rofi launcher
+  [ ((modm, xK_d), unsafeSpawn myLauncher) -- Open rofi launcher
   , ((modm .|. shiftMask, xK_Return), spawn myTerminal) -- Open new terminal
   , ((modm, xK_b), spawn myBrowser) -- Open browser
   ]
@@ -151,13 +151,13 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
       -- Toggle a window floating in center
       , ((modm, xK_p), withFocused toggleFloat)
       ]
-        ++ (layoutChords modm)
-        ++ (resizeChords modm)
-        ++ (focusChords modm)
+        ++ layoutChords modm
+        ++ resizeChords modm
+        ++ focusChords modm
         ++ screenshotChords
-        ++ (applicationChords modm)
-        ++ (soundChords modm)
-        ++ (workspaceChords conf)
+        ++ applicationChords modm
+        ++ soundChords modm
+        ++ workspaceChords conf
   where
     nonNSP = ignoringWSs [scratchpadWorkspaceTag]
     nonEmptyNSP =
