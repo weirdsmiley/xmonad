@@ -118,6 +118,18 @@ soundChords modm =
           ])
   ]
 
+soundChords' modm =
+  [ ( (modm, xK_a)
+    , visualSubmap def
+        $ M.fromList
+        $ map
+            (\(key, desc, action) -> ((0, key), (desc, action)))
+            [ (xK_m, "play/pause music", spawn $ myMusicCtrl ++ " play-pause")
+            , (xK_p, "previous track", spawn $ myMusicCtrl ++ " previous")
+            , (xK_n, "next track", spawn $ myMusicCtrl ++ " next")
+            ])
+  ]
+
 --------------------------------------------------------------------------------
 -- All keybindings
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
@@ -164,7 +176,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         ++ focusChords modm
         ++ screenshotChords
         ++ applicationChords modm
-        ++ soundChords modm
+        ++ soundChords' modm
         ++ workspaceChords conf
   where
     nonNSP = ignoringWSs [scratchpadWorkspaceTag]
