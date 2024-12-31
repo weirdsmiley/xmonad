@@ -42,7 +42,7 @@ instance Exec Soundtrack where
     if null artist
       then return ""
       else return
-             $ "<fc=#323432,#1db954> "
+             $ "<fc=lightgreen> "
                  ++ track
                  ++ " - "
                  ++ artist
