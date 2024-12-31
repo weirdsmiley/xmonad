@@ -29,7 +29,7 @@ config =
         , Run
             $ Memory
                 [ "-t"
-                , "<fc=#ff79c6><fn=2>\xf035b</fn></fc> <usedratio>% (<used>G)"
+                , "<fc=#ff79c6><fn=2>\xf035b</fn></fc>  <usedratio>% (<used>G)"
                 , "-d"
                 , "1"
                 , "--"
@@ -146,7 +146,7 @@ config =
         , Run
             $ MultiCpu
                 [ "-t"
-                , "<fc=#ff79c6><fn=2>\xf4bc</fn></fc>  <total>%"
+                , "<fc=#ff79c6><fn=2>\xf4bc</fn></fc>   <total>%"
                 , "--Low"
                 , "10" -- units: %
                 , "--High"
