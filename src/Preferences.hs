@@ -104,7 +104,7 @@ myModMask = mod4Mask
 
 altMask = mod1Mask
 
-myWallpaper = "~/.wallpaper/matte-pack/gazing-beyond-neon-peaks-jo.jpg"
+myWallpaper = "~/.wallpaper/matte-pack/some-time-less-is-more.jpg"
 
 nightLight = "redshift -O 2600"
 
