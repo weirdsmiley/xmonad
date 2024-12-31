@@ -26,6 +26,7 @@ module Preferences
   , fadeAmount
   , startupApps
   , applyOnlyOnCurrentWS
+  , myMusicCtrl
   ) where
 
 import Workspaces
@@ -143,6 +144,9 @@ applyOnlyOnCurrentWS = True
 -- Amount by which to fade inactive windows on current workspace only.
 fadeAmount :: Rational
 fadeAmount = 1.0
+
+-- Music controller tool
+myMusicCtrl = "playerctl"
 
 ------------------------------------------------------------------------
 -- Window rules:

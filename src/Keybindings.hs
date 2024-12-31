@@ -17,6 +17,7 @@ import qualified XMonad.Actions.FlexibleResize as Flex
 import XMonad.Actions.GroupNavigation
 import XMonad.Actions.NoBorders (toggleBorder)
 import XMonad.Actions.Promote (promote)
+import XMonad.Actions.Submap
 import XMonad.Actions.TiledWindowDragging (dragWindow)
 import XMonad.Actions.WithAll
 import XMonad.Layout.MultiToggle
@@ -108,7 +109,14 @@ applicationChords modm =
 
 --------------------------------------------------------------------------------
 -- Sound related chords
-soundChords modm = [((modm, xK_m), spawn "amixer set Master toggle")]
+soundChords modm =
+  [ ( (modm, xK_a)
+    , submap . M.fromList
+        $ [ ((0, xK_m), spawn $ myMusicCtrl ++ " play-pause") -- Toggle
+          , ((0, xK_p), spawn $ myMusicCtrl ++ " previous") -- p -> previous
+          , ((0, xK_n), spawn $ myMusicCtrl ++ " next") -- n -> next
+          ])
+  ]
 
 --------------------------------------------------------------------------------
 -- All keybindings
