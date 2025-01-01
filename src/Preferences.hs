@@ -27,6 +27,7 @@ module Preferences
   , startupApps
   , applyOnlyOnCurrentWS
   , myMusicCtrl
+  , myPomodoro
   ) where
 
 import Workspaces
@@ -227,3 +228,6 @@ myFocusedBorderColor = "grey"
 -- Control how long XMonadLog should show application name in xmobar.
 myXMonadLogAppLength :: Int
 myXMonadLogAppLength = 16
+
+-- Pomodoro app
+myPomodoro = "gnome-pomodoro"

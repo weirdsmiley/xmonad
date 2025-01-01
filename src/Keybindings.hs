@@ -131,6 +131,35 @@ soundChords' modm =
   ]
 
 --------------------------------------------------------------------------------
+-- Pomodoro session chords
+pomodoroChords modm =
+  [ ( (modm, xK_p)
+    , submap . M.fromList
+        $ [ ((0, xK_p), spawn $ myPomodoro ++ " --pause-resume")
+          , ((0, xK_s), spawn $ myPomodoro ++ " --start")
+          , ((0, xK_n), spawn $ myPomodoro ++ " --skip")
+          -- , ((0, xK_e), spawn $ myPomodoro ++ " --extend")
+          ])
+  ]
+
+pomodoroChords' modm =
+  [ ( (modm, xK_p)
+    , visualSubmap def
+        $ M.fromList
+        $ map
+            (\(key, desc, action) -> ((0, key), (desc, action)))
+            [ ( xK_p
+              , "pause/resume pomodoro session"
+              , spawn $ myPomodoro ++ " --pause-resume")
+            , (xK_s, "start 60 min session", spawn $ myPomodoro ++ " --start")
+            , (xK_n, "skip this session/break", spawn $ myPomodoro ++ " --skip")
+            -- TODO: --extend requires a digit as arg. This requires additional
+            -- effort.
+            -- , (xK_e, "extend this session", spawn $ myPomodoro ++ " --extend")
+            ])
+  ]
+
+--------------------------------------------------------------------------------
 -- All keybindings
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@XConfig {XMonad.modMask = modm} =
@@ -169,7 +198,8 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
                  , myKanboardUrl
                  ])
       -- Toggle a window floating in center
-      , ((modm, xK_p), withFocused toggleFloat)
+      -- TODO: This should be mapped to modm+f
+      -- , ((modm, xK_p), withFocused toggleFloat)
       ]
         ++ layoutChords modm
         ++ resizeChords modm
@@ -178,6 +208,8 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         ++ applicationChords modm
         ++ soundChords' modm
         ++ workspaceChords conf
+        ++ pomodoroChords modm
+        ++ pomodoroChords' modm
   where
     nonNSP = ignoringWSs [scratchpadWorkspaceTag]
     nonEmptyNSP =
