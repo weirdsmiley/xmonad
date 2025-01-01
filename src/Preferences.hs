@@ -226,4 +226,4 @@ myFocusedBorderColor = "grey"
 
 -- Control how long XMonadLog should show application name in xmobar.
 myXMonadLogAppLength :: Int
-myXMonadLogAppLength = 20
+myXMonadLogAppLength = 16
