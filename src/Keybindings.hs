@@ -130,6 +130,50 @@ soundChords' modm =
             ])
   ]
 
+-- This takes in a major key and a list of subkeys with their descriptions (what
+-- they do), and actions (how to do it). It returns a combined list of normal
+-- mode submap keys and visual mode keys.
+--
+-- Example - If we have to create a submap with modm+a followed by m/n/p as
+-- subkeys, then we put the subkeys in a list with their descriptions (:=
+-- String) and what they do (:= X () (generally)).
+--
+--   makeChords (modm, xK_a)
+--     [ ((0, xK_m), "description 1", spawn task1)
+--     , ((0, xK_n), "description 2", spawn task2)
+--     , ((0, xK_p), "description 3", spawn task3)
+--     ]
+--
+-- returns two lists concatenated together. First is the set of normal mode
+-- keys, and second is the set of visual mode keys.
+--   [ ( (modm, xK_a)
+--     , submap . M.fromList
+--         $ [ ((0, xK_m), spawn task1)
+--           , ((0, xK_n), spawn task2)
+--           , ((0, xK_p), spawn task3)
+--           ])
+--   ]
+--   ++
+--   [ ( (modm, xK_a)
+--     , visualSubmap def
+--         $ M.fromList
+--         $ map
+--             (\(key, desc, action) -> ((0, key), (desc, action)))
+--             [ (xK_m, "description 1", spawn task1)
+--             , (xK_n, "description 2", spawn task2)
+--             , (xK_p, "description 3", spawn task3)
+--             ])
+--   ]
+--
+makeChords :: a -> [((KeyMask, KeySym), String, X ())] -> [(a, X ())]
+makeChords majorKey subKeys =
+  (majorKey, submap . M.fromList $ map (\(k, _, a) -> (k, a)) subKeys)
+    : [ ( majorKey
+        , visualSubmap def
+            $ M.fromList
+            $ map (\(k, d, a) -> (k, (d, a))) subKeys)
+      ]
+
 --------------------------------------------------------------------------------
 -- Pomodoro session chords
 pomodoroChords modm =
