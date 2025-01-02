@@ -5,6 +5,7 @@ module Keybindings
   ) where
 
 import Control.Monad (liftM2)
+import Data.List (intercalate)
 import qualified Data.Map as M
 import Preferences
 import System.Exit (exitSuccess)
@@ -69,6 +70,7 @@ import XMonad.Util.Run (safeSpawn, unsafeSpawn)
 --             ])
 --   ]
 --
+-- TODO: This can use Either.
 makeChords :: a -> [((KeyMask, KeySym), String, X ())] -> [(a, X ())]
 makeChords majorKey subKeys =
   (majorKey, submap . M.fromList $ map (\(k, _, a) -> (k, a)) subKeys)
@@ -188,11 +190,16 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
       -- Restart XMonad
       , ((modm, xK_q), unsafeSpawn "xmonad --recompile; xmonad --restart")
       -- Show all keybindings
+      -- , ( (modm .|. shiftMask, xK_slash)
+      --   , unsafeSpawn
+      --       ("printf \""
+      --          ++ help
+      --          ++ "\" | GTK_THEME=Adwaita:dark zenity --width 600 --height 800 --list --title='XMonad Keybindings' --text=\"\tDefault modifier (mod) key is 'alt'.\" --column=\"\t\tKeymaps and their descriptions\" "))
       , ( (modm .|. shiftMask, xK_slash)
         , unsafeSpawn
-            ("printf \""
-               ++ help
-               ++ "\" | zenity --text-info --title='XMonad Keybindings' "))
+            ("GTK_THEME=Adwaita:dark zenity --width 600 --height 800 --list --title='XMonad Keybindings' --text='Default modifier (mod) key is 'alt'.' --column='Keymaps' --column='Description' \""
+               ++ help'
+               ++ "\""))
       -- Toggle fullscreen -- TODO: This won't work in set PerWorkspace hooks.
       , ((modm, xK_f), sendMessage $ Toggle NBFULL)
       -- Toggle gaps
@@ -294,28 +301,34 @@ myMouseBindings XConfig {XMonad.modMask = modm} =
     nonNSP = ignoringWSs [scratchpadWorkspaceTag]
 
 ------------------------------------------------------------------------
--- | Finally, a copy of the default bindings in simple textual tabular format.
+-- Finally, a copy of the default bindings in simple textual tabular format.
+help' :: String
+help' =
+  intercalate "\" \""
+    $ concatMap
+        (\(x, y) -> [x, y])
+        [ ("mod-Shift-Enter", "Launch " ++ myTerminal ++ " terminal")
+        , ("mod-d", "Launch " ++ (head . words) myLauncher)
+        ]
+
 help :: String
 help
   -- TODO: Edit these to follow above keybindings
  =
   unlines
-    [ "The default modifier key is 'super'. Default keybindings:"
-    , ""
-    , "-- launching and killing programs"
-    , "mod-Shift-Enter      Launch terminal"
+    [ "mod-Shift-Enter      Launch " ++ myTerminal ++ " terminal"
+    , "mod-d                Launch rofi"
     , "mod-p                Launch XPrompt (Xmonad Prompt)"
     , "mod-c                Launch greenclip with rofi"
-  --, "Alt-p                Launch dmenu"
-  --, "Alt-c                Launch greenclip with dmenu"
+    , "Alt-c                Launch greenclip with dmenu"
     , "mod-Shift-c          Close/kill the focused window"
     , "mod-Space            Rotate through the available layout algorithms"
     , "mod-Shift-Space      Reset the layouts on the current workSpace to default"
     , "mod-n                Resize/refresh viewed windows to the correct size"
     , ""
     , "-- move focus up or down the window stack"
-  -- , "mod-Tab              Move focus to the next window"
-  -- , "mod-Shift-Tab        Move focus to the previous window"
+    , "mod-Tab              Move focus to the next window"
+    , "mod-Shift-Tab        Move focus to the previous window"
     , "mod-j                Move focus to the next window"
     , "mod-k                Move focus to the previous window"
     , "mod-m                Move focus to the master window"
@@ -411,7 +424,7 @@ help
     , "Ctrl-Print           Take screenshot of focused window"
     , ""
     , "-- Application"
-  -- , "All-e                Open emacs-client"
+    , "All-e                Open emacs-client"
     , "alt-b                Open browser (Firefox)"
     , "alt-F9               Turn on/off picom"
     ]
