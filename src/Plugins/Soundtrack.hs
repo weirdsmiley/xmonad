@@ -3,6 +3,7 @@
 module Plugins.Soundtrack
   ( getArtist
   , getTrack
+  , getAlbum
   , Soundtrack(..)
   , Controller(..)
   ) where
@@ -31,6 +32,11 @@ getTrack = do
     then return $ take 14 track ++ "..."
     else return track
 
+-- Returns the album of track that is being played.
+getAlbum :: IO String
+getAlbum = do
+  readProcess myMusicCtrl ["metadata", "album"] "" >>= \x -> return (trim x)
+
 data Soundtrack =
   Soundtrack
   deriving (Show, Read)
@@ -40,11 +46,14 @@ instance Exec Soundtrack where
   run Soundtrack = do
     artist <- getArtist
     track <- getTrack
+    album <- getAlbum
     if null artist
       then return ""
       else return
              $ "<fc=lightgreen> "
                  ++ track
+                 ++ " - "
+                 ++ album
                  ++ " - "
                  ++ artist
                  ++ " "
