@@ -165,31 +165,17 @@ soundChords modm =
 --------------------------------------------------------------------------------
 -- Pomodoro session chords
 pomodoroChords modm =
-  [ ( (modm, xK_p)
-    , submap . M.fromList
-        $ [ ((0, xK_p), spawn $ myPomodoro ++ " --pause-resume")
-          , ((0, xK_s), spawn $ myPomodoro ++ " --start")
-          , ((0, xK_n), spawn $ myPomodoro ++ " --skip")
-          -- , ((0, xK_e), spawn $ myPomodoro ++ " --extend")
-          ])
-  ]
-
-pomodoroChords' modm =
-  [ ( (modm, xK_p)
-    , visualSubmap def
-        $ M.fromList
-        $ map
-            (\(key, desc, action) -> ((0, key), (desc, action)))
-            [ ( xK_p
-              , "pause/resume pomodoro session"
-              , spawn $ myPomodoro ++ " --pause-resume")
-            , (xK_s, "start 60 min session", spawn $ myPomodoro ++ " --start")
-            , (xK_n, "skip this session/break", spawn $ myPomodoro ++ " --skip")
-            -- TODO: --extend requires a digit as arg. This requires additional
-            -- effort.
-            -- , (xK_e, "extend this session", spawn $ myPomodoro ++ " --extend")
-            ])
-  ]
+  makeChords
+    (modm, xK_p)
+    [ ( (0, xK_p)
+      , "pause/resume pomodoro session"
+      , spawn $ myPomodoro ++ " --pause-resume")
+    , ((0, xK_s), "start 60 min session", spawn $ myPomodoro ++ " --start")
+    , ((0, xK_n), "skip this session/break", spawn $ myPomodoro ++ " --skip")
+    -- -- TODO: --extend requires a digit as arg. This requires additional
+    -- -- effort.
+    -- , ((0, xK_e), "extend this session", spawn $ myPomodoro ++ " --extend")
+    ]
 
 --------------------------------------------------------------------------------
 -- All keybindings
@@ -240,8 +226,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         ++ applicationChords modm
         ++ [last $ soundChords modm]
         ++ workspaceChords conf
-        ++ pomodoroChords modm
-        ++ pomodoroChords' modm
+        ++ [last $ pomodoroChords modm]
   where
     nonNSP = ignoringWSs [scratchpadWorkspaceTag]
     nonEmptyNSP =
