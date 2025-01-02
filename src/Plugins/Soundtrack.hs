@@ -1,11 +1,7 @@
 --- This plugin tracks tracks being played through myMusicCtrl. And provides
 --- a user-interface to pause, play, forward and backward tracks.
 module Plugins.Soundtrack
-  ( getArtist
-  , getTrack
-  , getAlbum
-  , Soundtrack(..)
-  , Controller(..)
+  ( Soundtrack(..)
   ) where
 
 import Preferences (myMusicCtrl)
