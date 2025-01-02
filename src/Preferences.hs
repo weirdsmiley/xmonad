@@ -177,6 +177,7 @@ myManageHook =
     , className =? "ibus-ui-gtk3" -?> doIgnore
     , resource =? "gcr-prompter" -?> doCenterFloat
     , className =? "St-float" -?> doFloat
+    , className =? "zenity" -?> doCenterFloat
     , transience
     , title =? "XMonad Keybind" -?> doCenterFloat
     , className =? "Ibus-extension-gtk3" -?> doFloat
