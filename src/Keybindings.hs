@@ -130,6 +130,14 @@ soundChords' modm =
             ])
   ]
 
+soundChords'' modm =
+  makeChords
+    (modm, xK_a)
+    [ ((0, xK_m), "play/pause music", spawn $ myMusicCtrl ++ " play-pause")
+    , ((0, xK_p), "previous track", spawn $ myMusicCtrl ++ " previous")
+    , ((0, xK_n), "next track", spawn $ myMusicCtrl ++ " next")
+    ]
+
 -- This takes in a major key and a list of subkeys with their descriptions (what
 -- they do), and actions (how to do it). It returns a combined list of normal
 -- mode submap keys and visual mode keys.
@@ -250,7 +258,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         ++ focusChords modm
         ++ screenshotChords
         ++ applicationChords modm
-        ++ soundChords' modm
+        ++ [last $ soundChords'' modm]
         ++ workspaceChords conf
         ++ pomodoroChords modm
         ++ pomodoroChords' modm
