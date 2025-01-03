@@ -83,7 +83,13 @@ topBarTheme =
 myLayout =
   onWorkspace "1" (twoByThreeOnRight ||| twoByThreeOnLeft)
     $ onWorkspace "2" (multiColWithGaps ||| magnifiedMultiColWithGaps)
-    $ onWorkspace "3" tiled
+    $ onWorkspace "3" all
+    $ onWorkspace "4" twoByThreeOnRight
+    $ onWorkspace "5" all
+    $ onWorkspace "6" twoByThreeOnRight
+    $ onWorkspace "7" all
+    $ onWorkspace "8" all
+    $ onWorkspace "9" twoByThreeOnRight
     $ mkToggle (NOBORDERS ?? NBFULL ?? EOT)
         . avoidStruts
         . lessBorders OnlyScreenFloat
@@ -125,3 +131,11 @@ myLayout =
     dragWindows layout = windowNavigation . draggingVisualizer $ layout
     addGaps = mySpacing myGaps
     addTopBar = noFrillsDeco shrinkText topBarTheme
+    all =
+      multiColWithGaps
+        ||| magnifiedMultiColWithGaps
+        ||| full
+        ||| tall
+        ||| twoByThreeOnLeft
+        ||| twoByThreeOnRight
+        ||| tiled
