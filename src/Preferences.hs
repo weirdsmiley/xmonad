@@ -34,6 +34,7 @@ import Workspaces
 import XMonad
 import XMonad.Hooks.ManageHelpers
 import qualified XMonad.StackSet as W
+import XMonad.Util.Cursor
 import XMonad.Util.NamedScratchpad
 import XMonad.Util.SpawnOnce
 
@@ -117,6 +118,7 @@ xmobar = "/home/manas/.local/bin/xmobar"
 -- startupApps =
 startupApps :: X ()
 startupApps = do
+  setDefaultCursor xC_left_ptr
   spawnOnce $ "feh --no-fehbg --bg-scale " ++ myWallpaper
   spawnOnce "picom --config /home/manas/.config/picom/picom.conf"
   spawnOnce "xrdb -merge /home/manas/.Xresources"
