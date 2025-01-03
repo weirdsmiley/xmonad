@@ -42,7 +42,7 @@ instance Exec Soundtrack where
   run Soundtrack = do
     artist <- getArtist
     track <- getTrack
-    album <- getAlbum
+    _album <- getAlbum
     if null artist
       then return ""
       else return
