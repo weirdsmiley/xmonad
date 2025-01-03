@@ -35,6 +35,7 @@ import XMonad
 import XMonad.Hooks.ManageHelpers
 import qualified XMonad.StackSet as W
 import XMonad.Util.NamedScratchpad
+import XMonad.Util.SpawnOnce
 
 -- Function to name terminals
 -- > Named terminals to rule them all,
@@ -112,25 +113,26 @@ nightLight = "redshift -O 2600"
 xmobar = "/home/manas/.local/bin/xmobar"
 
 -- Applications to boot at startup. They are only spawned once.
-startupApps :: [String]
-startupApps =
-  [ "feh --no-fehbg --bg-scale " ++ myWallpaper
-  , "picom --config /home/manas/.config/picom/picom.conf"
-  , "xrdb -merge /home/manas/.Xresources"
-  , nightLight
-  , myCodeSprintTerm
-  , myWritingTerm
-  , myResearchTerm
-  , myBrowser
-  , myPdfViewer
-  , Preferences.xmobar
-  , "Discord"
-  , "Zulip"
-  , "gimp"
-  , "zoom"
-  , "telegram-desktop"
-  , "gnome-boxes"
-  ]
+-- startupApps :: [String]
+-- startupApps =
+startupApps :: X ()
+startupApps = do
+  spawnOnce $ "feh --no-fehbg --bg-scale " ++ myWallpaper
+  spawnOnce "picom --config /home/manas/.config/picom/picom.conf"
+  spawnOnce "xrdb -merge /home/manas/.Xresources"
+  spawnOnce nightLight
+  spawnOnce myCodeSprintTerm
+  spawnOnce myWritingTerm
+  spawnOnce myResearchTerm
+  spawnOnce myBrowser
+  spawnOnce myPdfViewer
+  spawnOnce Preferences.xmobar
+  spawnOnce "Discord"
+  spawnOnce "Zulip"
+  spawnOnce "gimp"
+  spawnOnce "zoom"
+  spawnOnce "telegram-desktop"
+  spawnOnce "gnome-boxes"
 
 -- Apply any configurations only on current workspace and not on all workspaces.
 -- If you have a multi-monitor setup, you may want to specifically make
