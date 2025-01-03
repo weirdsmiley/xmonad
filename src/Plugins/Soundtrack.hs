@@ -49,8 +49,6 @@ instance Exec Soundtrack where
              $ "<fc=lightgreen> "
                  ++ track
                  ++ " - "
-                 ++ album
-                 ++ " - "
                  ++ artist
                  ++ " "
                  ++ show Controller
