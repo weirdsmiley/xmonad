@@ -70,7 +70,6 @@ import XMonad.Util.Run (safeSpawn, unsafeSpawn)
 --             ])
 --   ]
 --
--- TODO: This can use Either.
 makeChords :: a -> [((KeyMask, KeySym), String, X ())] -> [(a, X ())]
 makeChords majorKey subKeys =
   (majorKey, submap . M.fromList $ map (\(k, _, a) -> (k, a)) subKeys)
