@@ -8,6 +8,8 @@ import Preferences (myMusicCtrl)
 import System.Process
 import Xmobar
 
+logLength = 14
+
 -- This utility function is needed because myMusicCtrl returns a newline appended
 -- string.
 trim :: String -> String
@@ -24,8 +26,8 @@ getTrack :: IO String
 getTrack = do
   track <-
     readProcess myMusicCtrl ["metadata", "title"] "" >>= \x -> return (trim x)
-  if length track > 14
-    then return $ take 14 track ++ "..."
+  if length track > logLength
+    then return $ take logLength track ++ "..."
     else return track
 
 -- Returns the album of track that is being played.
