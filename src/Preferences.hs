@@ -63,7 +63,7 @@ myKanboardProfile = "Kanboard"
 myKanboardUrl =
   "http://localhost:8081/?controller=Bigboard&action=index&plugin=Bigboard"
 
-myPdfViewer = "/home/manas/.local/bin/sioyek"
+myPdfViewer = "sioyek"
 
 myScreenShotter = "scrot"
 
