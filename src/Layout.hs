@@ -83,12 +83,12 @@ topBarTheme =
 myLayout =
   onWorkspace "1" (twoByThreeOnRight ||| twoByThreeOnLeft)
     $ onWorkspace "2" (multiColWithGaps ||| magnifiedMultiColWithGaps)
-    $ onWorkspace "3" all
+    $ onWorkspace "3" allLayouts
     $ onWorkspace "4" twoByThreeOnRight
-    $ onWorkspace "5" all
+    $ onWorkspace "5" allLayouts
     $ onWorkspace "6" twoByThreeOnRight
-    $ onWorkspace "7" all
-    $ onWorkspace "8" all
+    $ onWorkspace "7" allLayouts
+    $ onWorkspace "8" allLayouts
     $ onWorkspace "9" twoByThreeOnRight
     $ mkToggle (NOBORDERS ?? NBFULL ?? EOT)
         . avoidStruts
@@ -131,7 +131,7 @@ myLayout =
     dragWindows layout = windowNavigation . draggingVisualizer $ layout
     addGaps = mySpacing myGaps
     addTopBar = noFrillsDeco shrinkText topBarTheme
-    all =
+    allLayouts =
       multiColWithGaps
         ||| magnifiedMultiColWithGaps
         ||| full
