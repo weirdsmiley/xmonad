@@ -5,10 +5,11 @@ module Main
   ( main
   ) where
 
-import Control.Monad (liftM2)
+import Control.Monad (liftM2, unless, when)
 import Data.Monoid (All)
 import Keybindings
 import Layout
+import Plugins.Soundtrack (getArtist)
 import Preferences
 import System.Exit (exitSuccess)
 import Theme.Theme
@@ -239,6 +240,15 @@ myXmobarPP =
     lowWhite = xmobarColor "#bbbbbb" ""
     grey = xmobarColor "#808080" ""
 
+-- This startup hook checks if an artist can be found for the currently playing
+-- track. If so then show the bottom bar, otherwise don't.
+bottomStartupHook xmproc = do
+  artist <- getArtist
+  when (null artist) $ do
+    spawn "killall xmobar-bottom"
+  unless (null artist) $ do
+    spawn "xmobar-bottom"
+
 main :: IO ()
 main =
   xmonad
@@ -246,4 +256,7 @@ main =
     . ewmh
     . docks
     . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey
+    . withEasySB
+        (statusBarProp "xmobar-bottom" (pure myXmobarPP))
+        defToggleStrutsKey
     $ myConfig

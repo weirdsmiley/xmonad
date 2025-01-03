@@ -51,6 +51,34 @@ executable xmobar
     , xmonad-contrib
   default-language: Haskell2010
 
+executable xmobar-bottom
+  main-is: xmobar-bottom.hs
+  other-modules:
+      Keybindings
+      Layout
+      Plugins.Bluetooth
+      Plugins.Pomodoro
+      Plugins.Soundtrack
+      Preferences
+      Theme.Font
+      Theme.Theme
+      Theme.Xresources
+      Workspaces
+      Paths_xmonad_conf
+  autogen-modules:
+      Paths_xmonad_conf
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-signatures -Wno-unused-imports -Wno-unused-top-binds -Wno-unused-local-binds -Wno-incomplete-uni-patterns -rtsopts -threaded -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , process
+    , xmobar
+    , xmonad
+    , xmonad-contrib
+  default-language: Haskell2010
+
 executable xmonad
   main-is: xmonad.hs
   other-modules:

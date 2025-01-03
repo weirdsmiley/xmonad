@@ -2,6 +2,7 @@
 --- a user-interface to pause, play, forward and backward tracks.
 module Plugins.Soundtrack
   ( Soundtrack(..)
+  , getArtist
   ) where
 
 import Preferences (myMusicCtrl)
