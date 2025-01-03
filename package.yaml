@@ -41,6 +41,7 @@ ghc-options:
 - -Wno-unused-imports
 - -Wno-unused-top-binds
 - -Wno-unused-local-binds
+- -Wno-incomplete-uni-patterns
 
 source-dirs: src
 
