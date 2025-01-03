@@ -114,8 +114,6 @@ nightLight = "redshift -O 2600"
 xmobar = "/home/manas/.local/bin/xmobar"
 
 -- Applications to boot at startup. They are only spawned once.
--- startupApps :: [String]
--- startupApps =
 startupApps :: X ()
 startupApps = do
   setDefaultCursor xC_left_ptr
