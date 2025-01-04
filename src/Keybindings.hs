@@ -4,7 +4,7 @@ module Keybindings
   , myXPConfig
   ) where
 
-import Control.Monad (liftM2)
+import Control.Monad (liftM2, void)
 import Data.List (intercalate)
 import qualified Data.Map as M
 import Preferences
@@ -17,6 +17,7 @@ import XMonad.Actions.CycleWS
 import qualified XMonad.Actions.FlexibleResize as Flex
 import XMonad.Actions.GroupNavigation
 import XMonad.Actions.NoBorders (toggleBorder)
+import XMonad.Actions.PerWindowKeys
 import XMonad.Actions.Promote (promote)
 import XMonad.Actions.Submap
 import XMonad.Actions.TiledWindowDragging (dragWindow)
@@ -32,7 +33,8 @@ import XMonad.Util.NamedScratchpad
   ( namedScratchpadAction
   , scratchpadWorkspaceTag
   )
-import XMonad.Util.Run (safeSpawn, unsafeSpawn)
+import XMonad.Util.Paste (sendKey)
+import XMonad.Util.Run (runProcessWithInput, safeSpawn, unsafeSpawn)
 
 --------------------------------------------------------------------------------
 -- This takes in a major key and a list of subkeys with their descriptions (what
@@ -179,6 +181,32 @@ pomodoroChords modm =
     ]
 
 --------------------------------------------------------------------------------
+-- FIXME: Chords for copying and pasting easily
+copyPasteChords =
+  [ ( (controlMask, xK_c)
+    , bindFirst
+        [ ( isTerminal
+          , xdotool ["keyup", "c", "key", "--clearmodifiers", "XF86Copy"])
+        , (pure True, sendKey controlMask xK_c)
+        ])
+  , ( (controlMask, xK_v)
+    , bindFirst
+        [ ( isTerminal
+          , xdotool ["keyup", "v", "key", "--clearmodifiers", "XF86Paste"])
+        , (pure True, sendKey controlMask xK_v)
+        ])
+  ]
+  where
+    xdotool :: [String] -> X ()
+    xdotool args = void (runProcessWithInput "xdotool" args "")
+    commands :: [(String, X ())]
+    commands =
+      [ ("shrink", sendMessage Shrink)
+      , ("expand", sendMessage Expand)
+      , ("refresh", refresh)
+      ]
+
+--------------------------------------------------------------------------------
 -- All keybindings
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@XConfig {XMonad.modMask = modm} =
@@ -233,6 +261,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         ++ [last $ soundChords modm]
         ++ workspaceChords conf
         ++ [last $ pomodoroChords modm]
+        -- ++ copyPasteChords -- TODO
   where
     nonNSP = ignoringWSs [scratchpadWorkspaceTag]
     nonEmptyNSP =

@@ -28,6 +28,7 @@ module Preferences
   , applyOnlyOnCurrentWS
   , myMusicCtrl
   , myPomodoro
+  , isTerminal
   ) where
 
 import Workspaces
@@ -37,6 +38,12 @@ import qualified XMonad.StackSet as W
 import XMonad.Util.Cursor
 import XMonad.Util.NamedScratchpad
 import XMonad.Util.SpawnOnce
+
+isTerminal :: Query Bool
+isTerminal = fmap (`elem` names) className
+  where
+    names :: [String]
+    names = [myTerminal, myCodeSprintTerm, myWritingTerm, myResearchTerm]
 
 -- Function to name terminals
 -- > Named terminals to rule them all,
