@@ -44,7 +44,9 @@ isTerminal :: Query Bool
 isTerminal = fmap (`elem` names) className
   where
     names :: [String]
-    names = [myTerminal, myCodeSprintTerm, myWritingTerm, myResearchTerm]
+    names =
+      [myTerminal, myCodeSprintTerm, myWritingTerm, myResearchTerm]
+        ++ [scratchpadWorkspaceTag]
 
 -- Function to name terminals
 -- > Named terminals to rule them all,
