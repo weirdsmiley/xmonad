@@ -15,6 +15,7 @@ module Preferences
   , myScratchpads
   , myScreenShotter
   , myGaps
+  , myNotifHandler
   , myManageHook
   , myXMonadLogAppLength
   , myFocusedBorderColor
@@ -119,6 +120,8 @@ myWallpaper = "~/.wallpaper/matte-pack/some-time-less-is-more.jpg"
 nightLight = "redshift -O 2600"
 
 xmobar = "/home/manas/.local/bin/xmobar"
+
+myNotifHandler = "dunstctl"
 
 -- Applications to boot at startup. They are only spawned once.
 startupApps :: X ()

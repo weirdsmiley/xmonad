@@ -211,11 +211,15 @@ copyPasteChords =
 notificationChords modm =
   makeChords
     (modm, xK_n)
-    [ ((0, xK_p), "previous notification", safeSpawn "dunstctl" ["history-pop"])
-    , ((0, xK_c), "clear all notifications", safeSpawn "dunstctl" ["close-all"])
+    [ ( (0, xK_p)
+      , "previous notification"
+      , safeSpawn myNotifHandler ["history-pop"])
+    , ( (0, xK_c)
+      , "clear all notifications"
+      , safeSpawn myNotifHandler ["close-all"])
     , ( (shiftMask, xK_c)
       , "delete all notifications from history"
-      , safeSpawn "dunstctl" ["history-clear"])
+      , safeSpawn myNotifHandler ["history-clear"])
     ]
 
 --------------------------------------------------------------------------------
