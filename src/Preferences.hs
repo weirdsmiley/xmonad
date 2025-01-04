@@ -170,22 +170,7 @@ myMusicCtrl = "playerctl"
 myManageHook :: ManageHook
 myManageHook =
   composeOne
-    [ className =? "MPlayer" -?> doFloat
-    , resource =? "desktop_window" -?> doIgnore
-    , resource =? "kdesktop" -?> doIgnore
-    , resource =? "Toolkit" <||> resource =? "Browser" -?> doFloat
-    , resource =? "redshift-gtk" -?> doCenterFloat
-    , className =? "Gammastep-indicator" -?> doCenterFloat
-    , className =? "ibus-ui-gtk3" -?> doIgnore
-    , resource =? "gcr-prompter" -?> doCenterFloat
-    , className =? "St-float" -?> doFloat
-    , className =? "zenity" -?> doCenterFloat
-    , transience
-    , title =? "XMonad Keybind" -?> doCenterFloat
-    , className =? "Ibus-extension-gtk3" -?> doFloat
-    , isFullscreen -?> doFullFloat
-    , isDialog -?> doCenterFloat
-    , title =? "Codesprint" -?> doShift (head myWorkspaces)
+    [ title =? "Codesprint" -?> doShift (head myWorkspaces)
     , title =? "Writing" -?> doShift (myWorkspaces !! 1)
     , className =? "sioyek" -?> doShift (myWorkspaces !! 1)
     , className =? "Zathura" -?> doShift (myWorkspaces !! 1)
@@ -198,16 +183,27 @@ myManageHook =
     , className =? "Gimp" -?> doShift (myWorkspaces !! 7)
     , className =? "qemu" -?> doShift (myWorkspaces !! 8)
     , title =? "Boxes" -?> doShift (myWorkspaces !! 8)
-    , title =? "Pomodoro" -?> doCenterFloat
-    , title =? "Camera" -?> doCenterFloat
+    , appName =? "blueman-manager" -?> doCenterFloat
+    , appName =? "gnome-pomodoro" -?> doCenterFloat
+    , appName =? "snapshot" -?> doCenterFloat
+    , className =? "Gammastep-indicator" -?> doCenterFloat
+    , className =? "Ibus-extension-gtk3" -?> doFloat
     , className =? "Kanboard" -?> doFullFloat
+    , className =? "MPlayer" -?> doFloat
+    , className =? "St-float" -?> doFloat
+    , className =? "gnome-boxes" -?> doShift (myWorkspaces !! 8)
     , className =? "gnome-calculator" -?> doCenterFloat
-    , title =? "Bluetooth Devices" -?> doCenterFloat
-    , className
-        =? "VirtualBox Manager"
-        <||> className
-        =? "gnome-boxes"
-        -?> doShift (myWorkspaces !! 8)
+    , className =? "ibus-ui-gtk3" -?> doIgnore
+    , className =? "zenity" -?> doCenterFloat
+    , isDialog -?> doCenterFloat
+    , isFullscreen -?> doFullFloat
+    , resource =? "Toolkit" <||> resource =? "Browser" -?> doFloat
+    , resource =? "desktop_window" -?> doIgnore
+    , resource =? "gcr-prompter" -?> doCenterFloat
+    , resource =? "kdesktop" -?> doIgnore
+    , resource =? "redshift-gtk" -?> doCenterFloat
+    , title =? "XMonad Keybind" -?> doCenterFloat
+    , transience
     ]
     <+> namedScratchpadManageHook myScratchpads
 
