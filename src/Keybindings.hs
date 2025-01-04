@@ -146,6 +146,11 @@ workspaceChords conf@XConfig {XMonad.modMask = modm} =
      -- Move back and forth between recently used workspace
      -- Using super modifier.
      [((mod4Mask, xK_Tab), toggleWS' [scratchpadWorkspaceTag])]
+    ++ [ ((modm .|. shiftMask, xK_k), moveTo Prev nonNSP)
+       , ((modm .|. shiftMask, xK_j), moveTo Next nonNSP)
+       ]
+  where
+    nonNSP = ignoringWSs [scratchpadWorkspaceTag]
 
 --------------------------------------------------------------------------------
 -- Keychords for standalone applications.
