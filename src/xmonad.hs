@@ -25,6 +25,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.RefocusLast
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.WindowSwallowing
@@ -75,11 +76,15 @@ myHandleEventHook =
              <||> className
              =? "re")
 
-myLogHook :: X ()
--- myLogHook = refocusLastLogHook >> nsHideOnFocusLoss myScratchpads
-myLogHook
+-- Enable transparency for inactive windows.
+fadeHook :: X ()
+fadeHook
   | Preferences.applyOnlyOnCurrentWS = fadeInactiveCurrentWSLogHook fadeAmount
   | otherwise = fadeInactiveLogHook fadeAmount
+
+-- Main logHook function
+myLogHook :: X ()
+myLogHook = refocusLastLogHook >> nsHideOnFocusLoss myScratchpads >> fadeHook
 
 -- Status bars and logging
 -- Perform an arbitrary action on each internal state change or X event.
