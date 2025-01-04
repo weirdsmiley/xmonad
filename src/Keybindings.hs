@@ -163,6 +163,23 @@ soundChords modm =
     [ ((0, xK_m), "play/pause music", spawn $ myMusicCtrl ++ " play-pause")
     , ((0, xK_p), "previous track", spawn $ myMusicCtrl ++ " previous")
     , ((0, xK_n), "next track", spawn $ myMusicCtrl ++ " next")
+    , ( (0, xK_k)
+      , "increase volume"
+      , spawn
+          "pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +1%")
+    , ( (0, xK_j)
+      , "decrease volume"
+      , safeSpawn "pactl" ["set-sink-volume", "@DEFAULT_SINK@", "-1%"])
+    , ( (0, xK_l)
+      , "mute volume"
+      , safeSpawn "pactl" ["set-sink-mute", "@DEFAULT_SINK@", "toggle"])
+  -- , ( (mod4Mask, xF86XK_AudioMute)
+  --   , safeSpawn "pactl" ["set-source-mute", "@DEFAULT_SOURCE@", "toggle"])
+  -- , ( (mod4Mask, xF86XK_AudioRaiseVolume)
+  --   , spawn
+  --       "pactl set-source-mute @DEFAULT_SOURCE@ 0 && pactl set-source-volume @DEFAULT_SOURCE@ +1%")
+  -- , ( (mod4Mask, xF86XK_AudioLowerVolume)
+  --   , safeSpawn "pactl" ["set-source-volume", "@DEFAULT_SOURCE@", "-1%"])
     ]
 
 --------------------------------------------------------------------------------
