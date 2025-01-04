@@ -207,6 +207,18 @@ copyPasteChords =
       ]
 
 --------------------------------------------------------------------------------
+-- Notification chords
+notificationChords modm =
+  makeChords
+    (modm, xK_n)
+    [ ((0, xK_p), "previous notification", safeSpawn "dunstctl" ["history-pop"])
+    , ((0, xK_c), "clear all notifications", safeSpawn "dunstctl" ["close-all"])
+    , ( (shiftMask, xK_c)
+      , "delete all notifications from history"
+      , safeSpawn "dunstctl" ["history-clear"])
+    ]
+
+--------------------------------------------------------------------------------
 -- All keybindings
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@XConfig {XMonad.modMask = modm} =
@@ -262,6 +274,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         ++ workspaceChords conf
         ++ [last $ pomodoroChords modm]
         -- ++ copyPasteChords -- TODO
+        ++ notificationChords modm
   where
     nonNSP = ignoringWSs [scratchpadWorkspaceTag]
     nonEmptyNSP =
