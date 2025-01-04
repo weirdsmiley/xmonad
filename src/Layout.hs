@@ -84,7 +84,7 @@ myLayout =
   onWorkspace "1" (twoByThreeOnRight ||| twoByThreeOnLeft)
     $ onWorkspace "2" (multiColWithGaps ||| magnifiedMultiColWithGaps)
     $ onWorkspace "3" allLayouts
-    $ onWorkspace "4" twoByThreeOnRight
+    $ onWorkspace "4" (twoByThreeOnRight ||| full)
     $ onWorkspace "5" allLayouts
     $ onWorkspace "6" twoByThreeOnRight
     $ onWorkspace "7" allLayouts
