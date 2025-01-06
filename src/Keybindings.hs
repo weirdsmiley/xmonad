@@ -313,22 +313,22 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
 myXPConfig :: XPConfig
 myXPConfig =
   def
-    { font = myFont
-    , bgColor = basebg
-    , fgColor = basefg
+    { font = "xft:Hack:pixelsize=12"
+    , bgColor = base04
+    , fgColor = basebg
     , bgHLight = base04
     , fgHLight = base00
     , borderColor = base00
     , promptBorderWidth = 1
     , promptKeymap = defaultXPKeymap
-    , position = Top
+    , position = Bottom
     -- , position = CenteredAt {xpCenterY = 0.3, xpWidth = 0.3}
     , alwaysHighlight = True -- Disables tab cycle
     , height = 30
-    , maxComplRows = Just 10 -- set to 'Just 5' for 5 rows
+    , maxComplRows = Just 10
     , historySize = 50
     , historyFilter = deleteAllDuplicates
-    , defaultText = []
+    , defaultText = " "
     -- , autoComplete = Just 100000,   -- set Just 100000 for .1 sec
     , showCompletionOnTab = False -- False means auto completion
     , searchPredicate = fuzzyMatch
