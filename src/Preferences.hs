@@ -5,8 +5,6 @@ module Preferences
   , myWritingTerm
   , myResearchTerm
   , myBrowser
-  , myRegularFont
-  , myMonospaceFont
   , myPdfViewer
   , myWallpaper
   , myKanboardProfile
@@ -32,6 +30,7 @@ module Preferences
   , isTerminal
   ) where
 
+import Theme.Font
 import Workspaces
 import XMonad
 import XMonad.Hooks.ManageHelpers
@@ -53,7 +52,7 @@ isTerminal = fmap (`elem` names) className
 -- > Named terminals to find them
 myNamedTerminal xs = myTerminal ++ " --title " ++ xs
 
-myTerminal, myCodeSprintTerm, myWritingTerm, myResearchTerm, myBrowser, myRegularFont, myMonospaceFont, myPdfViewer, myWallpaper ::
+myTerminal, myCodeSprintTerm, myWritingTerm, myResearchTerm, myBrowser, myPdfViewer, myWallpaper ::
      String
 -- Default terminal
 myTerminal = "kitty"
@@ -78,17 +77,12 @@ myPdfViewer = "sioyek"
 
 myScreenShotter = "scrot"
 
--- Fonts
-myRegularFont = "Noto Sans 10"
-
-myMonospaceFont = "Fira Code Regular 9"
-
 -- Rofi launcher
 myLauncher :: String
 myLauncher =
   "rofi -width 424 -lines 8"
     ++ " -font '"
-    ++ myRegularFont
+    ++ myFont
     ++ "'"
     ++ " -show combi -combi-modi window,drun -modi combi -show-icons"
 

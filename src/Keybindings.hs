@@ -9,6 +9,7 @@ import Data.List (intercalate)
 import qualified Data.Map as M
 import Preferences
 import System.Exit (exitSuccess)
+import Theme.Font
 import Theme.Theme
 import Workspaces
 import XMonad

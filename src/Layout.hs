@@ -6,6 +6,7 @@ module Layout
   ) where
 
 import Preferences
+import Theme.Font
 import Theme.Theme
 import XMonad
 import XMonad.Actions.TiledWindowDragging (dragWindow)
@@ -68,7 +69,7 @@ topbar = 10
 -- https://github.com/altercation/dotfiles-tilingwm/blob/31e23a75eebdedbc4336e7826800586617d7d27d/.xmonad/xmonad.hs#L519
 topBarTheme =
   def
-    { fontName = myMonospaceFont
+    { fontName = myFont
     , inactiveBorderColor = base03
     , inactiveColor = base03
     , inactiveTextColor = base03
