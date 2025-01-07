@@ -69,13 +69,13 @@ topbar = 10
 -- https://github.com/altercation/dotfiles-tilingwm/blob/31e23a75eebdedbc4336e7826800586617d7d27d/.xmonad/xmonad.hs#L519
 topBarTheme =
   def
-    { fontName = myFont
-    , inactiveBorderColor = base03
-    , inactiveColor = base03
+    { fontName = "xft:Hack:style=Bold:pixelsize=8"
     , inactiveTextColor = base03
+    , inactiveBorderColor = basebg
+    , inactiveColor = basebg
     , activeBorderColor = active
     , activeColor = active
-    , activeTextColor = active
+    , activeTextColor = basebg
     , urgentBorderColor = red
     , urgentTextColor = yellow
     , decoHeight = topbar
