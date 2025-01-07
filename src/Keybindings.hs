@@ -255,16 +255,11 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
          )
       -- Restart XMonad
       , ((modm, xK_q), unsafeSpawn "xmonad --recompile; xmonad --restart")
-      -- Show all keybindings
-      -- , ( (modm .|. shiftMask, xK_slash)
-      --   , unsafeSpawn
-      --       ("printf \""
-      --          ++ help
-      --          ++ "\" | GTK_THEME=Adwaita:dark zenity --width 600 --height 800 --list --title='XMonad Keybindings' --text=\"\tDefault modifier (mod) key is 'alt'.\" --column=\"\t\tKeymaps and their descriptions\" "))
+      -- Show help page
       , ( (modm .|. shiftMask, xK_slash)
         , unsafeSpawn
             ("GTK_THEME=Adwaita:dark zenity --width 600 --height 800 --list --title='XMonad Keybindings' --text='Default modifier (mod) key is 'alt'.' --column='Keymaps' --column='Description' \""
-               ++ help'
+               ++ help
                ++ "\""))
       -- Toggle fullscreen -- TODO: This won't work in set PerWorkspace hooks.
       , ((modm, xK_f), sendMessage $ Toggle NBFULL)
@@ -369,130 +364,62 @@ myMouseBindings XConfig {XMonad.modMask = modm} =
     nonNSP = ignoringWSs [scratchpadWorkspaceTag]
 
 ------------------------------------------------------------------------
--- Finally, a copy of the default bindings in simple textual tabular format.
-help' :: String
-help' =
+-- All keybindings in this configuration
+help :: String
+help =
   intercalate "\" \""
     $ concatMap
         (\(x, y) -> [x, y])
         [ ("mod-Shift-Enter", "Launch " ++ myTerminal ++ " terminal")
         , ("mod-d", "Launch " ++ (head . words) myLauncher)
+        , ("mod-space", "Bring up next available layout")
+        , ("mod-shift-q", "Quit XMonad")
+        , ("mod-? or mod-shift-/", "Open this help page")
+        , ("mod-f", "Toggle focused window fullscreen (TODO)")
+        , ("mod-g", "Toggle gaps")
+        , ("mod-Enter", "Show/hide scratchpad")
+        , ("mod-l", "Lock screen")
+        , ("mod-x", "Open kanban board")
+        , ("Screenshot chords\n---------------------------", "")
+        , ("PrtSc", "Screenshots the entire workspace")
+        , ("ctrl-PrtSc", "Screenshots focused application")
+        , ("shift-PrtSc", "Interactively screenshot a rectangle")
+        , ("Focus chords\n-------------------", "")
+        , ("mod-c", "Close focused application")
+        , ("mod-k", "Focus on previous window")
+        , ("mod-l", "Focus on next window")
+        , ("mod-s", "Swap focused window with master")
+        , ("mod-tab", "Focus on next window")
+        , ("Resizing chords\n-----------------------", "")
+        , ("mod-shift-l", "Expand master area")
+        , ("mod-shift-h", "Shrink master area")
+        , ("mod-t", "Push floating window back to tiling")
+        , ("mod-shift-t", "Push all floating windows back to tiling")
+        , ("Workspace chords (TODO)\n---------------------------", "")
+        , ("m-mod-[1..9]", "Switch to nth workspace")
+        , ("m-mod-key", "change xinerama")
+        , ("win-tab", "Switch back to last workspace")
+        , ("Sound chords\n--------------------", "")
+        , ("mod-a m", "Play/pause music")
+        , ("mod-a n", "Forward to next track")
+        , ("mod-a p", "Backward to previous track")
+        , ("mod-a k", "Increase volume by 1%")
+        , ("mod-a j", "Decrease volume by 1%")
+        , ("mod-a l", "Mute volume")
+        , ("Pomodoro chords\n---------------------", "")
+        , ("mod-p n", "Start new 60 min session")
+        , ("mod-p p", "Pause or resume an already running session")
+        , ("mod-p s", "Skip this session or break")
+        , ("Copy paste chords (TODO)\n---------------------------", "")
+        , ("Notification chords\n----------------------------", "")
+        , ("mod-n p", "Show previous notification")
+        , ("mod-n c", "clear all notifications from screen")
+        , ("mod-n shift-c", "delete all notifications from history")
+        , ("Mouse bindings\n------------------------", "")
+        , ("mod-leftmb", "Drag focused window to floating mode")
+        , ("mod-rightmb", "Resize window by dragging")
+        , ("mod-middlemb", "Move window to top of stack")
+        , ("mod-scrollup", "Go to previous workspace")
+        , ("mod-scrolldown", "Go to next workspace")
+        , ("mod-shift-leftmb", "Drag window to another pane in this layout")
         ]
-
-help :: String
-help
-  -- TODO: Edit these to follow above keybindings
- =
-  unlines
-    [ "mod-Shift-Enter      Launch " ++ myTerminal ++ " terminal"
-    , "mod-d                Launch rofi"
-    , "mod-p                Launch XPrompt (Xmonad Prompt)"
-    , "mod-c                Launch greenclip with rofi"
-    , "Alt-c                Launch greenclip with dmenu"
-    , "mod-Shift-c          Close/kill the focused window"
-    , "mod-Space            Rotate through the available layout algorithms"
-    , "mod-Shift-Space      Reset the layouts on the current workSpace to default"
-    , "mod-n                Resize/refresh viewed windows to the correct size"
-    , ""
-    , "-- move focus up or down the window stack"
-    , "mod-Tab              Move focus to the next window"
-    , "mod-Shift-Tab        Move focus to the previous window"
-    , "mod-j                Move focus to the next window"
-    , "mod-k                Move focus to the previous window"
-    , "mod-m                Move focus to the master window"
-    , ""
-    , "-- modifying the window order"
-    , "mod-Return           Move the focused window to the master pane."
-    , "mod-Shift-j          Swap the focused window with the next window"
-    , "mod-Shift-k          Swap the focused window with the previous window"
-    , ""
-    , "-- resizing the master/slave ratio"
-    , "mod-h                Shrink the master width"
-    , "mod-l                Expand the master width"
-    , "mod-alt-j            Shrink the master height"
-    , "mod-alt-k            Expand the master height"
-    , ""
-    , "-- increase or decrease spacing (gaps)"
-    , "mod-g                Toggle spacing/gaps"
-    , "mod-i                Increment both screen and window borders"
-    , "mod-d                Deincrement both screen and window borders"
-    , "Alt-i                Increment screen borders"
-    , "Alt-d                Deincrement screen borders"
-    , "Alt-Shift-i          Increment window borders"
-    , "Alt-Shift-d          Deincrement window borders"
-    , ""
-    , "-- floating layer support"
-    , "mod-t                Push window back into tiling; unfloat and re-tile it"
-    , "mod-shift-t          Push all floating windows on screen into tilling"
-    , ""
-    , "-- increase or decrease number of windows in the master area"
-    , "mod-comma  (mod-,)   Increment the number of windows in the master area"
-    , "mod-period (mod-.)   Deincrement the number of windows in the master area"
-    , ""
-    , "-- quit, or restart"
-    , "mod-Shift-q          Quit xmonad"
-    , "mod-q                Restart xmonad"
-    , ""
-    , "-- Workspaces & screens"
-    , "mod-[1..9]           Switch to workSpace N"
-    , "mod-Shift-[1..9]     Move client to workspace N"
-    , "mod-Control-[1..9]   Move client and switch to workspace N"
-    , "mod-{w,e,r}          Switch to physical/Xinerama screens 1, 2, or 3"
-    , "mod-Shift-{w,e,r}    Move client to screen 1, 2, or 3"
-    , "mod-Right            Switch to next workSpace"
-    , "mod-Left             Switch to previous workSpace"
-    , "mod-Shift-Right      Move client to next workSpace"
-    , "mod-Shift-Left       Move client to previous workSpace"
-    , "mod-z                Switch between previously used workSpace"
-    , "mod-f                Focused window goes fullscreen"
-    , ""
-    , "-- Cycle Workspaces"
-    , "mod-Tab              Cycle between active workspaces from left to right"
-    , "mod-Shift-Tab        Cycle between active workspaces from right to left"
-    , "mod-left             Go to next workspace"
-    , "mod-right            Go to preview workspace"
-    , "mod-Shift-left       Move focused window to next workspace"
-    , "mod-Shift-right      Move focused window to previous workspace"
-    , ""
-    , "-- Mouse bindings: default actions bound to mouse events"
-    , "mod-button1          Set the window to floating mode and move by dragging"
-    , "mod-button2          Raise the window to the top of the stack"
-    , "mod-button3          Set the window to floating mode and resize by dragging"
-    , ""
-    , "-- Switch layouts"
-    , "Alt-t                Switch to 'Tall' layout"
-    , "Alt-c                Switch to 'ThreeColMid' layout"
-    , "Alt-f                Switch to 'Full' layout"
-    , ""
-    , "-- Sublayout bindings"
-    , "mod-Ctrl-h           Merge with left client"
-    , "mod-Ctrl-l           Merge with right client"
-    , "mod-Ctrl-k           Merge with upper client"
-    , "mod-Ctrl-j           Merge with lower client"
-    , "mod-Ctrl-Space       Switch to next sublayout"
-    , "mod-Ctrl-m           Merge all available clients on the workspace"
-    , "mod-Ctrl-u           Unmerge currently focused client"
-    , "mod-Ctrl-period (.)  Move focus to the next window in the sublayout"
-    , "mod-Ctrl-comma (,)   Move focus to the previous window in the sublayout"
-    , ""
-    , "-- Copy windows"
-    , "mod-v                Copy focused window to all workspaces"
-    , "mod-Shift-v          Only keep currently focused copied window"
-    , ""
-    , "-- Scratchpad"
-    , "mod-Ctrl-Enter       Open a terminal in scratchpad"
-    , "mod-Shift-Equal (=)  Add currently focused window to scratchpad (1)"
-    , "mod-Equal (=)        Open scratchpad (1)"
-    , "mod-Shift-minus (-)  Add currently focused window to scratchpad (2)"
-    , "mod-minus (-)        Open scratchpad (2)"
-    , ""
-    , "-- Shortcuts for taking screenshots"
-    , "Print                Take fullscreen screenshot"
-    , "Shift-Print          Take screenshot of selected screen"
-    , "Ctrl-Print           Take screenshot of focused window"
-    , ""
-    , "-- Application"
-    , "All-e                Open emacs-client"
-    , "alt-b                Open browser (Firefox)"
-    , "alt-F9               Turn on/off picom"
-    ]
