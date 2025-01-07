@@ -27,16 +27,19 @@ module Preferences
   , applyOnlyOnCurrentWS
   , myMusicCtrl
   , myPomodoro
+  , myCustomCommands
   , isTerminal
   ) where
 
 import Theme.Font
 import Workspaces
 import XMonad
+import XMonad.Actions.Commands
 import XMonad.Hooks.ManageHelpers
 import qualified XMonad.StackSet as W
 import XMonad.Util.Cursor
 import XMonad.Util.NamedScratchpad
+import XMonad.Util.Run (unsafeSpawn)
 import XMonad.Util.SpawnOnce
 
 isTerminal :: Query Bool
@@ -236,3 +239,12 @@ myXMonadLogAppLength = 16
 
 -- Pomodoro app
 myPomodoro = "gnome-pomodoro"
+
+myCustomCommands :: X [(String, X ())]
+myCustomCommands = do
+  return
+    [ ( "swap-escape"
+      , unsafeSpawn "/home/manas/workspace/scripts/swap-escape.sh")
+    , ("kill-lsps", unsafeSpawn "/home/manas/workspace/scripts/kill-lsps.sh")
+    , ("xkcd", unsafeSpawn "/home/manas/workspace/scripts/xkcd")
+    ]

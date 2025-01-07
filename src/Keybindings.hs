@@ -13,6 +13,7 @@ import Theme.Font
 import Theme.Theme
 import Workspaces
 import XMonad
+import XMonad.Actions.Commands
 import XMonad.Actions.CopyWindow (kill1)
 import XMonad.Actions.CycleWS
 import qualified XMonad.Actions.FlexibleResize as Flex
@@ -246,6 +247,10 @@ notificationChords modm =
     ]
 
 --------------------------------------------------------------------------------
+-- Custom chords
+customChords modm = [((modm, xK_y), myCustomCommands >>= runCommand)]
+
+--------------------------------------------------------------------------------
 -- All keybindings
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@XConfig {XMonad.modMask = modm} =
@@ -297,6 +302,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         ++ [last $ pomodoroChords modm]
         -- ++ copyPasteChords -- TODO
         ++ notificationChords modm
+        ++ customChords modm
   where
     nonNSP = ignoringWSs [scratchpadWorkspaceTag]
     nonEmptyNSP =
