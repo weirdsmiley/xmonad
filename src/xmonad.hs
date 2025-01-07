@@ -214,7 +214,7 @@ myXmobarPP =
     , ppHidden = white . wrap " " ""
     , ppHiddenNoWindows = lowWhite . wrap " " ""
     , ppUrgent = red . wrap (yellow "!") (yellow "!")
-    , ppOrder = \[ws, l, _, _] -> [ws, l]
+    , ppOrder = \[ws, l, _, wins] -> [ws, l, wins]
     , ppExtras = [logTitles formatFocused formatUnfocused]
     }
   where

@@ -112,7 +112,7 @@ config =
                 10
         , Run
             $ DynNetwork
-                [ "-t"
+                [ "--template"
                 , "<fc=#ff79c6><fn=2>\xf05a9</fn>  <dev></fc> ↓<rx> ↑<tx>"
                 , "-L"
                 , "0"
