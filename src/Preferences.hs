@@ -247,4 +247,5 @@ myCustomCommands = do
       , unsafeSpawn "/home/manas/workspace/scripts/swap-escape.sh")
     , ("kill-lsps", unsafeSpawn "/home/manas/workspace/scripts/kill-lsps.sh")
     , ("xkcd", unsafeSpawn "/home/manas/workspace/scripts/xkcd")
+    , ("savereason", unsafeSpawn "/home/manas/workspace/scripts/save-reason.sh")
     ]
