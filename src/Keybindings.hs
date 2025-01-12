@@ -274,7 +274,18 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
       -- Open Scratchpad
       , ((modm, xK_Return), namedScratchpadAction myScratchpads "terminal")
       -- Lock screen
-      , ((modm, xK_l), unGrab *> safeSpawn "xsecurelock" [])
+      , ( (modm, xK_l)
+        , unGrab
+            *> safeSpawn
+                 "env"
+                 [ "XSECURELOCK_NO_COMPOSITE=1"
+                 , "XSECURELOCK_AUTH_CURSOR_BLINK=0"
+                 , "XSECURELOCK_BACKGROUND_COLOR=#2c0843"
+                 , "XSECURELOCK_AUTH_BACKGROUND_COLOR=#611095"
+                 , "XSECURELOCK_PASSWORD_PROMPT=hidden"
+                 , "XSECURELOCK_SHOW_DATETIME=1"
+                 , "xsecurelock"
+                 ])
       -- Open Kanboard session
       , ( (modm, xK_x)
         , unGrab
