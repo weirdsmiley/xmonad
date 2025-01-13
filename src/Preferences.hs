@@ -61,11 +61,12 @@ myTerminal, myCodeSprintTerm, myWritingTerm, myResearchTerm, myBrowser, myPdfVie
 myTerminal = "kitty"
 
 -- My custom terminal pads
-myCodeSprintTerm = myNamedTerminal "Codesprint"
+myCodeSprintTerm =
+  myTerminal ++ " --session ~/.config/kitty/sessions/codesprint"
 
-myWritingTerm = myNamedTerminal "Writing"
+myWritingTerm = myTerminal ++ " --session ~/.config/kitty/sessions/writings"
 
-myResearchTerm = myNamedTerminal "Research"
+myResearchTerm = myTerminal ++ " --session ~/.config/kitty/sessions/research"
 
 myBrowser = "firefox"
 
