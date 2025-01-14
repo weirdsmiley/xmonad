@@ -55,18 +55,21 @@ isTerminal = fmap (`elem` names) className
 -- > Named terminals to find them
 myNamedTerminal xs = myTerminal ++ " --title " ++ xs
 
+-- Any configuration related to title or class should be inside the session file
+-- itself.
+mySessionedTerminal sess = myTerminal ++ " --session " ++ sess
+
 myTerminal, myCodeSprintTerm, myWritingTerm, myResearchTerm, myBrowser, myPdfViewer, myWallpaper ::
      String
 -- Default terminal
 myTerminal = "kitty"
 
 -- My custom terminal pads
-myCodeSprintTerm =
-  myTerminal ++ " --session ~/.config/kitty/sessions/codesprint"
+myCodeSprintTerm = mySessionedTerminal "~/.config/kitty/sessions/codesprint"
 
-myWritingTerm = myTerminal ++ " --session ~/.config/kitty/sessions/writings"
+myWritingTerm = mySessionedTerminal "~/.config/kitty/sessions/writings"
 
-myResearchTerm = myTerminal ++ " --session ~/.config/kitty/sessions/research"
+myResearchTerm = mySessionedTerminal "~/.config/kitty/sessions/research"
 
 myBrowser = "firefox"
 
