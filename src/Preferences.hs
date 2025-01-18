@@ -228,7 +228,7 @@ myScratchpads
       myTerminal
         ++ " --class scratchpad --session ~/.config/kitty/sessions/xmonad-scratchpad"
     findTerm = className =? "scratchpad"
-    manageTerm = customFloating $ W.RationalRect (1 / 6) (1 / 8) (2 / 3) (3 / 4)
+    manageTerm = customFloating $ W.RationalRect (1 / 4) (1 / 4) (1 / 2) (1 / 2)
 
 -- Border colors for unfocused and focused windows
 myNormalBorderColor, myFocusedBorderColor :: String
