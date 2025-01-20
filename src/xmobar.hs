@@ -26,7 +26,10 @@ config =
     , bgColor = "#5501c3"
     , commands =
         [ Run XMonadLog
-        , Run Soundtrack
+        , Run
+            $ Soundtrack
+                ["-t", "<fc=lightgreen><title> - <album> - <artist></fc>"]
+                1000
         , Run $ PomodoroSession Start
         , Run
             $ Memory

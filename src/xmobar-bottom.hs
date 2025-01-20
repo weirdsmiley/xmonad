@@ -22,7 +22,8 @@ config =
     , alpha = 10
     , fgColor = "#f8f8f8"
     , bgColor = "#5501c3"
-    , commands = [Run Soundtrack]
+    , commands =
+        [Run $ Soundtrack ["-t", "<fc=lightgreen><title> <artist></fc>"] 1000]
     , template = "} %soundtrack% {"
     , alignSep = "}{"
     }

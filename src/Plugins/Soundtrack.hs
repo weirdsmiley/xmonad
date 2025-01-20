@@ -8,6 +8,7 @@ module Plugins.Soundtrack
 import Preferences (myMusicCtrl)
 import System.Process
 import Xmobar
+import Xmobar.Plugins.Monitors.Common
 
 logLength = 14
 
@@ -19,17 +20,18 @@ trim = reverse . dropWhile (== '\n') . reverse
 -- Returns the artist name.
 getArtist :: IO String
 getArtist = do
-  artist <- readProcess myMusicCtrl ["metadata", "artist"] ""
-  return $ takeWhile (/= ',') . trim $ artist
+  -- artist <-
+  readProcess myMusicCtrl ["metadata", "artist"] "" >>= \x -> return (trim x)
+  -- return $ takeWhile (/= ',') . trim $ artist
 
 -- Returns the title track that is being played.
 getTrack :: IO String
 getTrack = do
-  track <-
-    readProcess myMusicCtrl ["metadata", "title"] "" >>= \x -> return (trim x)
-  if length track > logLength
-    then return $ take logLength track ++ "..."
-    else return track
+  -- track <-
+  readProcess myMusicCtrl ["metadata", "title"] "" >>= \x -> return (trim x)
+  -- if length track > logLength
+  --   then return $ take logLength track ++ "..."
+  --   else return track
 
 -- Returns the album of track that is being played.
 getAlbum :: IO String
@@ -37,25 +39,28 @@ getAlbum = do
   readProcess myMusicCtrl ["metadata", "album"] "" >>= \x -> return (trim x)
 
 data Soundtrack =
-  Soundtrack
+  Soundtrack Args Rate
   deriving (Show, Read)
 
+soundtrackConfig :: IO MConfig
+soundtrackConfig =
+  mkMConfig "<title> - <album> - <artist>" ["title", "artist", "album", "art"]
+
+soundtrack :: Monitor [String]
+soundtrack = do
+  artist <- io getArtist
+  track <- io getTrack
+  album <- io getAlbum
+  u <- getConfigValue useSuffix -- TODO: What does this do?
+  let str x = init . tail $ show x
+  mapM (`showWithColors'` 0) [str track, str artist, str album]
+
+runSoundtrack :: [String] -> Monitor String
+runSoundtrack _ = soundtrack >>= parseTemplate
+
 instance Exec Soundtrack where
-  alias Soundtrack = "soundtrack"
-  run Soundtrack = do
-    artist <- getArtist
-    track <- getTrack
-    _album <- getAlbum
-    if null artist
-      then return ""
-      else return
-             $ "<fc=lightgreen> "
-                 ++ track
-                 ++ " - "
-                 ++ artist
-                 ++ " "
-                 ++ show Controller
-                 ++ "</fc>"
+  alias (Soundtrack _ _) = "soundtrack"
+  start (Soundtrack args rate) = runM args soundtrackConfig runSoundtrack rate
 
 -- Soundtrack controller
 data Controller =
