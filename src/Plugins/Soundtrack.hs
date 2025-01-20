@@ -10,8 +10,6 @@ import System.Process
 import Xmobar
 import Xmobar.Plugins.Monitors.Common
 
-logLength = 14
-
 -- This utility function is needed because myMusicCtrl returns a newline appended
 -- string.
 trim :: String -> String
@@ -45,7 +43,12 @@ soundtrack = do
   artist <- io getArtist
   track <- io getTrack
   album <- io getAlbum
-  u <- getConfigValue useSuffix -- TODO: What does this do?
+  _u <- getConfigValue useSuffix -- This checks the configuration for using
+                                 -- suffices (like d in 2d in uptime) but
+                                 -- Soundtrack doesn't require suffices
+                                 -- TODO: This can be useful for
+                                 -- enabling/disabling separators when artist
+                                 -- is not available.
   let str x =
         if null artist
           then ""
