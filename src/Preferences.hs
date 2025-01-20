@@ -124,6 +124,8 @@ nightLight = "redshift -O 2600"
 
 xmobar = "/home/manas/.local/bin/xmobar"
 
+bottombar = "/home/manas/.local/bin/xmobar-bottom"
+
 myNotifHandler = "dunstctl"
 
 -- Applications to boot at startup. They are only spawned once.
@@ -134,12 +136,13 @@ startupApps = do
   spawnOnce "picom --config /home/manas/.config/picom/picom.conf"
   spawnOnce "xrdb -merge /home/manas/.Xresources"
   spawnOnce nightLight
+  spawnOnce Preferences.xmobar
+  spawnOnce Preferences.bottombar
   spawnOnce myCodeSprintTerm
   spawnOnce myWritingTerm
   spawnOnce myResearchTerm
   spawnOnce myBrowser
   spawnOnce myPdfViewer
-  spawnOnce Preferences.xmobar
   spawnOnce "Discord"
   spawnOnce "Zulip"
   spawnOnce "gimp"
