@@ -44,7 +44,7 @@ data Soundtrack =
 
 soundtrackConfig :: IO MConfig
 soundtrackConfig =
-  mkMConfig "<title> - <album> - <artist>" ["title", "artist", "album", "art"]
+  mkMConfig "<title> <artist>" ["title", "artist", "album", "art"]
 
 soundtrack :: Monitor [String]
 soundtrack = do
@@ -52,7 +52,10 @@ soundtrack = do
   track <- io getTrack
   album <- io getAlbum
   u <- getConfigValue useSuffix -- TODO: What does this do?
-  let str x = init . tail $ show x
+  let str x =
+        if null artist
+          then ""
+          else x
   mapM (`showWithColors'` 0) [str track, str artist, str album]
 
 runSoundtrack :: [String] -> Monitor String
