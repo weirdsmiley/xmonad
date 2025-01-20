@@ -57,7 +57,7 @@ runSoundtrack _ = soundtrack >>= parseTemplate
 
 instance Exec Soundtrack where
   alias (Soundtrack _ _) = "soundtrack"
-  start (Soundtrack args rate) = runM args soundtrackConfig runSoundtrack rate
+  start (Soundtrack a r) = runM a soundtrackConfig runSoundtrack r
 
 -- Soundtrack controller
 data Controller =
