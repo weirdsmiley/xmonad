@@ -129,22 +129,23 @@ myNotifHandler = "dunstctl"
 -- Applications to boot at startup. They are only spawned once.
 startupApps :: X ()
 startupApps = do
+  setDefaultCursor xC_left_ptr
   spawnOnce $ "feh --no-fehbg --bg-scale " ++ myWallpaper
+  spawnOnce "picom --config /home/manas/.config/picom/picom.conf"
   spawnOnce "xrdb -merge /home/manas/.Xresources"
-  -- spawnOnce nightLight
-  -- spawnOnce "picom --config /home/manas/.config/picom/picom.conf"
-  -- , myCodeSprintTerm
-  -- , myWritingTerm
-  -- , myResearchTerm
-  -- , myBrowser
-  -- , myPdfViewer
-  -- , Preferences.xmobar
-  -- , "Discord"
-  -- , "Zulip"
-  -- , "gimp"
-  -- , "zoom"
-  -- , "telegram-desktop"
-  -- , "gnome-boxes"
+  spawnOnce nightLight
+  spawnOnce myCodeSprintTerm
+  spawnOnce myWritingTerm
+  spawnOnce myResearchTerm
+  spawnOnce myBrowser
+  spawnOnce myPdfViewer
+  spawnOnce Preferences.xmobar
+  spawnOnce "Discord"
+  spawnOnce "Zulip"
+  spawnOnce "gimp"
+  spawnOnce "zoom"
+  spawnOnce "telegram-desktop"
+  spawnOnce "gnome-boxes"
 
 -- Apply any configurations only on current workspace and not on all workspaces.
 -- If you have a multi-monitor setup, you may want to specifically make
