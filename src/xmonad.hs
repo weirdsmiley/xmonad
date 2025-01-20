@@ -240,15 +240,6 @@ myXmobarPP =
     lowWhite = xmobarColor "#bbbbbb" ""
     grey = xmobarColor "#808080" ""
 
--- This startup hook checks if an artist can be found for the currently playing
--- track. If so then show the bottom bar, otherwise don't.
-bottomStartupHook xmproc = do
-  artist <- getArtist
-  when (null artist) $ do
-    spawn "killall xmobar-bottom"
-  unless (null artist) $ do
-    spawn "xmobar-bottom"
-
 main :: IO ()
 main =
   xmonad

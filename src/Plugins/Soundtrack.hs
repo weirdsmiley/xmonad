@@ -20,18 +20,12 @@ trim = reverse . dropWhile (== '\n') . reverse
 -- Returns the artist name.
 getArtist :: IO String
 getArtist = do
-  -- artist <-
   readProcess myMusicCtrl ["metadata", "artist"] "" >>= \x -> return (trim x)
-  -- return $ takeWhile (/= ',') . trim $ artist
 
 -- Returns the title track that is being played.
 getTrack :: IO String
 getTrack = do
-  -- track <-
   readProcess myMusicCtrl ["metadata", "title"] "" >>= \x -> return (trim x)
-  -- if length track > logLength
-  --   then return $ take logLength track ++ "..."
-  --   else return track
 
 -- Returns the album of track that is being played.
 getAlbum :: IO String
