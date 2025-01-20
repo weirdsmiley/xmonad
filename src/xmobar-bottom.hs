@@ -1,12 +1,11 @@
-import Plugins.Bluetooth
-import Plugins.Pomodoro
 import Plugins.Soundtrack
+import Theme.Font (myXmobarFont)
 import Xmobar
 
 config :: Config
 config =
   defaultConfig
-    { font = "Open Sans SemiBold 10"
+    { font = myXmobarFont
     , additionalFonts =
         [ "Font Awesome 6 Free-Regular-400 10"
         , "Material Icons Regular 10"
