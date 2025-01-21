@@ -209,7 +209,7 @@ myConfig =
 myXmobarPP :: PP
 myXmobarPP =
   def
-    { ppSep = magenta " ▪ "
+    { ppSep = magenta "  "
     , ppTitleSanitize = xmobarStrip
     , ppCurrent = wrap " " "" . xmobarBorder "Bottom" "#8be9fd" 2
     , ppHidden = white . wrap " " ""
@@ -217,6 +217,17 @@ myXmobarPP =
     , ppUrgent = red . wrap (yellow "!") (yellow "!")
     , ppOrder = \[ws, l, _, wins] -> [ws, l, wins]
     , ppExtras = [logTitles formatFocused formatUnfocused]
+    , ppLayout =
+        \case
+          "Columns" -> "<icon=Columns.xpm/>"
+          "MagnifiedColumns" -> "<icon=MagnifiedColumns.xpm/>"
+          "Full" -> "<icon=Full.xpm/>"
+          "Tall" -> "<icon=Tall.xpm/>"
+          "ThreeCol" -> "<icon=ThreeCol.xpm/>"
+          "2-by-3 (left)" -> "<icon=TwoByThreeLeft.xpm/>"
+          "2-by-3 (right)" -> "<icon=TwoByThreeRight.xpm/>"
+          "Tiled" -> "<icon=Tiled.xpm/>"
+          _ -> "<icon=Float.xpm/>"
     }
   where
     formatFocused = wrap (white "") (white "") . magenta . ppWindow

@@ -105,7 +105,7 @@ myLayout =
     multiColWithGaps =
       rn "Columns" . addTopBar . addGaps $ multiCol [1] 1 0.01 (-0.5)
     magnifiedMultiColWithGaps =
-      rn "Columns" . addTopBar . addGaps
+      rn "MagnifiedColumns" . addTopBar . addGaps
         $ magnifiercz' 2.0
         $ multiCol [1] 1 0.01 (-0.5)
     full = rn "Full" . addTopBar . addGaps $ Full

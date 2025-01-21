@@ -3,6 +3,13 @@ import Plugins.Pomodoro
 import Theme.Font
 import Xmobar
 
+import System.Environment (getEnv)
+import System.IO.Unsafe (unsafeDupablePerformIO)
+
+-- Get home directory
+homeDir :: String
+homeDir = unsafeDupablePerformIO (getEnv "HOME")
+
 config :: Config
 config =
   defaultConfig
@@ -23,6 +30,8 @@ config =
     , alpha = 0
     , fgColor = "#f8f8f8"
     , bgColor = "#5501c3"
+    , iconRoot = homeDir <> "/.config/xmonad/icons"
+    , iconOffset = -1
     , commands =
         [ Run XMonadLog
         , Run $ PomodoroSession Start
