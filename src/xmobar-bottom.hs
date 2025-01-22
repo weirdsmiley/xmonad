@@ -10,6 +10,7 @@ config =
         [ "Font Awesome 6 Free-Regular-400 10"
         , "Material Icons Regular 10"
         , "0xProto Nerd Font Regular 10"
+        , "Open Sans Bold 10"
         ]
     , allDesktops = True
     , position = Static {xpos = 10, ypos = 1050, width = 1900, height = 30}
@@ -24,7 +25,9 @@ config =
     , commands =
         [ Run
             $ Soundtrack
-                ["-t", "<fc=lightgreen><title> - <album> - <artist></fc>"]
+                [ "-t"
+                , "<fn=4><fc=lightgreen><title> - <album> - <artist></fc></fn>"
+                ]
                 1
         , Run
             $ Memory
