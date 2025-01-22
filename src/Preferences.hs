@@ -200,6 +200,7 @@ myManageHook =
     , className =? "qemu" -?> doShift (myWorkspaces !! 8)
     , className =? "Org.gnome.Boxes" -?> doShift (myWorkspaces !! 8)
     , className =? "Gnome-pomodoro" -?> doCenterFloat
+    , className =? "Rhythmbox" -?> doCenterFloat
     , appName =? "blueman-manager" -?> doCenterFloat
     , appName =? "snapshot" -?> doCenterFloat
     , className =? "Gammastep-indicator" -?> doCenterFloat
