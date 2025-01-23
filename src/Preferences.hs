@@ -186,8 +186,8 @@ myMusicCtrl = "playerctl"
 myManageHook :: ManageHook
 myManageHook =
   composeOne
-    [ title =? "Codesprint" -?> doShift (head myWorkspaces)
-    , title =? "Writing" -?> doShift (myWorkspaces !! 1)
+    [ title =? "CodeSprint" -?> doShift (head myWorkspaces)
+    , title =? "Writings" -?> doShift (myWorkspaces !! 1)
     , className =? "sioyek" -?> doShift (myWorkspaces !! 1)
     , className =? "Zathura" -?> doShift (myWorkspaces !! 1)
     , title =? "Research" -?> doShift (myWorkspaces !! 2)
