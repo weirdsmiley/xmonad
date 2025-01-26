@@ -227,7 +227,7 @@ myXmobarPP =
           "2-by-3 (left)" -> "<icon=TwoByThreeLeft.xpm/>"
           "2-by-3 (right)" -> "<icon=TwoByThreeRight.xpm/>"
           "Tiled" -> "<icon=Tiled.xpm/>"
-          _ -> "<icon=Unknown.xpm/>"
+          _ -> "<icon=XMonad.xpm/>"
     }
   where
     formatFocused = wrap (white "") (white "") . magenta . ppWindow
