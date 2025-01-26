@@ -5,6 +5,7 @@ module Plugins.Soundtrack
   , getArtist
   ) where
 
+import Data.List (find)
 import Preferences (myMusicCtrl)
 import System.Process
 import Xmobar
@@ -18,17 +19,51 @@ trim = reverse . dropWhile (== '\n') . reverse
 -- Returns the artist name.
 getArtist :: IO String
 getArtist = do
-  readProcess myMusicCtrl ["metadata", "artist"] "" >>= \x -> return (trim x)
+  player <- getRunningPlayer
+  case player of
+    Just p ->
+      readProcess myMusicCtrl ["-p", p, "metadata", "artist"] "" >>= \x ->
+        return (trim x)
+    Nothing ->
+      readProcess myMusicCtrl ["metadata", "artist"] "" >>= \x ->
+        return (trim x)
 
 -- Returns the title track that is being played.
 getTrack :: IO String
 getTrack = do
-  readProcess myMusicCtrl ["metadata", "title"] "" >>= \x -> return (trim x)
+  player <- getRunningPlayer
+  case player of
+    Just p ->
+      readProcess myMusicCtrl ["-p", p, "metadata", "title"] "" >>= \x ->
+        return (trim x)
+    Nothing ->
+      readProcess myMusicCtrl ["metadata", "title"] "" >>= \x -> return (trim x)
 
 -- Returns the album of track that is being played.
 getAlbum :: IO String
 getAlbum = do
-  readProcess myMusicCtrl ["metadata", "album"] "" >>= \x -> return (trim x)
+  player <- getRunningPlayer
+  case player of
+    Just p ->
+      readProcess myMusicCtrl ["-p", p, "metadata", "album"] "" >>= \x ->
+        return (trim x)
+    Nothing ->
+      readProcess myMusicCtrl ["metadata", "album"] "" >>= \x -> return (trim x)
+
+splitOn sep str = (before, after)
+  where
+    (before, _:after) = break (== sep) str
+
+-- Returns the currently running player.
+getRunningPlayer :: IO (Maybe String)
+getRunningPlayer = do
+  statuses <-
+    readProcess
+      myMusicCtrl
+      ["--all-players", "-f", "\"{{playerName}}:{{status}}\"", "metadata"]
+      "" >>= \x -> return (lines x)
+  let runningPlayer = map (splitOn ':' . filter (/= '"')) statuses
+  return $ fst <$> find (\(_, status) -> status == "Playing") runningPlayer
 
 data Soundtrack =
   Soundtrack Args Rate

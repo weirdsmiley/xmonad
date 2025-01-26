@@ -177,6 +177,8 @@ applicationChords modm =
 soundChords modm =
   makeChords
     (modm, xK_a)
+    -- TODO: This only applies to first player, not all. So check which players
+    -- are running then toggle them.
     [ ((0, xK_m), "play/pause music", spawn $ myMusicCtrl ++ " play-pause")
     , ((0, xK_p), "previous track", spawn $ myMusicCtrl ++ " previous")
     , ((0, xK_n), "next track", spawn $ myMusicCtrl ++ " next")
