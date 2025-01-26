@@ -24,6 +24,7 @@ import XMonad.Actions.Promote (promote)
 import XMonad.Actions.Submap
 import XMonad.Actions.TiledWindowDragging (dragWindow)
 import XMonad.Actions.WithAll
+import XMonad.Layout.Hidden
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.Spacing
@@ -109,6 +110,15 @@ focusChords modm =
   , ((modm .|. controlMask, xK_Right), nextMatch Forward (className =? ""))
   , ((modm .|. controlMask, xK_Left), nextMatch Backward (className =? ""))
   ]
+
+--------------------------------------------------------------------------------
+-- Hide windows from workspace
+hiddenChords modm =
+  makeChords
+    (modm, xK_h)
+    [ ((0, xK_h), "hide focused window", withFocused hideWindow)
+    , ((shiftMask, xK_h), "pop last hidden window", popOldestHiddenWindow)
+    ]
 
 --------------------------------------------------------------------------------
 resizeChords modm =
@@ -306,6 +316,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         ++ layoutChords modm
         ++ resizeChords modm
         ++ focusChords modm
+        ++ hiddenChords modm
         ++ screenshotChords
         ++ applicationChords modm
         ++ [last $ soundChords modm]

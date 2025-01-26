@@ -14,6 +14,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Layout
 import XMonad.Layout.Accordion (Accordion(Accordion))
 import XMonad.Layout.DraggingVisualizer (draggingVisualizer)
+import XMonad.Layout.Hidden
 import XMonad.Layout.LayoutModifier (ModifiedLayout)
 import XMonad.Layout.Magnifier
 import XMonad.Layout.MultiColumns (MultiCol, multiCol)
@@ -82,7 +83,8 @@ topBarTheme =
     }
 
 myLayout =
-  onWorkspace "1" (twoByThreeOnRight ||| twoByThreeOnLeft)
+  hiddenWindows
+    $ onWorkspace "1" (twoByThreeOnRight ||| twoByThreeOnLeft)
     $ onWorkspace "2" (multiColWithGaps ||| magnifiedMultiColWithGaps)
     $ onWorkspace "3" allLayouts
     $ onWorkspace "4" (twoByThreeOnRight ||| full)
