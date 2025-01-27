@@ -318,7 +318,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         ++ layoutChords modm
         ++ resizeChords modm
         ++ focusChords modm
-        ++ hiddenChords modm
+        -- ++ hiddenChords modm
         ++ screenshotChords
         ++ applicationChords modm
         ++ [last $ soundChords modm]
