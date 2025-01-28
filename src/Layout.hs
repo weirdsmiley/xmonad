@@ -86,7 +86,7 @@ myLayout =
   hiddenWindows
     $ onWorkspace "1" (twoByThreeOnRight ||| twoByThreeOnLeft)
     $ onWorkspace "2" (multiColWithGaps ||| magnifiedMultiColWithGaps)
-    $ onWorkspace "3" allLayouts
+    $ onWorkspace "3" (multiColWithGaps ||| magnifiedMultiColWithGaps)
     $ onWorkspace "4" (twoByThreeOnRight ||| full)
     $ onWorkspace "5" allLayouts
     $ onWorkspace "6" twoByThreeOnRight

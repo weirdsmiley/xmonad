@@ -149,6 +149,7 @@ startupApps = do
   spawnOnce "zoom"
   spawnOnce "telegram-desktop"
   spawnOnce "gnome-boxes"
+  spawnOnce "zotero"
 
 -- Apply any configurations only on current workspace and not on all workspaces.
 -- If you have a multi-monitor setup, you may want to specifically make
@@ -191,6 +192,7 @@ myManageHook =
     , className =? "sioyek" -?> doShift (myWorkspaces !! 1)
     , className =? "Zathura" -?> doShift (myWorkspaces !! 1)
     , title =? "Research" -?> doShift (myWorkspaces !! 2)
+    , className =? "Zotero" -?> doShift (myWorkspaces !! 2)
     , className =? "zoom" -?> doShift (myWorkspaces !! 4)
     , className =? "discord" -?> doShift (myWorkspaces !! 5)
     , className =? "Zulip" -?> doShift (myWorkspaces !! 5)
