@@ -7,6 +7,7 @@ module Keybindings
 import Control.Monad (liftM2, void)
 import Data.List (intercalate)
 import qualified Data.Map as M
+import Plugins.Soundtrack (getRunningPlayer')
 import Preferences
 import System.Exit (exitSuccess)
 import Theme.Font
@@ -177,9 +178,10 @@ applicationChords modm =
 soundChords modm =
   makeChords
     (modm, xK_a)
-    -- TODO: This only applies to first player, not all. So check which players
-    -- are running then toggle them.
-    [ ((0, xK_m), "play/pause music", spawn $ myMusicCtrl ++ " play-pause")
+    [ ( (0, xK_m)
+      , "play/pause music"
+      , getRunningPlayer' >>= \player ->
+          spawn $ myMusicCtrl ++ " -p \"" ++ player ++ "\" play-pause")
     , ((0, xK_p), "previous track", spawn $ myMusicCtrl ++ " previous")
     , ((0, xK_n), "next track", spawn $ myMusicCtrl ++ " next")
     , ( (0, xK_k)

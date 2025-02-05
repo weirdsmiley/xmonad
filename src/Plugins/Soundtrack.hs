@@ -3,11 +3,14 @@
 module Plugins.Soundtrack
   ( Soundtrack(..)
   , getArtist
+  , getRunningPlayer'
   ) where
 
 import Data.List (find)
 import Preferences (myMusicCtrl)
 import System.Process
+import XMonad.Core (X)
+import XMonad.Util.Run (runProcessWithInput)
 import Xmobar
 import Xmobar.Plugins.Monitors.Common
 
@@ -64,6 +67,19 @@ getRunningPlayer = do
       "" >>= \x -> return (lines x)
   let runningPlayer = map (splitOn ':' . filter (/= '"')) statuses
   return $ fst <$> find (\(_, status) -> status == "Playing") runningPlayer
+
+-- Same as getRunningPlayer but lifts IO for X (). This can be used directly in
+-- spawn functions.
+getRunningPlayer' :: X String
+getRunningPlayer' = do
+  statuses <-
+    runProcessWithInput
+      myMusicCtrl
+      ["--all-players", "-f", "\"{{playerName}}:{{status}}\"", "metadata"]
+      "" >>= \x -> return (lines x)
+  let runningPlayer = map (splitOn ':' . filter (/= '"')) statuses
+  return
+    $ maybe "" fst (find (\(_, status) -> status == "Playing") runningPlayer)
 
 data Soundtrack =
   Soundtrack Args Rate
