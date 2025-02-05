@@ -182,8 +182,14 @@ soundChords modm =
       , "play/pause music"
       , getRunningPlayer' >>= \player ->
           spawn $ myMusicCtrl ++ " -p \"" ++ player ++ "\" play-pause")
-    , ((0, xK_p), "previous track", spawn $ myMusicCtrl ++ " previous")
-    , ((0, xK_n), "next track", spawn $ myMusicCtrl ++ " next")
+    , ( (0, xK_p)
+      , "previous track"
+      , getRunningPlayer' >>= \player ->
+          spawn $ myMusicCtrl ++ " -p \"" ++ player ++ "\" previous")
+    , ( (0, xK_n)
+      , "next track"
+      , getRunningPlayer' >>= \player ->
+          spawn $ myMusicCtrl ++ " -p \"" ++ player ++ "\" next")
     , ( (0, xK_k)
       , "increase volume"
       , spawn
