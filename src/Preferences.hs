@@ -122,9 +122,9 @@ myWallpaper = "~/.config/xmonad/preview/wallpaper.jpg"
 
 nightLight = "redshift -O 2600"
 
-xmobar = "/home/manas/.local/bin/xmobar"
+xmobar = "~/.local/bin/xmobar"
 
-bottombar = "/home/manas/.local/bin/xmobar-bottom"
+bottombar = "~/.local/bin/xmobar-bottom"
 
 myNotifHandler = "dunstctl"
 
