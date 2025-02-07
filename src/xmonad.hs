@@ -65,8 +65,6 @@ myHandleEventHook =
                      <||> className
                      =? "St-float"
                      <||> className
-                     =? "kitty"
-                     <||> className
                      =? "org.wezfurlong.wezterm"
                      <||> className
                      =? "Dragon"
