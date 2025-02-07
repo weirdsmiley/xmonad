@@ -118,7 +118,7 @@ myModMask = mod4Mask
 
 altMask = mod1Mask
 
-myWallpaper = "~/.wallpaper/matte-pack/some-time-less-is-more.jpg"
+myWallpaper = "~/.config/xmonad/preview/wallpaper.jpg"
 
 nightLight = "redshift -O 2600"
 
