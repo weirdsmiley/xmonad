@@ -1,0 +1,67 @@
+#define basebg #1e2127
+#define basefg #c8ccd4
+#define base00 #2c313a
+#define base08 #424957
+#define base01 #ff6c6b
+#define base09 #ff8b92
+#define base02 #98be65
+#define base0A #ddffa7
+#define base03 #ffcb6b
+#define base0B #ffe585
+#define base04 #51aeed
+#define base0C #9cc4ff
+#define base05 #b58fae
+#define base0D #e1acff
+#define base06 #56b6c2
+#define base0E #a3f7ff
+#define base07 #a6aebf
+#define base0F #ffffff
+
+xmonad.font:  Fira Code Regular
+xmonad.font.gtk:  Fira Code Regular
+xmonad.font.big:  Fira Code Regular
+xmonad.font.bold:  Fira Code SemiBold
+xmonad.font.italic:  Fira Code Italic
+
+xmobar.font:  Open Sans SemiBold 10
+
+Xcursor.theme: capitaine-cursors
+Xcursor.size: 24
+
+! ! special
+*.background: 		basebg
+*.foreground: 		basefg
+*.cursorColor: 		basefg
+
+! black
+*.color0: 		base00
+*.color8: 		base08
+
+! red
+*.color1: 		base01
+*.color9: 		base09
+
+! green
+*.color2: 		base02
+*.color10: 		base0A
+
+! yellow
+*.color3: 		base03
+*.color11: 		base0B
+
+! blue
+*.color4: 		base04
+*.color12: 		base0C
+
+! magenta
+*.color5: 		base05
+*.color13: 		base0D
+
+! cyan
+*.color6: 		base06
+*.color14: 		base0E
+
+! white
+*.color7: 		base07
+*.color15: 		base0F
+

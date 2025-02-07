@@ -4,6 +4,8 @@
 
 DISTRO=$(cat /etc/*-release | grep 'ID=' | awk -F'=' 'NR==1 { print $2 }')
 
+mv ~/.config/xmonad/.Xresources ~/.Xresources
+
 # Install appropriate fonts
 if [ $DISTRO == "fedora" ]; then
   sudo dnf install \
