@@ -7,6 +7,7 @@ module Keybindings
 import Control.Monad (liftM2, void)
 import Data.List (intercalate)
 import qualified Data.Map as M
+import Graphics.X11.ExtraTypes.XF86
 import Plugins.Soundtrack (getRunningPlayer')
 import Preferences
 import System.Exit (exitSuccess)
@@ -322,6 +323,13 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
       -- Toggle a window floating in center
       -- TODO: This should be mapped to modm+f
       -- , ((modm, xK_p), withFocused toggleFloat)
+      -- Play/pause via headphones
+      , ( (noModMask, xF86XK_AudioPause)
+        , getRunningPlayer' >>= \player ->
+            spawn $ myMusicCtrl ++ " -p \"" ++ player ++ "\" pause")
+      , ( (noModMask, xF86XK_AudioPlay)
+        , getRunningPlayer' >>= \player ->
+            spawn $ myMusicCtrl ++ " -p \"" ++ player ++ "\" play")
       ]
         ++ layoutChords modm
         ++ resizeChords modm

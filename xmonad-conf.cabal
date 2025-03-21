@@ -43,7 +43,8 @@ executable xmobar
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-signatures -Wno-unused-imports -Wno-unused-top-binds -Wno-unused-local-binds -Wno-incomplete-uni-patterns -Wno-type-defaults -rtsopts -threaded -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      X11
+    , base >=4.7 && <5
     , containers
     , process
     , xmobar
@@ -71,7 +72,8 @@ executable xmobar-bottom
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-signatures -Wno-unused-imports -Wno-unused-top-binds -Wno-unused-local-binds -Wno-incomplete-uni-patterns -Wno-type-defaults -rtsopts -threaded -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      X11
+    , base >=4.7 && <5
     , containers
     , process
     , xmobar
@@ -99,7 +101,8 @@ executable xmonad
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-signatures -Wno-unused-imports -Wno-unused-top-binds -Wno-unused-local-binds -Wno-incomplete-uni-patterns -Wno-type-defaults
   build-depends:
-      base >=4.7 && <5
+      X11
+    , base >=4.7 && <5
     , containers
     , process
     , xmobar

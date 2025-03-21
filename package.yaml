@@ -26,6 +26,7 @@ dependencies:
 - xmonad-contrib
 - containers
 - process
+- X11
 
 ghc-options:
 - -Wall
