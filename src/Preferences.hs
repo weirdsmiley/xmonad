@@ -257,4 +257,6 @@ myCustomCommands = do
     , ("kill-lsps", unsafeSpawn "/home/manas/workspace/scripts/kill-lsps.sh")
     , ("xkcd", unsafeSpawn "/home/manas/workspace/scripts/xkcd")
     , ("savereason", unsafeSpawn "/home/manas/workspace/scripts/save-reason.sh")
+    , ("screenkey", unsafeSpawn "screenkey")
+    , ("screenkey-off", unsafeSpawn "pkill -9 screenkey")
     ]
