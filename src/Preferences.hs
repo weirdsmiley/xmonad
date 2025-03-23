@@ -77,8 +77,9 @@ myKanboardProfile = "Kanboard"
 
 -- This url is opened in myBrowser (kiosk-mode, and myKanboardProfile) with a
 -- keybinding.
-myKanboardUrl =
-  "http://localhost:8081/?controller=Bigboard&action=index&plugin=Bigboard"
+myKanboardUrl
+  -- "http://localhost:8081/?controller=Bigboard&action=index&plugin=Bigboard"
+ = "http://192.168.0.108/?controller=Bigboard&action=index&plugin=Bigboard"
 
 myPdfViewer = "sioyek"
 
