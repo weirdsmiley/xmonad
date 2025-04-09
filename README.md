@@ -1,8 +1,10 @@
 # XMonad Configuration
 
+![System Preview](./preview/fastfetch.png)
+
 ![XMonad Preview](./preview/xmonad.png)
 
-![System Preview](./preview/fastfetch.png)
+![Rofi Launcher](./preview/rofi.png)
 
 ## Installation
 
@@ -13,7 +15,7 @@ cd $HOME/.config/xmonad
 stack install
 ```
 
-This will install the built `xmonad` and `xmobar` in `$HOME/.local/bin/`.
+This will install the built `xmonad`, `xmobar` and `xmobar-bottom` in `$HOME/.local/bin/`. I use two xmobar instances at top and at bottom.
 
 You know the drill for installing Xorg and other stuff to switch to XMonad
 windows manager. Refer to any resources online.
