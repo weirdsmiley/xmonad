@@ -214,6 +214,7 @@ myManageHook =
     , className =? "gnome-calculator" -?> doCenterFloat
     , className =? "ibus-ui-gtk3" -?> doIgnore
     , className =? "zenity" -?> doCenterFloat
+    , className =? "org.gnome.clocks" -?> doCenterFloat
     , isDialog -?> doCenterFloat
     , isFullscreen -?> doFullFloat
     , resource =? "Toolkit" <||> resource =? "Browser" -?> doFloat
