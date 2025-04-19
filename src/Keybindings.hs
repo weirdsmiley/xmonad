@@ -140,7 +140,7 @@ layoutChords modm = [((modm, xK_space), sendMessage NextLayout)]
 -- mod-shift-[1..9], Move client to workspace N
 workspaceChords conf@XConfig {XMonad.modMask = modm} =
   [ ((m .|. modm, k), windows $ f i)
-  | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+  | (i, k) <- zip (XMonad.workspaces conf) $ [xK_1 .. xK_9] ++ [xK_0]
   , (f, m) <-
       [ (W.greedyView, 0)
       , (W.shift, shiftMask)
