@@ -146,7 +146,7 @@ startupApps = do
   spawnOnce myPdfViewer
   spawnOnce "Discord"
   spawnOnce "Zulip"
-  spawnOnce "gimp"
+  -- spawnOnce "gimp"
   spawnOnce "zoom"
   spawnOnce "telegram-desktop"
   spawnOnce "gnome-boxes"
