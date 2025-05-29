@@ -29,10 +29,13 @@ module Theme.Theme
   , base0E
   , base07
   , base0F
+  , topBarTheme
   ) where
 
 import Prelude (String)
+import Theme.Font
 import Theme.Xresources (xprop)
+import XMonad.Layout.NoFrillsDecoration
 
 basebg, basefg, basecr, base00, base08, base01, base09, base02, base0A, base03, base0B, base04, base0C, base05, base0D, base06, base0E, base07, base0F ::
      String
@@ -73,3 +76,22 @@ base0E = xprop "*.color14"
 base07 = xprop "*.color7"
 
 base0F = xprop "*.color15"
+
+------------------------------------------------------------------------
+-- this is a "fake title" used as a highlight bar in lieu of full borders
+-- (I find this a cleaner and less visually intrusive solution)
+-- ack:
+-- https://github.com/altercation/dotfiles-tilingwm/blob/31e23a75eebdedbc4336e7826800586617d7d27d/.xmonad/xmonad.hs#L519
+topBarTheme =
+  def
+    { fontName = "xft:Hack:style=Bold:pixelsize=9"
+    , inactiveBorderColor = basebg
+    , inactiveColor = basebg
+    , inactiveTextColor = base03
+    , activeBorderColor = base04
+    , activeColor = base04
+    , activeTextColor = basebg
+    , urgentBorderColor = base01
+    , urgentTextColor = base03
+    , decoHeight = 10
+    }

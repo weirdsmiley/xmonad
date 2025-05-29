@@ -34,54 +34,6 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.WindowNavigation
 
-------------------------------------------------------------------------
--- Tab theme
-myTabConfig :: Theme
-myTabConfig =
-  def
-    { activeColor = base08
-    , activeBorderColor = base08
-    , activeTextColor = basefg
-    , activeBorderWidth = 0
-    , inactiveColor = base00
-    , inactiveBorderColor = basebg
-    , inactiveTextColor = base07
-    , inactiveBorderWidth = 2
-    , fontName = myFont
-    , decoHeight = 30
-    , decoWidth = maxBound
-    }
-
-blue = "#268bd2"
-
-yellow = "#b58900"
-
-red = "#dc322f"
-
-active = blue
-
-activeWarn = red
-
-topbar = 10
-
--- this is a "fake title" used as a highlight bar in lieu of full borders
--- (I find this a cleaner and less visually intrusive solution)
--- ack:
--- https://github.com/altercation/dotfiles-tilingwm/blob/31e23a75eebdedbc4336e7826800586617d7d27d/.xmonad/xmonad.hs#L519
-topBarTheme =
-  def
-    { fontName = "xft:Hack:style=Bold:pixelsize=9"
-    , inactiveBorderColor = basebg
-    , inactiveColor = basebg
-    , inactiveTextColor = base03
-    , activeBorderColor = active
-    , activeColor = active
-    , activeTextColor = basebg
-    , urgentBorderColor = red
-    , urgentTextColor = yellow
-    , decoHeight = topbar
-    }
-
 myLayout =
   mkToggle (NOBORDERS ?? NBFULL ?? EOT) . avoidStruts . lessBorders Never
     $ boringWindows
