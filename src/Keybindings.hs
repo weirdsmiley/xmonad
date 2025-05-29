@@ -20,7 +20,6 @@ import XMonad.Actions.CopyWindow (kill1)
 import XMonad.Actions.CycleWS
 import qualified XMonad.Actions.FlexibleResize as Flex
 import XMonad.Actions.GroupNavigation
-import XMonad.Actions.MostRecentlyUsed
 import XMonad.Actions.NoBorders (toggleBorder)
 import XMonad.Actions.PerWindowKeys
 import XMonad.Actions.Promote (promote)
@@ -108,8 +107,7 @@ focusChords modm =
   , ((modm, xK_s), promote) -- Swap focused window with master
   -- TODO: Focus to most recent window
   -- , ((modm, xK_Tab), moveTo Next nonEmptyNSP)
-  -- , ((modm, xK_Tab), windows W.focusDown)
-  , ((modm, xK_Tab), mostRecentlyUsed [xK_Alt_L, xK_Alt_R] xK_Tab)
+  , ((modm, xK_Tab), windows W.focusDown)
   -- FIXME: Jump to windows in recently-used order
   , ((modm .|. controlMask, xK_Right), nextMatch Forward (className =? ""))
   , ((modm .|. controlMask, xK_Left), nextMatch Backward (className =? ""))
