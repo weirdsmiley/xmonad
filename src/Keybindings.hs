@@ -265,6 +265,9 @@ notificationChords modm =
     , ( (shiftMask, xK_c)
       , "delete all notifications from history"
       , safeSpawn myNotifHandler ["history-clear"])
+    , ( (0, xK_t)
+      , "toggle notifications"
+      , safeSpawn myNotifHandler ["set-paused", "toggle"])
     ]
 
 --------------------------------------------------------------------------------
