@@ -37,10 +37,11 @@ getTrack = do
   player <- getRunningPlayer
   case player of
     Just p ->
-      readProcess myMusicCtrl ["-p", p, "metadata", "title"] "" >>= \x ->
+      runProcessWithInput myMusicCtrl ["-p", p, "metadata", "title"] "" >>= \x ->
         return (trim x)
     Nothing ->
-      readProcess myMusicCtrl ["metadata", "title"] "" >>= \x -> return (trim x)
+      runProcessWithInput myMusicCtrl ["metadata", "title"] "" >>= \x ->
+        return (trim x)
 
 -- Returns the album of track that is being played.
 getAlbum :: IO String
