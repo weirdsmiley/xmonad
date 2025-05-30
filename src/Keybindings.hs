@@ -39,7 +39,7 @@ import XMonad.Util.NamedScratchpad
   , scratchpadWorkspaceTag
   )
 import XMonad.Util.Paste (sendKey)
-import XMonad.Util.Run (runProcessWithInput, safeSpawn, unsafeSpawn)
+import XMonad.Util.Run
 
 --------------------------------------------------------------------------------
 -- This takes in a major key and a list of subkeys with their descriptions (what
@@ -283,7 +283,13 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         , confirmPrompt myXPConfig "Quit" $ io exitSuccess -- Quit XMonad
          )
       -- Restart XMonad
-      , ((modm, xK_q), unsafeSpawn "xmonad --recompile; xmonad --restart")
+      , ( (modm, xK_q)
+        -- , unsafeSpawn
+        --     "xmonad --recompile; pkill -9 xmobar; xmonad --restart; ~/.local/bin/xmobar &")
+        , safeSpawn "xmonad" ["--recompile"]
+            >> safeSpawn "pkill" ["-9", "xmobar"]
+            >> safeSpawn "xmonad" ["--restart"]
+            >> unsafeSpawn "~/.local/bin/xmobar &")
       -- Show help page
       , ( (modm .|. shiftMask, xK_slash)
         , unsafeSpawn
