@@ -1,0 +1,30 @@
+/* XPM */
+static char *logo[] = {
+/* columns rows colors chars-per-pixel */
+"17 12 12 1 ",
+"  c None",
+". c #453962",
+"X c #453A62",
+"o c #453B62",
+"O c #463A63",
+"+ c #5E5085",
+"@ c #5E5086",
+"# c #5F5086",
+"$ c #5F5087",
+"% c #8F4E8A",
+"& c #8F4E8B",
+"* c #8F4F8B",
+/* pixels */
+"ooo @@@          ",
+" ooo @@@         ",
+"  ooo @@@        ",
+"  ooo @@@        ",
+"   ooo @@@ &&&&&&",
+"    ooo @@@ &&&&&",
+"    ooo @@@      ",
+"   ooo @@@@@ &&&&",
+"  ooo @@@@@@@ &&&",
+"  ooo @@@ @@@    ",
+" ooo @@@   @@@   ",
+"ooo @@@     @@@  "
+};

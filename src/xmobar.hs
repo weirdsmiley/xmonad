@@ -1,5 +1,6 @@
 import Plugins.Bluetooth
 import Plugins.Pomodoro
+import Plugins.Soundtrack
 import Theme.Font
 import Xmobar
 
@@ -103,7 +104,7 @@ config =
                 10
         , Run
             $ DynNetwork
-                [ "--template"
+                [ "-t"
                 , "<fc=#ff79c6><fn=2>\xf05a9</fn>  <dev></fc> ↓<rx> ↑<tx>"
                 , "-L"
                 , "0"
@@ -147,9 +148,85 @@ config =
                 1
         , Run
             $ Uptime ["-t", "<fc=#ff79c6><days> <hours></fc>", "-S", "True"] 10
+        , Run
+            $ Soundtrack
+                [ "-t"
+                , "<fn=4><fc=lightgreen>\xec1b  <title> - <artist></fc></fn>"
+                ]
+                1
+        , Run
+            $ Memory
+                [ "-t"
+                , "<fc=#ff79c6><fn=2>\xf035b</fn></fc>  <usedratio>% (<used>G)"
+                , "-d"
+                , "1"
+                , "--"
+                , "--scale"
+                , "1024"
+                ]
+                10
+        , Run
+            $ DiskU
+                [("/", "<fc=#ff79c6><fn=1>\xf1c0</fn></fc> <free>/<size>")]
+                ["-L", "50", "-H", "900", "-m", "1", "-p", "3"]
+                20
+        , Run
+            $ MultiCpu
+                [ "-t"
+                , "<fc=#ff79c6><fn=2>\xf4bc</fn></fc>   <total>%"
+                , "--Low"
+                , "10" -- units: %
+                , "--High"
+                , "90" -- units: %
+                , "--low"
+                , "white"
+                , "--normal"
+                , "yellow"
+                , "--high"
+                , "#ffcccb"
+                ]
+                20
+        , Run
+            $ MultiCoreTemp
+                [ "-t"
+                , "<avg>°C"
+                , "-L"
+                , "40"
+                , "-H"
+                , "85"
+                , "-l"
+                , "#21fdff"
+                , "-n"
+                , "white"
+                , "-h"
+                , "red"
+                , "--"
+                , "--mintemp"
+                , "20"
+                , "--maxtemp"
+                , "100"
+                ]
+                50
+        , Run $ Kbd []
+        , Run
+            $ CpuFreq
+                [ "-t"
+                , "<cpu0> GHz"
+                , "-L"
+                , "0"
+                , "-H"
+                , "5"
+                , "-l"
+                , "lightblue"
+                , "-n"
+                , "white"
+                , "-h"
+                , "orange"
+                ]
+                50
         ]
     , template =
-        "<hspace=10/>%pomodoro% %uptime%  %XMonadLog% }{ %dynnetwork% %bluetooth%  %default:Master%  %VIDP%  %date%<hspace=10/>"
+        "<hspace=10/><icon=Haskell.xpm/> %XMonadLog%  %soundtrack% }{ %dynnetwork%  %bluetooth%  %default:Master%  %multicpu% %cpufreq% %multicoretemp%  %memory%  %disku%  %VIDP%  %date%<hspace=10/>"
     , alignSep = "}{"
     }
 
