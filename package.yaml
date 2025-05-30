@@ -59,8 +59,8 @@ executables:
     dependencies:
       - xmobar
     ghc-options: -rtsopts -threaded -with-rtsopts=-N
-  xmobar-bottom:
-    main: xmobar-bottom.hs
-    dependencies:
-      - xmobar
-    ghc-options: -rtsopts -threaded -with-rtsopts=-N
+  # xmobar-bottom:
+  #   main: xmobar-bottom.hs
+  #   dependencies:
+  #     - xmobar
+  #   ghc-options: -rtsopts -threaded -with-rtsopts=-N

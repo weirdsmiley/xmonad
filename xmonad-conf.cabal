@@ -1,6 +1,6 @@
 cabal-version: 2.2
 
--- This file has been generated from package.yaml by hpack version 0.37.0.
+-- This file has been generated from package.yaml by hpack version 0.38.0.
 --
 -- see: https://github.com/sol/hpack
 
@@ -25,35 +25,6 @@ source-repository head
 
 executable xmobar
   main-is: xmobar.hs
-  other-modules:
-      Keybindings
-      Layout
-      Plugins.Bluetooth
-      Plugins.Pomodoro
-      Plugins.Soundtrack
-      Preferences
-      Theme.Font
-      Theme.Theme
-      Theme.Xresources
-      Workspaces
-      Paths_xmonad_conf
-  autogen-modules:
-      Paths_xmonad_conf
-  hs-source-dirs:
-      src
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-signatures -Wno-unused-imports -Wno-unused-top-binds -Wno-unused-local-binds -Wno-incomplete-uni-patterns -Wno-type-defaults -rtsopts -threaded -with-rtsopts=-N
-  build-depends:
-      X11
-    , base >=4.7 && <5
-    , containers
-    , process
-    , xmobar
-    , xmonad
-    , xmonad-contrib
-  default-language: Haskell2010
-
-executable xmobar-bottom
-  main-is: xmobar-bottom.hs
   other-modules:
       Keybindings
       Layout
