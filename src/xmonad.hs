@@ -256,7 +256,4 @@ main =
     . ewmh
     . docks
     . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey
-    . withEasySB
-        (statusBarProp "xmobar-bottom" (pure myXmobarPP))
-        defToggleStrutsKey
     $ myConfig

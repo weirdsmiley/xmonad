@@ -125,8 +125,6 @@ nightLight = "redshift -O 2600"
 
 xmobar = "~/.local/bin/xmobar"
 
-bottombar = "~/.local/bin/xmobar-bottom"
-
 myNotifHandler = "dunstctl"
 
 -- Applications to boot at startup. They are only spawned once.
@@ -138,7 +136,6 @@ startupApps = do
   spawnOnce "xrdb -merge /home/manas/.Xresources"
   spawnOnce nightLight
   spawnOnce Preferences.xmobar
-  spawnOnce Preferences.bottombar
   spawnOnce myCodeSprintTerm
   spawnOnce myWritingTerm
   spawnOnce myResearchTerm
