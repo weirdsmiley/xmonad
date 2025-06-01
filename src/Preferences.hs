@@ -212,6 +212,7 @@ myManageHook =
     , className =? "ibus-ui-gtk3" -?> doIgnore
     , className =? "zenity" -?> doCenterFloat
     , className =? "org.gnome.clocks" -?> doCenterFloat
+    , className =? "pavucontrol" -?> doCenterFloat
     , isDialog -?> doCenterFloat
     , isFullscreen -?> doFullFloat
     , resource =? "Toolkit" <||> resource =? "Browser" -?> doFloat

@@ -201,6 +201,9 @@ soundChords modm =
     , ( (0, xK_l)
       , "mute volume"
       , safeSpawn "pactl" ["set-sink-mute", "@DEFAULT_SINK@", "toggle"])
+    , ( (0, xK_o)
+      , "pavucontrol"
+      , safeSpawn "env" ["GTK_THEME=Adwaita:dark", "pavucontrol"])
   -- , ( (mod4Mask, xF86XK_AudioMute)
   --   , safeSpawn "pactl" ["set-source-mute", "@DEFAULT_SOURCE@", "toggle"])
   -- , ( (mod4Mask, xF86XK_AudioRaiseVolume)
