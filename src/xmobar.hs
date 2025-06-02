@@ -153,7 +153,7 @@ config =
                 [ "-t"
                 , "<fn=4><fc=lightgreen>\xec1b  <title> - <artist></fc></fn>"
                 ]
-                1
+                10
         , Run
             $ Memory
                 [ "-t"
