@@ -25,10 +25,10 @@ getArtist = do
   player <- getRunningPlayer
   case player of
     Just p ->
-      readProcess myMusicCtrl ["-p", p, "metadata", "artist"] "" >>= \x ->
+      runProcessWithInput myMusicCtrl ["-p", p, "metadata", "artist"] "" >>= \x ->
         return (trim x)
     Nothing ->
-      readProcess myMusicCtrl ["metadata", "artist"] "" >>= \x ->
+      runProcessWithInput myMusicCtrl ["metadata", "artist"] "" >>= \x ->
         return (trim x)
 
 -- Returns the title track that is being played.
@@ -49,10 +49,11 @@ getAlbum = do
   player <- getRunningPlayer
   case player of
     Just p ->
-      readProcess myMusicCtrl ["-p", p, "metadata", "album"] "" >>= \x ->
+      runProcessWithInput myMusicCtrl ["-p", p, "metadata", "album"] "" >>= \x ->
         return (trim x)
     Nothing ->
-      readProcess myMusicCtrl ["metadata", "album"] "" >>= \x -> return (trim x)
+      runProcessWithInput myMusicCtrl ["metadata", "album"] "" >>= \x ->
+        return (trim x)
 
 splitOn sep str = (before, after)
   where
@@ -62,7 +63,7 @@ splitOn sep str = (before, after)
 getRunningPlayer :: IO (Maybe String)
 getRunningPlayer = do
   statuses <-
-    readProcess
+    runProcessWithInput
       myMusicCtrl
       ["--all-players", "-f", "\"{{playerName}}:{{status}}\"", "metadata"]
       "" >>= \x -> return (lines x)
