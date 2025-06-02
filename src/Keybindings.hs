@@ -204,6 +204,9 @@ soundChords modm =
     , ( (0, xK_o)
       , "pavucontrol"
       , safeSpawn "env" ["GTK_THEME=Adwaita:dark", "pavucontrol"])
+    , ( (0, xK_b)
+      , "bluetooth manager"
+      , safeSpawn "env" ["GTK_THEME=Adwaita:dark", "blueman-manager"])
   -- , ( (mod4Mask, xF86XK_AudioMute)
   --   , safeSpawn "pactl" ["set-source-mute", "@DEFAULT_SOURCE@", "toggle"])
   -- , ( (mod4Mask, xF86XK_AudioRaiseVolume)
