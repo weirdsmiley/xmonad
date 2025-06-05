@@ -139,6 +139,8 @@ startupApps = do
   spawnOnce $ "feh --no-fehbg --bg-scale " ++ myWallpaper
   spawnOnce "picom --config /home/manas/.config/picom/picom.conf"
   spawnOnce "xrdb -merge /home/manas/.Xresources"
+  spawnOnce "setxkbmap -option ctrl:nocaps"
+  spawnOnce "xcape -e 'Control_L=Escape' -t 1000"
   spawnOnce nightLight
   spawnOnce Preferences.xmobar
   spawnOnce myCodeSprintTerm
@@ -150,7 +152,8 @@ startupApps = do
   spawnOnce "Zulip"
   -- spawnOnce "gimp"
   -- spawnOnce "zoom"
-  -- spawnOnce "telegram-desktop"
+  spawnOnce "telegram-desktop"
+  spawnOnce "signal-desktop"
   spawnOnce "gnome-boxes"
   spawnOnce "zotero"
 
@@ -200,6 +203,7 @@ myManageHook =
     , className =? "discord" -?> doShift (myWorkspaces !! 5)
     , className =? "Zulip" -?> doShift (myWorkspaces !! 5)
     , className =? "TelegramDesktop" -?> doShift (myWorkspaces !! 6)
+    , className =? "Signal" -?> doShift (myWorkspaces !! 6)
     , className =? "steam" -?> doShift (myWorkspaces !! 7)
     , className =? "Gimp" -?> doShift (myWorkspaces !! 7)
     , className =? "qemu" -?> doShift (myWorkspaces !! 8)
