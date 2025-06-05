@@ -59,17 +59,22 @@ myNamedTerminal xs = myTerminal ++ " --title " ++ xs
 -- itself.
 mySessionedTerminal sess = myTerminal ++ " --session " ++ sess
 
+myCustomTerminals title session =
+  myTerminal ++ " --title '" ++ title ++ "' --session '" ++ session ++ "'"
+
 myTerminal, myCodeSprintTerm, myWritingTerm, myResearchTerm, myBrowser, myPdfViewer, myWallpaper ::
      String
 -- Default terminal
 myTerminal = "kitty"
 
 -- My custom terminal pads
-myCodeSprintTerm = mySessionedTerminal "~/.config/kitty/sessions/codesprint"
+myCodeSprintTerm =
+  myCustomTerminals "CodeSprint" "~/.config/kitty/sessions/codesprint"
 
-myWritingTerm = mySessionedTerminal "~/.config/kitty/sessions/writings"
+myWritingTerm = myCustomTerminals "Writings" "~/.config/kitty/sessions/writings"
 
-myResearchTerm = mySessionedTerminal "~/.config/kitty/sessions/research"
+myResearchTerm =
+  myCustomTerminals "Research" "~/.config/kitty/sessions/research"
 
 myBrowser = "firefox"
 
