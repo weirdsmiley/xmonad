@@ -18,7 +18,7 @@ module Preferences
   , myXMonadLogAppLength
   , myFocusedBorderColor
   , myNormalBorderColor
-  , altMask
+  , myModKey
   , myBorderWidth
   , myClickJustFocuses
   , myFocusFollowsMouse
@@ -119,10 +119,12 @@ myGaps = 5
 -- ("right alt"), which does not conflict with emacs keybindings. The
 -- "windows key" is usually mod4Mask.
 --
-myModMask, altMask :: KeyMask
-myModMask = mod4Mask
+altKey = mod1Mask
 
-altMask = mod1Mask
+metaKey = mod4Mask
+
+myModKey :: KeyMask
+myModKey = altKey
 
 myWallpaper = "~/.config/xmonad/preview/wallpaper.jpg"
 
