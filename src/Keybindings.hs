@@ -316,10 +316,11 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
                  "env"
                  [ "XSECURELOCK_NO_COMPOSITE=1"
                  , "XSECURELOCK_AUTH_CURSOR_BLINK=0"
-                 , "XSECURELOCK_BACKGROUND_COLOR=#2c0843"
-                 , "XSECURELOCK_AUTH_BACKGROUND_COLOR=#611095"
+                 , "XSECURELOCK_AUTH_FOREGROUND_COLOR=#677c63"
+                 , "XSECURELOCK_AUTH_BACKGROUND_COLOR=#b1d2ab"
                  , "XSECURELOCK_PASSWORD_PROMPT=hidden"
                  , "XSECURELOCK_SHOW_DATETIME=1"
+                 , "XSECURELOCK_SAVER=saver_mpv"
                  , "xsecurelock"
                  ])
       -- Open Kanboard session
