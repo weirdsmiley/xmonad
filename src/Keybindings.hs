@@ -320,6 +320,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
                  , "XSECURELOCK_AUTH_BACKGROUND_COLOR=#b1d2ab"
                  , "XSECURELOCK_PASSWORD_PROMPT=hidden"
                  , "XSECURELOCK_SHOW_DATETIME=1"
+                 , "XSECURELOCK_DATETIME_FORMAT=%B %d, %Y"
                  , "XSECURELOCK_SAVER=saver_mpv"
                  , "xsecurelock"
                  ])
