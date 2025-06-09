@@ -325,18 +325,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
                  , "xsecurelock"
                  ])
       -- Open Kanboard session
-      , ( (modm, xK_x)
-        , unGrab
-            *> safeSpawn
-                 myBrowser
-                 [ "--class"
-                 , myKanboardProfile
-                 , "--new-window"
-                 , "--kiosk"
-                 , "-P"
-                 , myKanboardProfile
-                 , myKanboardUrl
-                 ])
+      , ((modm, xK_x), namedScratchpadAction myScratchpads "Kanboard")
       -- Toggle a window floating in center
       -- TODO: This should be mapped to modm+f
       -- , ((modm, xK_p), withFocused toggleFloat)

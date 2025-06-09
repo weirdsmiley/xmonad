@@ -241,11 +241,23 @@ myManageHook =
 myScratchpads :: [NamedScratchpad]
 myScratchpads
                  -- run a terminal inside scratchpad
- = [NS "terminal" spawnTerm findTerm manageTerm]
+ =
+  [ NS "terminal" spawnTerm findTerm manageTerm
+  , NS "Kanboard" spawnKanboard (className =? "Kanboard") doFullFloat
+  ]
   where
     spawnTerm =
       myTerminal
         ++ " --class scratchpad --session ~/.config/kitty/sessions/xmonad-scratchpad"
+    spawnKanboard =
+      myBrowser
+        ++ " --class "
+        ++ myKanboardProfile
+        ++ " --new-window --kiosk -P "
+        ++ myKanboardProfile
+        ++ " '"
+        ++ myKanboardUrl
+        ++ "'"
     findTerm = className =? "scratchpad"
     manageTerm = customFloating $ W.RationalRect (1 / 6) (1 / 8) (2 / 3) (3 / 4)
 
