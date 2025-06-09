@@ -154,7 +154,7 @@ startupApps = do
   spawnOnce "Discord"
   spawnOnce "Zulip"
   -- spawnOnce "gimp"
-  -- spawnOnce "zoom"
+  spawnOnce "zoom"
   spawnOnce "telegram-desktop"
   spawnOnce "signal-desktop"
   spawnOnce "gnome-boxes"
