@@ -35,7 +35,6 @@ import Theme.Font
 import Workspaces
 import XMonad
 import XMonad.Actions.Commands
-import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageHelpers
 import qualified XMonad.StackSet as W
 import XMonad.Util.Cursor
@@ -213,7 +212,6 @@ myManageHook =
     , className =? "Org.gnome.Boxes" -?> doShift (myWorkspaces !! 8)
     , className =? "Gnome-pomodoro" -?> doFullFloat
     , className =? "Rhythmbox" -?> doCenterFloat
-    , stringProperty "WM_WINDOW_ROLE" =? "browser" -?> ewmhDesktopsManageHook
     , appName =? "blueman-manager" -?> doCenterFloat
     , appName =? "snapshot" -?> doCenterFloat
     , className =? "Gammastep-indicator" -?> doCenterFloat
