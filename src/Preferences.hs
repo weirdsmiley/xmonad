@@ -224,6 +224,8 @@ myManageHook =
     , className =? "zenity" -?> doCenterFloat
     , className =? "org.gnome.clocks" -?> doCenterFloat
     , className =? "org.gnome.Weather" -?> doCenterFloat
+    , className =? "feh" -?> doCenterFloat
+    , className =? "loupe" -?> doCenterFloat
     , title =? "GNOME Tweaks" -?> doCenterFloat
     , className =? "pavucontrol" -?> doCenterFloat
     , isDialog -?> doCenterFloat
