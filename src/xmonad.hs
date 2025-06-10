@@ -16,6 +16,7 @@ import Theme.Theme
 import Workspaces
 import XMonad
 import XMonad.Actions.CopyWindow
+import XMonad.Actions.MostRecentlyUsed
 import XMonad.Actions.NoBorders
 import XMonad.Actions.Promote
 import XMonad.Actions.Submap
@@ -252,6 +253,7 @@ myXmobarPP =
 main :: IO ()
 main =
   xmonad
+    . configureMRU -- Focus to most recently used window
     . ewmhFullscreen
     . ewmh
     . docks
