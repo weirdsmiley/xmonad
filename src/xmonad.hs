@@ -253,7 +253,7 @@ myXmobarPP =
 main :: IO ()
 main =
   xmonad
-    . configureMRU -- Focus to most recently used window
+    -- . configureMRU -- Focus to most recently used window
     . ewmhFullscreen
     . ewmh
     . docks
