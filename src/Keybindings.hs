@@ -327,9 +327,6 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
                  ])
       -- Open Kanboard session
       , ((modm, xK_x), namedScratchpadAction myScratchpads "Kanboard")
-      -- Toggle a window floating in center
-      -- TODO: This should be mapped to modm+f
-      -- , ((modm, xK_p), withFocused toggleFloat)
       -- Play/pause via headphones
       , ( (noModMask, xF86XK_AudioPause)
         , getRunningPlayer' >>= \player ->
