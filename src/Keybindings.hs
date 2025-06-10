@@ -111,9 +111,6 @@ focusChords modm =
   -- Move focus to most recently used window (this will work across workspaces,
   -- but also considers scratchpads)
   -- , ((modm, xK_Tab), mostRecentlyUsed [xK_Alt_L, xK_Alt_R] xK_Tab)
-  -- FIXME: Jump to windows in recently-used order
-  , ((modm .|. controlMask, xK_Right), nextMatch Forward (className =? ""))
-  , ((modm .|. controlMask, xK_Left), nextMatch Backward (className =? ""))
   ]
 
 --------------------------------------------------------------------------------
@@ -128,7 +125,8 @@ hiddenChords modm =
 --------------------------------------------------------------------------------
 resizeChords modm =
   [ ((modm .|. shiftMask, xK_l), sendMessage Expand) -- Expand master area
-  -- TODO: This will do the opposite in twoByThreeLayout kinds.
+  -- NOTE: This will do the opposite in twoByThreeLayout kinds, because one of
+  -- those layouts is Mirrored.
   , ((modm .|. shiftMask, xK_h), sendMessage Shrink) -- Shrink master area
   , ((modm, xK_t), withFocused $ windows . W.sink) -- Push floatings back to tiling
   , ((modm .|. shiftMask, xK_t), sinkAll) -- Push all floating windows back to tiling
@@ -305,7 +303,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
             ("GTK_THEME=Adwaita:dark zenity --width 600 --height 800 --list --title='XMonad Keybindings' --text='Default modifier (mod) key is 'alt'.' --column='Keymaps' --column='Description' \""
                ++ help
                ++ "\""))
-      -- Toggle fullscreen -- TODO: This won't work in set PerWorkspace hooks.
+      -- Toggle fullscreen
       , ((modm, xK_f), sendMessage $ Toggle NBFULL)
       -- Toggle gaps
       , ( (modm, xK_g)
@@ -430,7 +428,7 @@ help =
         , ("mod-space", "Bring up next available layout")
         , ("mod-shift-q", "Quit XMonad")
         , ("mod-? or mod-shift-/", "Open this help page")
-        , ("mod-f", "Toggle focused window fullscreen (TODO)")
+        , ("mod-f", "Toggle focused window fullscreen")
         , ("mod-g", "Toggle gaps")
         , ("mod-Enter", "Show/hide scratchpad")
         , ("mod-l", "Lock screen")
@@ -450,8 +448,8 @@ help =
         , ("mod-shift-h", "Shrink master area")
         , ("mod-t", "Push floating window back to tiling")
         , ("mod-shift-t", "Push all floating windows back to tiling")
-        , ("Workspace chords (TODO)\n---------------------------", "")
-        , ("m-mod-[1..9]", "Switch to nth workspace")
+        , ("Workspace chords\n---------------------------", "")
+        , ("mod-[1..9]", "Switch to nth workspace")
         , ("m-mod-key", "change xinerama")
         , ("win-tab", "Switch back to last workspace")
         , ("Sound chords\n--------------------", "")
