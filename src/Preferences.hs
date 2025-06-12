@@ -199,6 +199,7 @@ myManageHook =
     , title =? "Writings" -?> doShift (myWorkspaces !! 1)
     , className =? "sioyek" -?> doShift (myWorkspaces !! 1)
     , className =? "Zathura" -?> doShift (myWorkspaces !! 1)
+    , className =? "GStreamer" -?> doShift (myWorkspaces !! 1)
     , title =? "Research" -?> doShift (myWorkspaces !! 2)
     , className =? "Zotero" -?> doShift (myWorkspaces !! 2)
     , className =? "zoom" -?> doShift (myWorkspaces !! 4)
@@ -286,4 +287,6 @@ myCustomCommands = do
     , ("savereason", unsafeSpawn "/home/manas/workspace/scripts/save-reason.sh")
     , ("screenkey", unsafeSpawn "screenkey")
     , ("screenkey-off", unsafeSpawn "pkill -9 screenkey")
+    , ("ipadmirror", unsafeSpawn "uxplay -n anony -nh")
+    , ("mirroroff", unsafeSpawn "pkill -9 uxplay")
     ]
