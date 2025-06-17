@@ -228,6 +228,7 @@ myManageHook =
     , className =? "feh" -?> doCenterFloat
     , className =? "loupe" -?> doCenterFloat
     , title =? "GNOME Tweaks" -?> doCenterFloat
+    , title =? "alsamixer" -?> doCenterFloat
     , className =? "pavucontrol" -?> doCenterFloat
     , isDialog -?> doCenterFloat
     , isFullscreen -?> doFullFloat

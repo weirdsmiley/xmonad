@@ -180,7 +180,10 @@ applicationChords modm =
 soundChords modm =
   makeChords
     (modm, xK_a)
-    [ ( (0, xK_m)
+    [ ( (0, xK_a)
+      , "alsamixer"
+      , spawn $ myNamedTerminal "alsamixer" ++ " -e alsamixer")
+    , ( (0, xK_m)
       , "play/pause music"
       , getRunningPlayer' >>= \player ->
           spawn $ myMusicCtrl ++ " -p \"" ++ player ++ "\" play-pause")
