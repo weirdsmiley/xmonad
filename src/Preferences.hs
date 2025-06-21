@@ -226,7 +226,8 @@ myManageHook =
     , className =? "org.gnome.clocks" -?> doCenterFloat
     , className =? "org.gnome.Weather" -?> doCenterFloat
     , className =? "feh" -?> doCenterFloat
-    , className =? "loupe" -?> doCenterFloat
+    , className =? "loupe" -?> customFloating
+        $ W.RationalRect (1 / 6) (1 / 8) (2 / 3) (3 / 4)
     , title =? "GNOME Tweaks" -?> doCenterFloat
     , title =? "alsamixer" -?> doCenterFloat
     , className =? "pavucontrol" -?> doCenterFloat
