@@ -59,8 +59,8 @@ myNamedTerminal xs = myTerminal ++ " --title " ++ xs
 -- itself.
 mySessionedTerminal sess = myTerminal ++ " --session " ++ sess
 
-myCustomTerminals title session =
-  myTerminal ++ " --title '" ++ title ++ "' --session '" ++ session ++ "'"
+myCustomTerminals _title session =
+  myTerminal ++ " --title '" ++ _title ++ "' --session '" ++ session ++ "'"
 
 myTerminal, myCodeSprintTerm, myWritingTerm, myResearchTerm, myBrowser, myPdfViewer, myWallpaper ::
      String
