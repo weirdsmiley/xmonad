@@ -9,7 +9,6 @@ import Control.Monad (liftM2, unless, when)
 import Data.Monoid (All)
 import Keybindings
 import Layout
-import Plugins.Soundtrack (getArtist)
 import Preferences
 import System.Exit (exitSuccess)
 import Theme.Theme
