@@ -84,7 +84,15 @@ fadeHook
 
 -- Main logHook function
 myLogHook :: X ()
-myLogHook = refocusLastLogHook >> nsHideOnFocusLoss myScratchpads >> fadeHook
+myLogHook =
+  refocusLastLogHook >> nsHideOnFocusLoss onlyCertainScratchpads >> fadeHook
+  where
+    -- Anki contains more windows which may be used, for e.g., while creating a
+    -- new deck of cards one may open up a new window which will otherwise hide
+    -- the previous Anki window because focus was lost. This filter will ensure
+    -- that all windows remain visible until specifically closed.
+    onlyCertainScratchpads =
+      filter (\(NS _n _ _ _) -> _n /= "Anki") myScratchpads
 
 -- Status bars and logging
 -- Perform an arbitrary action on each internal state change or X event.

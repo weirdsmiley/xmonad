@@ -330,6 +330,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
                  ])
       -- Open Kanboard session
       , ((modm, xK_x), namedScratchpadAction myScratchpads "Kanboard")
+      , ((modm, xK_z), namedScratchpadAction myScratchpads "Anki")
       -- Play/pause via headphones
       , ( (noModMask, xF86XK_AudioPause)
         , getRunningPlayer' >>= \player ->

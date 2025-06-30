@@ -218,6 +218,7 @@ myManageHook =
     , className =? "Gammastep-indicator" -?> doCenterFloat
     , className =? "Ibus-extension-gtk3" -?> doFloat
     , className =? "Kanboard" -?> doFullFloat
+    , className =? "Anki" -?> doFullFloat
     , className =? "MPlayer" -?> doFloat
     , className =? "St-float" -?> doFloat
     , className =? "gnome-calculator" -?> doCenterFloat
@@ -249,6 +250,7 @@ myScratchpads
  =
   [ NS "terminal" spawnTerm findTerm manageTerm
   , NS "Kanboard" spawnKanboard (className =? "Kanboard") doFullFloat
+  , NS "Anki" spawnAnki (className =? "Anki") doFullFloat
   ]
   where
     spawnTerm =
@@ -263,6 +265,7 @@ myScratchpads
         ++ " '"
         ++ myKanboardUrl
         ++ "'"
+    spawnAnki = "anki"
     findTerm = className =? "scratchpad"
     manageTerm = customFloating $ W.RationalRect (1 / 6) (1 / 8) (2 / 3) (3 / 4)
 
