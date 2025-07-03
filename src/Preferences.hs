@@ -150,14 +150,14 @@ startupApps = do
   spawnOnce myResearchTerm
   spawnOnce myBrowser
   spawnOnce myPdfViewer
-  spawnOnce "Discord"
-  spawnOnce "Zulip"
-  -- spawnOnce "gimp"
-  spawnOnce "zoom"
-  spawnOnce "telegram-desktop"
-  spawnOnce "signal-desktop"
-  spawnOnce "gnome-boxes"
   spawnOnce "zotero"
+  -- spawnOnce "Discord"
+  -- spawnOnce "Zulip"
+  -- spawnOnce "gimp"
+  -- spawnOnce "zoom"
+  -- spawnOnce "telegram-desktop"
+  -- spawnOnce "signal-desktop"
+  -- spawnOnce "gnome-boxes"
 
 -- Apply any configurations only on current workspace and not on all workspaces.
 -- If you have a multi-monitor setup, you may want to specifically make
