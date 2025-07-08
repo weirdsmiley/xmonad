@@ -34,6 +34,7 @@ import XMonad.Layout.Spacing
 import XMonad.Prompt
 import XMonad.Prompt.ConfirmPrompt (confirmPrompt)
 import XMonad.Prompt.FuzzyMatch
+import XMonad.Prompt.Ssh
 import qualified XMonad.StackSet as W
 import XMonad.Util.NamedScratchpad
   ( namedScratchpadAction
@@ -285,6 +286,18 @@ notificationChords modm =
 customChords modm = [((modm, xK_y), myCustomCommands >>= runCommand)]
 
 --------------------------------------------------------------------------------
+-- XMonad Prompt chords
+-- TODO: How can I run my own builder command instead of EDITOR? So if sshPrompt
+-- runs 'EDITOR <keyword>'
+-- I would like to run: 'CUSTOM_BUILDER <keyword>'
+-- This will be helpful in running things under tmux.
+promptChords modm =
+  makeChords
+    (modm, xK_o) -- TODO: Maybe a better keystroke?
+                 -- 'p' would be better but pomodoro?
+    [((0, xK_s), "ssh prompt", sshPrompt def)]
+
+--------------------------------------------------------------------------------
 -- All keybindings
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@XConfig {XMonad.modMask = modm} =
@@ -351,6 +364,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         -- ++ copyPasteChords -- TODO
         ++ notificationChords modm
         ++ customChords modm
+        ++ promptChords modm
   where
     nonNSP = ignoringWSs [scratchpadWorkspaceTag]
     nonEmptyNSP =
