@@ -220,6 +220,15 @@ soundChords modm =
   -- , ( (mod4Mask, xF86XK_AudioLowerVolume)
   --   , safeSpawn "pactl" ["set-source-volume", "@DEFAULT_SOURCE@", "-1%"])
     ]
+    ++
+      -- Play/pause via headphones
+     [ ( (noModMask, xF86XK_AudioPause)
+       , getRunningPlayer' >>= \player ->
+           spawn $ myMusicCtrl ++ " -p \"" ++ player ++ "\" pause")
+     , ( (noModMask, xF86XK_AudioPlay)
+       , getRunningPlayer' >>= \player ->
+           spawn $ myMusicCtrl ++ " -p \"" ++ player ++ "\" play")
+     ]
 
 --------------------------------------------------------------------------------
 -- Pomodoro session chords
@@ -344,13 +353,6 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
       -- Open Kanboard session
       , ((modm, xK_x), namedScratchpadAction myScratchpads "Kanboard")
       , ((modm, xK_z), namedScratchpadAction myScratchpads "Anki")
-      -- Play/pause via headphones
-      , ( (noModMask, xF86XK_AudioPause)
-        , getRunningPlayer' >>= \player ->
-            spawn $ myMusicCtrl ++ " -p \"" ++ player ++ "\" pause")
-      , ( (noModMask, xF86XK_AudioPlay)
-        , getRunningPlayer' >>= \player ->
-            spawn $ myMusicCtrl ++ " -p \"" ++ player ++ "\" play")
       ]
         ++ layoutChords modm
         ++ resizeChords modm
@@ -358,7 +360,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         -- ++ hiddenChords modm
         ++ screenshotChords
         ++ applicationChords modm
-        ++ [last $ soundChords modm]
+        ++ soundChords modm
         ++ workspaceChords conf
         ++ [last $ pomodoroChords modm]
         -- ++ copyPasteChords -- TODO
