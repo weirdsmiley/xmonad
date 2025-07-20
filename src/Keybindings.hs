@@ -381,8 +381,8 @@ myXPConfig =
     , fgColor = basebg
     , bgHLight = base04
     , fgHLight = base00
-    , borderColor = base00
-    , promptBorderWidth = 1
+    -- , borderColor = base00
+    , promptBorderWidth = 0
     , promptKeymap = defaultXPKeymap
     , position = Bottom
     -- , position = CenteredAt {xpCenterY = 0.3, xpWidth = 0.3}
