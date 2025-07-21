@@ -16,6 +16,7 @@ import Theme.Theme
 import Workspaces
 import XMonad
 import XMonad.Actions.Commands
+import XMonad.Actions.CopyWindow (copyToAll, killAllOtherCopies)
 import XMonad.Actions.CopyWindow (kill1)
 import XMonad.Actions.CycleWS
 import qualified XMonad.Actions.FlexibleResize as Flex
@@ -35,6 +36,7 @@ import XMonad.Prompt
 import XMonad.Prompt.ConfirmPrompt (confirmPrompt)
 import XMonad.Prompt.FuzzyMatch
 import XMonad.Prompt.Ssh
+import qualified XMonad.StackSet as W
 import qualified XMonad.StackSet as W
 import XMonad.Util.NamedScratchpad
   ( namedScratchpadAction
@@ -307,6 +309,14 @@ promptChords modm =
     [((0, xK_s), "ssh prompt", sshPrompt def)]
 
 --------------------------------------------------------------------------------
+-- Pin/unpin focused window to every workspace
+pinningChords :: KeyMask -> [((KeyMask, KeySym), X ())]
+pinningChords modm =
+  [ ((modm .|. shiftMask, xK_p), windows copyToAll) -- Pin focused window to all
+  , ((modm .|. shiftMask, xK_u), killAllOtherCopies) -- Unpin focused window
+  ]
+
+--------------------------------------------------------------------------------
 -- All keybindings
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@XConfig {XMonad.modMask = modm} =
@@ -367,6 +377,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         ++ notificationChords modm
         ++ customChords modm
         ++ promptChords modm
+        ++ pinningChords modm
   where
     nonNSP = ignoringWSs [scratchpadWorkspaceTag]
     nonEmptyNSP =
