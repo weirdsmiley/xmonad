@@ -171,7 +171,7 @@ applyOnlyOnCurrentWS = True
 
 -- Amount by which to fade inactive windows on current workspace only.
 fadeAmount :: Rational
-fadeAmount = 0.2
+fadeAmount = 1.0
 
 -- Music controller tool
 myMusicCtrl = "playerctl"
