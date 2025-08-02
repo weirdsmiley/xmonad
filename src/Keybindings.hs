@@ -370,9 +370,9 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         -- ++ hiddenChords modm
         ++ screenshotChords
         ++ applicationChords modm
-        ++ soundChords modm
         ++ workspaceChords conf
-        ++ [last $ pomodoroChords modm]
+        ++ soundChords modm
+        ++ pomodoroChords modm
         -- ++ copyPasteChords -- TODO
         ++ notificationChords modm
         ++ customChords modm
@@ -461,25 +461,30 @@ help =
         , ("mod-Enter", "Show/hide scratchpad")
         , ("mod-l", "Lock screen")
         , ("mod-x", "Open kanban board")
+        -- screenshotChords
         , ("Screenshot chords\n---------------------------", "")
         , ("PrtSc", "Screenshots the entire workspace")
         , ("ctrl-PrtSc", "Screenshots focused application")
         , ("shift-PrtSc", "Interactively screenshot a rectangle")
+        -- focusChords
         , ("Focus chords\n-------------------", "")
         , ("mod-c", "Close focused application")
         , ("mod-k", "Focus on previous window")
         , ("mod-l", "Focus on next window")
         , ("mod-s", "Swap focused window with master")
         , ("mod-tab", "Focus on next window")
+        -- resizeChords
         , ("Resizing chords\n-----------------------", "")
         , ("mod-shift-l", "Expand master area")
         , ("mod-shift-h", "Shrink master area")
         , ("mod-t", "Push floating window back to tiling")
         , ("mod-shift-t", "Push all floating windows back to tiling")
+        -- workspaceChords
         , ("Workspace chords\n---------------------------", "")
         , ("mod-[1..9]", "Switch to nth workspace")
         , ("m-mod-key", "change xinerama")
         , ("win-tab", "Switch back to last workspace")
+        -- soundChords
         , ("Sound chords\n--------------------", "")
         , ("mod-a m", "Play/pause music")
         , ("mod-a n", "Forward to next track")
@@ -487,15 +492,29 @@ help =
         , ("mod-a k", "Increase volume by 1%")
         , ("mod-a j", "Decrease volume by 1%")
         , ("mod-a l", "Mute volume")
-        , ("Pomodoro chords\n---------------------", "")
+        -- pomodoroChords
+        , ("Pomodoro chords\n--------------------------", "")
         , ("mod-p n", "Start new 60 min session")
         , ("mod-p p", "Pause or resume an already running session")
         , ("mod-p s", "Skip this session or break")
+        -- copyPasteChords
         , ("Copy paste chords (TODO)\n---------------------------", "")
+        -- notificationChords
         , ("Notification chords\n----------------------------", "")
         , ("mod-n p", "Show previous notification")
         , ("mod-n c", "clear all notifications from screen")
         , ("mod-n shift-c", "delete all notifications from history")
+        -- customChords
+        , ("Custom chords\n----------------------", "")
+        , ("mod-y", "Run custom scripts via XPrompt")
+        -- promptChords
+        , ("XPrompt chords\n----------------------", "")
+        , ("mod-o s", "Launch ssh prompt")
+        -- pinningChords
+        , ("Pinning chords\n----------------------", "")
+        , ("mod-shift-p", "Pin current window to all workspaces")
+        , ("mod-shift-u", "Unpin current window from all workspaces")
+        -- myMouseBindings
         , ("Mouse bindings\n------------------------", "")
         , ("mod-leftmb", "Drag focused window to floating mode")
         , ("mod-rightmb", "Resize window by dragging")
