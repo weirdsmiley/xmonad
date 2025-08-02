@@ -1,6 +1,6 @@
 cabal-version: 2.2
 
--- This file has been generated from package.yaml by hpack version 0.38.0.
+-- This file has been generated from package.yaml by hpack version 0.37.0.
 --
 -- see: https://github.com/sol/hpack
 
@@ -44,9 +44,12 @@ executable xmobar
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-signatures -Wno-unused-imports -Wno-unused-top-binds -Wno-unused-local-binds -Wno-incomplete-uni-patterns -Wno-type-defaults -rtsopts -threaded -with-rtsopts=-N
   build-depends:
       X11
+    , async
     , base >=4.7 && <5
     , containers
+    , directory
     , process
+    , time
     , xmobar
     , xmonad
     , xmonad-contrib
@@ -73,9 +76,12 @@ executable xmonad
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-missing-signatures -Wno-unused-imports -Wno-unused-top-binds -Wno-unused-local-binds -Wno-incomplete-uni-patterns -Wno-type-defaults
   build-depends:
       X11
+    , async
     , base >=4.7 && <5
     , containers
+    , directory
     , process
+    , time
     , xmobar
     , xmonad
     , xmonad-contrib

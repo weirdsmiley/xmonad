@@ -35,7 +35,8 @@ config =
     , iconOffset = -1
     , commands =
         [ Run XMonadLog
-        , Run $ PomodoroSession Start
+        -- , Run $ PomodoroSession Start
+        , Run $ Pomodoro 90 5 15 "/tmp/pomodoro.ctrl"
         , Run
             $ Battery
                 [ "-t"
@@ -226,7 +227,7 @@ config =
                 50
         ]
     , template =
-        "<hspace=10/><icon=XMonad.xpm/> %XMonadLog% }{ %dynnetwork%  %bluetooth%  %default:Master%  %multicpu% %cpufreq% %multicoretemp%  %memory%  %disku%  %VIDP%  %date%<hspace=10/>"
+        "<hspace=10/><icon=XMonad.xpm/> %XMonadLog% %pomodoro% }{ %dynnetwork%  %bluetooth%  %default:Master%  %multicpu% %cpufreq% %multicoretemp%  %memory%  %disku%  %VIDP%  %date%<hspace=10/>"
     , alignSep = "}{"
     }
 

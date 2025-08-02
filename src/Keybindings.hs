@@ -239,9 +239,9 @@ pomodoroChords modm =
     (modm, xK_p)
     [ ( (0, xK_p)
       , "pause/resume pomodoro session"
-      , spawn $ myPomodoro ++ " --pause-resume")
-    , ((0, xK_n), "start 60 min session", spawn $ myPomodoro ++ " --start")
-    , ((0, xK_s), "skip this session/break", spawn $ myPomodoro ++ " --skip")
+      , spawn $ myPomodoro ++ " --pause-resume && echo 'toggle' > /tmp/pomodoro.ctrl")
+    , ((0, xK_n), "start 60 min session", spawn $ myPomodoro ++ " --start && echo 'start' > /tmp/pomodoro.ctrl")
+    , ((0, xK_s), "skip this session/break", spawn $ myPomodoro ++ " --skip && echo 'skip' > /tmp/pomodoro.ctrl")
     -- -- TODO: --extend requires a digit as arg. This requires additional
     -- -- effort.
     -- , ((0, xK_e), "extend this session", spawn $ myPomodoro ++ " --extend")
