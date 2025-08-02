@@ -3,7 +3,6 @@ import Plugins.Pomodoro
 import Plugins.Soundtrack
 import Theme.Font
 import Xmobar
-
 import System.Environment (getEnv)
 import System.IO.Unsafe (unsafeDupablePerformIO)
 
@@ -35,7 +34,6 @@ config =
     , iconOffset = -1
     , commands =
         [ Run XMonadLog
-        -- , Run $ PomodoroSession Start
         , Run $ Pomodoro 90 5 15 "/tmp/pomodoro.ctrl"
         , Run
             $ Battery
