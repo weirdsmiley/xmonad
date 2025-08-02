@@ -173,7 +173,7 @@ config =
         , Run
             $ MultiCpu
                 [ "-t"
-                , "<icon=AMD.xpm/>   <total>%"
+                , "<fc=#ff79c6><fn=2>\xf4bc</fn></fc>   <total>%"
                 , "--Low"
                 , "10" -- units: %
                 , "--High"
