@@ -239,9 +239,15 @@ pomodoroChords modm =
     (modm, xK_p)
     [ ( (0, xK_p)
       , "pause/resume pomodoro session"
-      , spawn $ myPomodoro ++ " --pause-resume && echo 'toggle' > /tmp/pomodoro.ctrl")
-    , ((0, xK_n), "start 60 min session", spawn $ myPomodoro ++ " --start && echo 'start' > /tmp/pomodoro.ctrl")
-    , ((0, xK_s), "skip this session/break", spawn $ myPomodoro ++ " --skip && echo 'skip' > /tmp/pomodoro.ctrl")
+      , spawn
+          $ myPomodoro
+              ++ " --pause-resume && echo 'toggle' > /tmp/pomodoro.ctrl")
+    , ( (0, xK_n)
+      , "start 60 min session"
+      , spawn $ myPomodoro ++ " --start && echo 'start' > /tmp/pomodoro.ctrl")
+    , ( (0, xK_s)
+      , "skip this session/break"
+      , spawn $ myPomodoro ++ " --skip && echo 'skip' > /tmp/pomodoro.ctrl")
     -- -- TODO: --extend requires a digit as arg. This requires additional
     -- -- effort.
     -- , ((0, xK_e), "extend this session", spawn $ myPomodoro ++ " --extend")
@@ -316,22 +322,51 @@ pinningChords modm =
   , ((modm .|. shiftMask, xK_u), killAllOtherCopies) -- Unpin focused window
   ]
 
+myXPControlConfig =
+  def
+    { font = "xft:Fira Code SemiBold:pixelsize=12"
+    , bgColor = base08
+    , fgColor = basefg
+    , bgHLight = base04
+    , fgHLight = base00
+    -- , borderColor = base00
+    , promptBorderWidth = 0
+    , promptKeymap = defaultXPKeymap
+    , position = CenteredAt {xpCenterY = 0.5, xpWidth = 1.0}
+    , alwaysHighlight = True -- Disables tab cycle
+    , height = 60
+    , maxComplRows = Just 1
+    , historySize = 1
+    , historyFilter = deleteAllDuplicates
+    , defaultText = " "
+    , showCompletionOnTab = False
+    , searchPredicate = fuzzyMatch
+    , sorter = fuzzySort
+    }
+
+controlChords :: X [(String, X ())]
+controlChords = do
+  return [(s, confirmPrompt myXPControlConfig s x) | (s, x) <- controls]
+  where
+    controls =
+      [ ("poweroff", spawn "systemctl poweroff")
+      , ("reboot", spawn "systemctl reboot")
+      , ("logout", io exitSuccess)
+      , ("suspend", spawn "systemctl suspend")
+      , ("hibernate", spawn "systemctl hibernate")
+      ]
+
 --------------------------------------------------------------------------------
 -- All keybindings
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@XConfig {XMonad.modMask = modm} =
   M.fromList
-    $ [ ( (modm .|. shiftMask, xK_q)
-        , confirmPrompt myXPConfig "Quit" $ io exitSuccess -- Quit XMonad
-         )
+    $ [ ((modm .|. shiftMask, xK_q), controlChords >>= runCommand)
       -- Restart XMonad
       , ( (modm, xK_q)
         -- , unsafeSpawn
         --     "xmonad --recompile; pkill -9 xmobar; xmonad --restart; ~/.local/bin/xmobar &")
-        , safeSpawn "xmonad" ["--recompile"]
-            >> safeSpawn "pkill" ["-9", "xmobar"]
-            >> safeSpawn "xmonad" ["--restart"]
-            >> unsafeSpawn "~/.local/bin/xmobar &")
+        , safeSpawn "xmonad" ["--restart"])
       -- Show help page
       , ( (modm .|. shiftMask, xK_slash)
         , unsafeSpawn
