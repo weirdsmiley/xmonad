@@ -326,17 +326,17 @@ pinningChords modm =
 
 myXPControlConfig =
   def
-    { font = "xft:Fira Code SemiBold:pixelsize=12"
-    , bgColor = base08
-    , fgColor = basefg
-    , bgHLight = base04
-    , fgHLight = base00
+    { font = "xft:Fira Code SemiBold:pixelsize=14"
+    , bgColor = "#F54927"
+    , fgColor = base0F
+    , bgHLight = "#bd93f9"
+    , fgHLight = "#f8f8f2"
     -- , borderColor = base00
     , promptBorderWidth = 0
     , promptKeymap = defaultXPKeymap
     , position = CenteredAt {xpCenterY = 0.5, xpWidth = 1.0}
     , alwaysHighlight = True -- Disables tab cycle
-    , height = 60
+    , height = 50
     , maxComplRows = Just 1
     , historySize = 1
     , historyFilter = deleteAllDuplicates
