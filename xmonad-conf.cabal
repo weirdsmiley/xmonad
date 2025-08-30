@@ -32,6 +32,7 @@ executable xmobar
       Plugins.Pomodoro
       Plugins.Soundtrack
       Preferences
+      Theme.Dmenu
       Theme.Font
       Theme.Theme
       Theme.Xresources
@@ -64,6 +65,7 @@ executable xmonad
       Plugins.Pomodoro
       Plugins.Soundtrack
       Preferences
+      Theme.Dmenu
       Theme.Font
       Theme.Theme
       Theme.Xresources

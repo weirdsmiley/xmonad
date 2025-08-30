@@ -11,6 +11,7 @@ import Graphics.X11.ExtraTypes.XF86
 import Plugins.Soundtrack (getRunningPlayer')
 import Preferences
 import System.Exit (exitSuccess)
+import Theme.Dmenu
 import Theme.Font
 import Theme.Theme
 import Workspaces
@@ -300,7 +301,8 @@ notificationChords modm =
 
 --------------------------------------------------------------------------------
 -- Custom chords
-customChords modm = [((modm, xK_y), myCustomCommands >>= runCommand)]
+customChords modm =
+  [((modm, xK_y), myCustomCommands >>= runCommandConfig myDmenu)]
 
 --------------------------------------------------------------------------------
 -- XMonad Prompt chords
@@ -361,7 +363,7 @@ controlChords = do
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@XConfig {XMonad.modMask = modm} =
   M.fromList
-    $ [ ((modm .|. shiftMask, xK_q), controlChords >>= runCommand)
+    $ [ ((modm .|. shiftMask, xK_q), controlChords >>= runCommandConfig myDmenu)
       -- Restart XMonad
       , ( (modm, xK_q)
         -- , unsafeSpawn
