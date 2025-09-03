@@ -249,6 +249,7 @@ pomodoroChords modm =
     , ( (0, xK_s)
       , "skip this session/break"
       , spawn $ myPomodoro ++ " --skip && echo 'skip' > /tmp/pomodoro.ctrl")
+    , ((0, xK_o), "open gnome-pomodoro", spawn myPomodoro)
     -- -- TODO: --extend requires a digit as arg. This requires additional
     -- -- effort.
     -- , ((0, xK_e), "extend this session", spawn $ myPomodoro ++ " --extend")
