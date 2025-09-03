@@ -197,10 +197,10 @@ myManageHook =
   composeOne
     [ title =? "CodeSprint" -?> doShift (head myWorkspaces)
     , title =? "Writings" -?> doShift (myWorkspaces !! 1)
-    , className =? "sioyek" -?> doShift (myWorkspaces !! 1)
-    , className =? "Zathura" -?> doShift (myWorkspaces !! 1)
     , className =? "GStreamer" -?> doShift (myWorkspaces !! 1)
-    , title =? "Research" -?> doShift (myWorkspaces !! 2)
+    , title =? "Research" -?> doShift (myWorkspaces !! 1)
+    , className =? "sioyek" -?> doShift (myWorkspaces !! 2)
+    , className =? "Zathura" -?> doShift (myWorkspaces !! 1)
     , className =? "Zotero" -?> doShift (myWorkspaces !! 2)
     , className =? "zoom" -?> doShift (myWorkspaces !! 4)
     , className =? "discord" -?> doShift (myWorkspaces !! 5)
