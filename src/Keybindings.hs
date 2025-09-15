@@ -357,6 +357,7 @@ controlChords = do
       , ("logout", io exitSuccess)
       , ("suspend", spawn "systemctl suspend")
       , ("hibernate", spawn "systemctl hibernate")
+      , ("lockscreen", unGrab *> safeSpawn "env" myLockscreen)
       ]
 
 --------------------------------------------------------------------------------
@@ -384,20 +385,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
       -- Open Scratchpad
       , ((modm, xK_Return), namedScratchpadAction myScratchpads "terminal")
       -- Lock screen
-      , ( (modm, xK_l)
-        , unGrab
-            *> safeSpawn
-                 "env"
-                 [ "XSECURELOCK_NO_COMPOSITE=1"
-                 , "XSECURELOCK_AUTH_CURSOR_BLINK=0"
-                 , "XSECURELOCK_AUTH_FOREGROUND_COLOR=#f8f8f8"
-                 , "XSECURELOCK_AUTH_BACKGROUND_COLOR=#7c6f64"
-                 , "XSECURELOCK_PASSWORD_PROMPT=hidden"
-                 , "XSECURELOCK_SHOW_DATETIME=1"
-                 , "XSECURELOCK_DATETIME_FORMAT=%B %d, %Y"
-                 , "XSECURELOCK_SAVER=saver_mpv"
-                 , "xsecurelock"
-                 ])
+      , ((modm, xK_l), unGrab *> safeSpawn "env" myLockscreen)
       -- Open Kanboard session
       , ((modm, xK_x), namedScratchpadAction myScratchpads "Kanboard")
       , ((modm, xK_z), namedScratchpadAction myScratchpads "Anki")
