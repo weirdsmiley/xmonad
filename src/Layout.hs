@@ -37,7 +37,7 @@ myLayout =
   mkToggle (NOBORDERS ?? NBFULL ?? EOT) . avoidStruts . lessBorders Never
     $ boringWindows
     $ onWorkspace "1" (twoByThreeOnRight ||| twoByThreeOnLeft)
-    $ onWorkspace "2" multiColWithGaps
+    $ onWorkspace "2" (multiColWithGaps ||| magnifiedMultiColWithGaps)
     $ onWorkspace "3" (twoByThreeOnRight ||| tiled)
     $ onWorkspace "4" threeCol
     $ onWorkspace "5" allLayouts
