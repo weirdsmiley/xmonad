@@ -221,7 +221,7 @@ myXmobarPP =
     , ppHidden = white . wrap " " ""
     , ppHiddenNoWindows = lowWhite . wrap " " ""
     , ppUrgent = red . wrap (yellow "!") (yellow "!")
-    , ppOrder = \[ws, l, _, _] -> [ws, l]
+    , ppOrder = \[ws, l, _, _] -> [filterOutNsp ws, l]
     , ppExtras = [logTitles formatFocused formatUnfocused]
     , ppLayout =
         \case
@@ -256,6 +256,7 @@ myXmobarPP =
     red = xmobarColor "#ff5555" ""
     lowWhite = xmobarColor "#bbbbbb" ""
     grey = xmobarColor "#808080" ""
+    filterOutNsp ws = unwords $ take 22 $ words ws
 
 main :: IO ()
 main =
