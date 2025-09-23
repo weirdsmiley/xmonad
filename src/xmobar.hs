@@ -225,7 +225,7 @@ config =
                 50
         ]
     , template =
-        "<hspace=10/><icon=XMonad.xpm/> %XMonadLog% %pomodoro% }{ %dynnetwork%  %bluetooth%  %default:Master%  %multicpu% %cpufreq% %multicoretemp%  %memory%  %disku%  %VIDP%  %date%<hspace=10/>"
+        "<hspace=0/><icon=Tux.xpm/> %XMonadLog% %pomodoro% }{ %dynnetwork%  %bluetooth%  %default:Master%  %multicpu% %cpufreq% %multicoretemp%  %memory%  %disku%  %VIDP%  %date%<hspace=10/>"
     , alignSep = "}{"
     }
 
