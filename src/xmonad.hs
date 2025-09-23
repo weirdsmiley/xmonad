@@ -218,8 +218,8 @@ myXmobarPP =
     { ppSep = magenta "  "
     , ppTitleSanitize = xmobarStrip
     , ppCurrent = wrap " " "" . xmobarBorder "Bottom" "#8be9fd" 2
-    , ppHidden = white . wrap " " ""
-    , ppHiddenNoWindows = lowWhite . wrap " " ""
+    , ppHidden = white . wrap " " "" . showNamedWorkspaces
+    , ppHiddenNoWindows = lowWhite . wrap " " "" . showNamedWorkspaces
     , ppUrgent = red . wrap (yellow "!") (yellow "!")
     , ppOrder = \[ws, l, _, _] -> [ws, l]
     , ppExtras = [logTitles formatFocused formatUnfocused]
@@ -233,7 +233,7 @@ myXmobarPP =
           "2-by-3 (left)" -> "<icon=TwoByThreeLeft.xpm/>"
           "2-by-3 (right)" -> "<icon=TwoByThreeRight.xpm/>"
           "Tiled" -> "<icon=Tiled.xpm/>"
-          _ -> "<icon=XMonad.xpm/>"
+          _ -> "<icon=Unknown.xpm/>"
     }
   where
     formatFocused = wrap (white "") (white "") . magenta . ppWindow
@@ -256,6 +256,10 @@ myXmobarPP =
     red = xmobarColor "#ff5555" ""
     lowWhite = xmobarColor "#bbbbbb" ""
     grey = xmobarColor "#808080" ""
+    showNamedWorkspaces :: WorkspaceId -> WorkspaceId
+    showNamedWorkspaces wsId =
+      if any (`elem` wsId) (unwords myWorkspaces) then wsId else ""
+
 
 main :: IO ()
 main =
