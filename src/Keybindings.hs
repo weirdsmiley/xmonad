@@ -17,8 +17,7 @@ import Theme.Theme
 import Workspaces
 import XMonad
 import XMonad.Actions.Commands
-import XMonad.Actions.CopyWindow (copyToAll, killAllOtherCopies)
-import XMonad.Actions.CopyWindow (kill1)
+import XMonad.Actions.CopyWindow (copyToAll, kill1, killAllOtherCopies)
 import XMonad.Actions.CycleWS
 import qualified XMonad.Actions.FlexibleResize as Flex
 import XMonad.Actions.GroupNavigation
