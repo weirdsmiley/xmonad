@@ -15,7 +15,7 @@ cd $HOME/.config/xmonad
 stack install
 ```
 
-This will install the built `xmonad`, `xmobar` and `xmobar-bottom` in `$HOME/.local/bin/`. I use two xmobar instances at top and at bottom.
+This will install the built `xmonad` and `xmobar` in `$HOME/.local/bin/`.
 
 You know the drill for installing Xorg and other stuff to switch to XMonad
 windows manager. Refer to any resources online.
