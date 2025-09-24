@@ -38,7 +38,6 @@ import XMonad.Prompt.ConfirmPrompt (confirmPrompt)
 import XMonad.Prompt.FuzzyMatch
 import XMonad.Prompt.Ssh
 import qualified XMonad.StackSet as W
-import qualified XMonad.StackSet as W
 import XMonad.Util.NamedScratchpad
   ( namedScratchpadAction
   , scratchpadWorkspaceTag
@@ -86,7 +85,7 @@ makeChords :: a -> [((KeyMask, KeySym), String, X ())] -> [(a, X ())]
 makeChords majorKey subKeys =
   (majorKey, submap . M.fromList $ map (\(k, _, a) -> (k, a)) subKeys)
     : [ ( majorKey
-        , visualSubmap def
+        , visualSubmap myVisualSubmapDef
             $ M.fromList
             $ map (\(k, d, a) -> (k, (d, a))) subKeys)
       ]

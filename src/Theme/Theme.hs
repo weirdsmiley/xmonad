@@ -30,12 +30,14 @@ module Theme.Theme
   , base07
   , base0F
   , topBarTheme
+  , myVisualSubmapDef
   ) where
 
 import Prelude (String)
 import Theme.Font
 import Theme.Xresources (xprop)
 import XMonad.Layout.NoFrillsDecoration
+import qualified XMonad.Util.XUtils as XU
 
 basebg, basefg, basecr, base00, base08, base01, base09, base02, base0A, base03, base0B, base04, base0C, base05, base0D, base06, base0E, base07, base0F ::
      String
@@ -94,4 +96,11 @@ topBarTheme =
     , urgentBorderColor = base01
     , urgentTextColor = base03
     , decoHeight = 10
+    }
+
+myVisualSubmapDef =
+  def
+    { XU.winFont = "xft:monospace-20"
+    , XU.winFg = "#C7B9B9"
+    , XU.winBg = "#42372D"
     }
