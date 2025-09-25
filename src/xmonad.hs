@@ -258,8 +258,9 @@ myXmobarPP =
     grey = xmobarColor "#808080" ""
     showNamedWorkspaces :: WorkspaceId -> WorkspaceId
     showNamedWorkspaces wsId =
-      if any (`elem` wsId) (unwords myWorkspaces) then wsId else ""
-
+      if any (`elem` wsId) (unwords myWorkspaces)
+        then wsId
+        else ""
 
 main :: IO ()
 main =

@@ -1,10 +1,10 @@
 import Plugins.Bluetooth
 import Plugins.Pomodoro
 import Plugins.Soundtrack
-import Theme.Font
-import Xmobar
 import System.Environment (getEnv)
 import System.IO.Unsafe (unsafeDupablePerformIO)
+import Theme.Font
+import Xmobar
 
 -- Get home directory
 homeDir :: String
