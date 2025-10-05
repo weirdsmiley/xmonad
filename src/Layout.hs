@@ -13,6 +13,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Layout
 import XMonad.Layout.Accordion (Accordion(Accordion))
 import XMonad.Layout.BoringWindows (boringWindows)
+import XMonad.Layout.ComboP
 import XMonad.Layout.DraggingVisualizer (draggingVisualizer)
 import XMonad.Layout.LayoutModifier (ModifiedLayout)
 import XMonad.Layout.Magnifier
@@ -38,8 +39,8 @@ myLayout =
     $ boringWindows
     $ onWorkspace "1" (twoByThreeOnRight ||| twoByThreeOnLeft)
     $ onWorkspace "2" (multiColWithGaps ||| magnifiedMultiColWithGaps)
-    $ onWorkspace "3" (twoByThreeOnRight ||| tiled)
-    $ onWorkspace "4" threeCol
+    $ onWorkspace "3" (twoByThreeOnLeftWithTabs ||| twoByThreeOnRightWithTabs)
+    $ onWorkspace "4" allLayouts
     $ onWorkspace "5" allLayouts
     $ onWorkspace "6" twoByThreeOnRight
     $ onWorkspace "7" allLayouts
@@ -65,9 +66,24 @@ myLayout =
       rn "2-by-3 (right)" . mkTabbed . addGaps . dragWindows
         $ reflectHoriz
         $ Tall nmaster delta (2 / 3)
+    twoByThreeOnRightWithTabs =
+      rn "2x3 RT" . mkTabbed . addGaps . dragWindows
+        $ combineTwoP
+            (Tall nmaster delta (2 / 3))
+            (tabbed shrinkText topBarTheme)
+            (tabbed shrinkText topBarTheme)
+            (ClassName "sioyek")
     twoByThreeOnLeft =
       rn "2-by-3 (left)" . mkTabbed . addGaps . dragWindows
         $ Tall nmaster delta (2 / 3)
+    twoByThreeOnLeftWithTabs =
+      rn "2x3 LT" . mkTabbed . addGaps . dragWindows
+        $ reflectHoriz
+        $ combineTwoP
+            (Tall nmaster delta (2 / 3))
+            (tabbed shrinkText topBarTheme)
+            (tabbed shrinkText topBarTheme)
+            (ClassName "sioyek")
     tiled =
       rn "Tiled" . mkTabbed . addGaps . dragWindows $ Tall nmaster delta ratio
     nmaster = 1 -- Default number of windows in the master pane
@@ -91,3 +107,5 @@ myLayout =
         ||| twoByThreeOnRight
         ||| tiled
         ||| threeCol
+        ||| twoByThreeOnRightWithTabs
+        ||| twoByThreeOnLeftWithTabs

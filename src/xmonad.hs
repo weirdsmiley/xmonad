@@ -232,6 +232,8 @@ myXmobarPP =
           "ThreeCol" -> "<icon=ThreeCol.xpm/>"
           "2-by-3 (left)" -> "<icon=TwoByThreeLeft.xpm/>"
           "2-by-3 (right)" -> "<icon=TwoByThreeRight.xpm/>"
+          "2x3 LT" -> "<icon=TwoByThreeLeftWithTabs.xpm/>"
+          "2x3 RT" -> "<icon=TwoByThreeRightWithTabs.xpm/>"
           "Tiled" -> "<icon=Tiled.xpm/>"
           _ -> "<icon=Unknown.xpm/>"
     }
