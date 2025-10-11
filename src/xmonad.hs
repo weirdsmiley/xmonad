@@ -217,9 +217,9 @@ myXmobarPP =
   def
     { ppSep = magenta "  "
     , ppTitleSanitize = xmobarStrip
-    , ppCurrent = wrap " " "" . xmobarBorder "Bottom" "#8be9fd" 2
+    , ppCurrent = wrap " " "" . lightBlue . showNamedWorkspaces
     , ppHidden = white . wrap " " "" . showNamedWorkspaces
-    , ppHiddenNoWindows = lowWhite . wrap " " "" . showNamedWorkspaces
+    , ppHiddenNoWindows = grey . wrap " " "" . showNamedWorkspaces
     , ppUrgent = red . wrap (yellow "!") (yellow "!")
     , ppOrder = \[ws, l, _, _] -> [ws, l]
     , ppExtras = [logTitles formatFocused formatUnfocused]
@@ -253,15 +253,16 @@ myXmobarPP =
     blue, lowWhite, magenta, red, white, yellow :: String -> String
     magenta = xmobarColor "#ff79c6" ""
     blue = xmobarColor "#bd93f9" ""
+    lightBlue = xmobarColor "#8be9fd" ""
     white = xmobarColor "#f8f8f2" ""
     yellow = xmobarColor "#f1fa8c" ""
+    darkYellow = xmobarColor "#fabd2f" ""
     red = xmobarColor "#ff5555" ""
     lowWhite = xmobarColor "#bbbbbb" ""
     grey = xmobarColor "#808080" ""
-    showNamedWorkspaces :: WorkspaceId -> WorkspaceId
     showNamedWorkspaces wsId =
       if any (`elem` wsId) (unwords myWorkspaces)
-        then wsId
+        then "●"
         else ""
 
 main :: IO ()
