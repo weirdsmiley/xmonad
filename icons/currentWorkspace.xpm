@@ -1,0 +1,23 @@
+/* XPM */
+static char *currentWorkspace[] = {
+/* columns rows colors chars-per-pixel */
+"20 10 7 1 ",
+"  c #2E2C2F",
+". c #5E99A6",
+"X c #7BCDDE",
+"o c #89E5F9",
+"O c #8BE9FD",
+"+ c #6CB3C2",
+"@ c white",
+/* pixels */
+"  .XoOOOOOOOOOOoX.  ",
+" +OOOOOOOOOOOOOOOO+ ",
+".OOOOOOOOOOOOOOOOOO.",
+"XOOOOOOOOOOOOOOOOOOX",
+"oOOOOOOOOOOOOOOOOOOo",
+"oOOOOOOOOOOOOOOOOOOo",
+"XOOOOOOOOOOOOOOOOOOX",
+".OOOOOOOOOOOOOOOOOO.",
+" +OOOOOOOOOOOOOOOO+ ",
+"  .XoOOOOOOOOOOoX.  "
+};

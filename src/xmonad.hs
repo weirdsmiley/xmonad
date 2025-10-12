@@ -217,7 +217,7 @@ myXmobarPP =
   def
     { ppSep = magenta "  "
     , ppTitleSanitize = xmobarStrip
-    , ppCurrent = wrap " " "" . lightBlue . showNamedWorkspaces
+    , ppCurrent = wrap " " "" . showCurrentWorkspace
     , ppHidden = white . wrap " " "" . showNamedWorkspaces
     , ppHiddenNoWindows = grey . wrap " " "" . showNamedWorkspaces
     , ppUrgent = red . wrap (yellow "!") (yellow "!")
@@ -263,6 +263,10 @@ myXmobarPP =
     showNamedWorkspaces wsId =
       if any (`elem` wsId) (unwords myWorkspaces)
         then "●"
+        else ""
+    showCurrentWorkspace wsId =
+      if any (`elem` wsId) (unwords myWorkspaces)
+        then "<icon=currentWorkspace.xpm/>"
         else ""
 
 main :: IO ()
