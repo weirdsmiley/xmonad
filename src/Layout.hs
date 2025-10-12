@@ -39,7 +39,7 @@ myLayout =
     $ boringWindows
     $ onWorkspace "1" (twoByThreeOnRight ||| twoByThreeOnLeft)
     $ onWorkspace "2" (multiColWithGaps ||| magnifiedMultiColWithGaps)
-    $ onWorkspace "3" (twoByThreeOnLeftWithTabs ||| twoByThreeOnRightWithTabs)
+    $ onWorkspace "3" (twoByThreeOnRightWithTabs ||| twoByThreeOnLeftWithTabs)
     $ onWorkspace "4" allLayouts
     $ onWorkspace "5" allLayouts
     $ onWorkspace "6" twoByThreeOnRight

@@ -210,9 +210,9 @@ myManageHook :: ManageHook
 myManageHook =
   composeOne
     [ title =? "CodeSprint" -?> doShift (head myWorkspaces)
-    , title =? "Writings" -?> doShift (myWorkspaces !! 1)
     , className =? "GStreamer" -?> doShift (myWorkspaces !! 1)
     , title =? "Research" -?> doShift (myWorkspaces !! 1)
+    , title =? "Writings" -?> doShift (myWorkspaces !! 2)
     , className =? "sioyek" -?> doShift (myWorkspaces !! 2)
     , className =? "calibre" -?> doShift (myWorkspaces !! 2)
     , className =? "Zathura" -?> doShift (myWorkspaces !! 2)
