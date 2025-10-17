@@ -40,7 +40,7 @@ import XMonad.Hooks.ManageHelpers
 import qualified XMonad.StackSet as W
 import XMonad.Util.Cursor
 import XMonad.Util.NamedScratchpad
-import XMonad.Util.Run (unsafeSpawn)
+import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 
 isTerminal :: Query Bool
@@ -310,4 +310,6 @@ myCustomCommands = do
     , ("screenkey-off", unsafeSpawn "pkill -9 screenkey")
     , ("ipadmirror", unsafeSpawn "uxplay -n anony -nh")
     , ("mirroroff", unsafeSpawn "pkill -9 uxplay")
+    , ( "calibre-web"
+      , unsafeSpawn "source ~/workspace/opt/calibre-web-env/bin/activate; cps")
     ]
