@@ -18,6 +18,13 @@ elif [ $DISTRO == "artix" ] || [ $DISTRO == "arch" ]; then
     ttf-fira-code \
     ttf-font-awesome \
     alsa-utils libxss libxft libxpm cairo pango
+elif [ $DISTRO == "gentoo" ]; then
+  sudo emerge media-fonts/noto \
+    media-fonts/fira-code \
+    media-fonts/fontawesome \
+    media-sound/alsa-utils x11-libs/libXScrnSaver \
+    x11-libs/libXft x11-libs/libXpm \
+    x11-libs/cairo x11-libs/pango
 else
 cat << EOF
 Automated font installation isn't supported for $DISTRO.
