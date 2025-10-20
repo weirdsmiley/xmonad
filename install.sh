@@ -12,19 +12,22 @@ if [ $DISTRO == "fedora" ]; then
     google-noto-sans-fonts \
     fira-code-fonts \
     fontawesome-6-free-fonts \
-    alsa-utils libXScrnSaver libXft libXpm cairo pango
+    alsa-utils libXScrnSaver libXft libXpm cairo pango \
+    dmenu rofi feh
 elif [ $DISTRO == "artix" ] || [ $DISTRO == "arch" ]; then
   sudo pacman -S noto-fonts \
     ttf-fira-code \
     ttf-font-awesome \
-    alsa-utils libxss libxft libxpm cairo pango
+    alsa-utils libxss libxft libxpm cairo pango \
+    dmenu rofi feh
 elif [ $DISTRO == "gentoo" ]; then
   sudo emerge media-fonts/noto \
     media-fonts/fira-code \
     media-fonts/fontawesome \
     media-sound/alsa-utils x11-libs/libXScrnSaver \
     x11-libs/libXft x11-libs/libXpm \
-    x11-libs/cairo x11-libs/pango
+    x11-libs/cairo x11-libs/pango \
+    x11-misc/dmenu x11-misc/rofi media-gfx/feh
 else
 cat << EOF
 Automated font installation isn't supported for $DISTRO.
@@ -35,9 +38,6 @@ Please try manually installing the following fonts:
   4. 0xProto Nerd Font
 EOF
 fi
-
-# Install configurations to ~/.config
-cp -r ../xmonad/ ~/.config/xmonad
 
 echo "exec xmonad" > ~/.xinitrc
 echo "exec xmobar" >> ~/.xinitrc
