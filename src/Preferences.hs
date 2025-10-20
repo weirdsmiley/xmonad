@@ -87,6 +87,8 @@ myKanboardUrl
   -- "http://localhost:8081/?controller=Bigboard&action=index&plugin=Bigboard"
  = "http://192.168.0.108/?controller=Bigboard&action=index&plugin=Bigboard"
 
+myCalibreWebUrl = "http://192.168.0.108:8083"
+
 myPdfViewer = "sioyek"
 
 myScreenShotter = "scrot"
@@ -235,6 +237,7 @@ myManageHook =
     , className =? "Ibus-extension-gtk3" -?> doFloat
     , className =? "Kanboard" -?> doFullFloat
     , className =? "Anki" -?> doFullFloat
+    , className =? "CalibreWeb" -?> doFullFloat
     , className =? "MPlayer" -?> doFloat
     , className =? "St-float" -?> doFloat
     , className =? "gnome-calculator" -?> doCenterFloat
@@ -267,6 +270,7 @@ myScratchpads
   [ NS "terminal" spawnTerm findTerm manageTerm
   , NS "Kanboard" spawnKanboard (className =? "Kanboard") doFullFloat
   , NS "Anki" spawnAnki (className =? "Anki") doFullFloat
+  , NS "CalibreWeb" spawnCalibreWeb (className =? "CalibreWeb") doFullFloat
   ]
   where
     spawnTerm =
@@ -284,6 +288,15 @@ myScratchpads
     spawnAnki = "anki"
     findTerm = className =? "scratchpad"
     manageTerm = customFloating $ W.RationalRect (1 / 6) (1 / 8) (2 / 3) (3 / 4)
+    spawnCalibreWeb =
+      myBrowser
+        ++ " --class "
+        ++ "CalibreWeb"
+        ++ " --new-window --kiosk -P "
+        ++ "CalibreWeb"
+        ++ " '"
+        ++ myCalibreWebUrl
+        ++ "'"
 
 -- Border colors for unfocused and focused windows
 myNormalBorderColor, myFocusedBorderColor :: String
@@ -310,6 +323,4 @@ myCustomCommands = do
     , ("screenkey-off", unsafeSpawn "pkill -9 screenkey")
     , ("ipadmirror", unsafeSpawn "uxplay -n anony -nh")
     , ("mirroroff", unsafeSpawn "pkill -9 uxplay")
-    , ( "calibre-web"
-      , unsafeSpawn "source ~/workspace/opt/calibre-web-env/bin/activate; cps")
     ]

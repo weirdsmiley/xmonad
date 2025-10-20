@@ -91,7 +91,8 @@ myLogHook =
     -- the previous Anki window because focus was lost. This filter will ensure
     -- that all windows remain visible until specifically closed.
     onlyCertainScratchpads =
-      filter (\(NS _n _ _ _) -> _n /= "Anki") myScratchpads
+      filter (\(NS _n _ _ _) -> _n /= "CalibreWeb")
+        $ filter (\(NS _n _ _ _) -> _n /= "Anki") myScratchpads
 
 -- Status bars and logging
 -- Perform an arbitrary action on each internal state change or X event.

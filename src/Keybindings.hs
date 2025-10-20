@@ -384,9 +384,11 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
       , ((modm, xK_Return), namedScratchpadAction myScratchpads "terminal")
       -- Lock screen
       , ((modm, xK_l), unGrab *> safeSpawn "env" myLockscreen)
+      -- TODO: Put scratchpads in a key chord.
       -- Open Kanboard session
       , ((modm, xK_x), namedScratchpadAction myScratchpads "Kanboard")
       , ((modm, xK_z), namedScratchpadAction myScratchpads "Anki")
+      , ((modm, xK_m), namedScratchpadAction myScratchpads "CalibreWeb")
       ]
         ++ layoutChords modm
         ++ resizeChords modm
