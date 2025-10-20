@@ -350,8 +350,8 @@ controlChords = do
   return [(s, confirmPrompt myXPControlConfig s x) | (s, x) <- controls]
   where
     controls =
-      [ ("poweroff", spawn "systemctl poweroff")
-      , ("reboot", spawn "systemctl reboot")
+      [ ("poweroff", spawn "poweroff")
+      , ("reboot", spawn "reboot")
       , ("logout", io exitSuccess)
       , ("suspend", spawn "systemctl suspend")
       , ("hibernate", spawn "systemctl hibernate")
