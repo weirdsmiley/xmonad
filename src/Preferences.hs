@@ -81,13 +81,15 @@ myBrowser = "firefox"
 
 myKanboardProfile = "Kanboard"
 
+myRPiHost = "genpai.local"
+
 -- This url is opened in myBrowser (kiosk-mode, and myKanboardProfile) with a
 -- keybinding.
-myKanboardUrl
-  -- "http://localhost:8081/?controller=Bigboard&action=index&plugin=Bigboard"
- = "http://192.168.0.108/?controller=Bigboard&action=index&plugin=Bigboard"
+myKanboardUrl =
+  "http://" ++ myRPiHost ++ "/?controller=Bigboard&action=index&plugin=Bigboard"
 
-myCalibreWebUrl = "http://192.168.0.108:8083"
+-- A frontend to calibre
+myCalibreWebUrl = "http://" ++ myRPiHost ++ ":8083"
 
 myPdfViewer = "sioyek"
 
