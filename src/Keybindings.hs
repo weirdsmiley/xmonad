@@ -387,8 +387,8 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
       -- TODO: Put scratchpads in a key chord.
       -- Open Kanboard session
       , ((modm, xK_x), namedScratchpadAction myScratchpads "Kanboard")
-      , ((modm, xK_z), namedScratchpadAction myScratchpads "Anki")
-      , ((modm, xK_m), namedScratchpadAction myScratchpads "CalibreWeb")
+      , ((modm, xK_z), namedScratchpadAction myScratchpads "CalibreWeb")
+      , ((modm, xK_m), namedScratchpadAction myScratchpads "Anki")
       ]
         ++ layoutChords modm
         ++ resizeChords modm
