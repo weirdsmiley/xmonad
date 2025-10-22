@@ -72,7 +72,7 @@ myLayout =
             (Tall nmaster delta (2 / 3))
             (tabbed shrinkText topBarTheme)
             (tabbed shrinkText topBarTheme)
-            (ClassName "sioyek")
+            (ClassName myPdfViewer)
     twoByThreeOnLeft =
       rn "2-by-3 (left)" . mkTabbed . addGaps . dragWindows
         $ Tall nmaster delta (2 / 3)
@@ -83,7 +83,7 @@ myLayout =
             (Tall nmaster delta (2 / 3))
             (tabbed shrinkText topBarTheme)
             (tabbed shrinkText topBarTheme)
-            (ClassName "sioyek")
+            (ClassName myPdfViewer)
     tiled =
       rn "Tiled" . mkTabbed . addGaps . dragWindows $ Tall nmaster delta ratio
     nmaster = 1 -- Default number of windows in the master pane
