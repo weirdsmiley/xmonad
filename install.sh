@@ -14,12 +14,12 @@ if [ $DISTRO == "fedora" ]; then
     alsa-utils libXScrnSaver libXft libXft-devel libXpm libXpm-devel \
     alsa-lib-devel libX11-devel libXrandr-devel libXScrnSaver-devel \
     cairo cairo-devel pango pango-devel \
-    dmenu rofi feh kitty
+    dmenu rofi feh kitty unclutter-xfixes
 elif [ $DISTRO == "artix" ] || [ $DISTRO == "arch" ]; then
   sudo pacman -S --noconfirm \
     noto-fonts ttf-fira-code ttf-font-awesome ttf-open-sans \
     capitaine-cursors alsa-utils libxss libxft libxpm cairo pango \
-    dmenu rofi feh kitty
+    dmenu rofi feh kitty unclutter
 elif [ $DISTRO == "gentoo" ]; then
   sudo emerge media-fonts/noto \
     media-fonts/fira-code \
@@ -28,7 +28,8 @@ elif [ $DISTRO == "gentoo" ]; then
     media-sound/alsa-utils x11-libs/libXScrnSaver \
     x11-libs/libXft x11-libs/libXpm \
     x11-libs/cairo x11-libs/pango \
-    x11-misc/dmenu x11-misc/rofi media-gfx/feh x11-terms/kitty
+    x11-misc/dmenu x11-misc/rofi media-gfx/feh x11-terms/kitty \
+    x11-misc/unclutter-xfixes
 else
 cat << EOF
 Automated font installation isn't supported for $DISTRO.
