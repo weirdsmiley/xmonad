@@ -160,16 +160,16 @@ startupApps = do
   spawnOnce "picom"
   spawnOnce "unclutter --timeout 2 --ignore-scrolling"
   spawnOnce "xrdb -merge /home/manas/.Xresources"
-  spawnOnce "setxkbmap -option ctrl:nocaps"
-  spawnOnce "xcape -e 'Control_L=Escape' -t 1000"
-  spawnOnce nightLight
   spawnOnce Preferences.xmobar
-  spawnOnce myCodeSprintTerm
-  spawnOnce myWritingTerm
-  spawnOnce myResearchTerm
-  spawnOnce myBrowser
-  spawnOnce myPdfViewer
-  spawnOnce "zotero"
+  spawnOnce nightLight
+  -- spawnOnce "setxkbmap -option ctrl:nocaps"
+  -- spawnOnce "xcape -e 'Control_L=Escape' -t 1000"
+  -- spawnOnce myCodeSprintTerm
+  -- spawnOnce myWritingTerm
+  -- spawnOnce myResearchTerm
+  -- spawnOnce myBrowser
+  -- spawnOnce myPdfViewer
+  -- spawnOnce "zotero"
   -- spawnOnce "calibre"
   -- spawnOnce "Discord"
   -- spawnOnce "Zulip"

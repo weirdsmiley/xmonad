@@ -232,7 +232,7 @@ config =
                 50
         ]
     , template =
-        "<hspace=10/> %XMonadLog% } %pomodoro% { %dynnetwork%  %default:Master%  %multicpu% %multicoretemp%  %memory%  %disku%  %VIDP%  %date% %notifications% <hspace=10/>"
+        "<hspace=10/> %XMonadLog% }{ %dynnetwork%  %default:Master%  %multicpu% %multicoretemp%  %memory%  %disku%  %VIDP%  %date% %notifications% <hspace=10/>"
     , alignSep = "}{"
     }
 
