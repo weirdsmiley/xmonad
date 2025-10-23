@@ -10,7 +10,7 @@
 
 ```bash
 mkdir -p $HOME/.config/xmonad
-git clone https://github.com/weirdsmiley/xmonad $HOME/.config/xmonad/
+git clone --branch release https://github.com/weirdsmiley/xmonad $HOME/.config/xmonad/
 cd $HOME/.config/xmonad
 stack install
 ```
