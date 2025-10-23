@@ -37,15 +37,15 @@ import XMonad.Layout.WindowNavigation
 myLayout =
   mkToggle (NOBORDERS ?? NBFULL ?? EOT) . avoidStruts . lessBorders Never
     $ boringWindows
-    $ onWorkspace "1" (twoByThreeOnRight ||| twoByThreeOnLeft)
-    $ onWorkspace "2" (twoByThreeOnLeftWithTabs ||| twoByThreeOnRightWithTabs)
-    $ onWorkspace "3" (multiColWithGaps ||| magnifiedMultiColWithGaps)
-    $ onWorkspace "4" allLayouts
-    $ onWorkspace "5" allLayouts
-    $ onWorkspace "6" twoByThreeOnRight
-    $ onWorkspace "7" allLayouts
-    $ onWorkspace "8" allLayouts
-    $ onWorkspace "9" twoByThreeOnRight
+    -- $ onWorkspace "1" (twoByThreeOnRight ||| twoByThreeOnLeft)
+    -- $ onWorkspace "2" (twoByThreeOnLeftWithTabs ||| twoByThreeOnRightWithTabs)
+    -- $ onWorkspace "3" (multiColWithGaps ||| magnifiedMultiColWithGaps)
+    -- $ onWorkspace "4" allLayouts
+    -- $ onWorkspace "5" allLayouts
+    -- $ onWorkspace "6" twoByThreeOnRight
+    -- $ onWorkspace "7" allLayouts
+    -- $ onWorkspace "8" allLayouts
+    -- $ onWorkspace "9" twoByThreeOnRight
     $ allLayouts
   where
     multiColWithGaps =
