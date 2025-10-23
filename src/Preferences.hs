@@ -171,16 +171,14 @@ startupApps = do
   -- spawnOnce "easyeffects --gapplication-service"
   spawnOnce nightLight
   spawnOnce Preferences.xmobar
-  spawnOnce myCodeSprintTerm
-  spawnOnce myWritingTerm
-  spawnOnce myResearchTerm
-  spawnOnce myBrowser
-  spawnOnce myPdfViewer
-  spawnOnce "zotero"
-  -- -- Open some scratchpads
-  -- namedScratchpadAction myScratchpads "Kanboard"
-  -- namedScratchpadAction myScratchpads "calibreWeb"
-  -- namedScratchpadAction myScratchpads "Miniflux"
+  -- spawnOnce "setxkbmap -option ctrl:nocaps"
+  -- spawnOnce "xcape -e 'Control_L=Escape' -t 1000"
+  -- spawnOnce myCodeSprintTerm
+  -- spawnOnce myWritingTerm
+  -- spawnOnce myResearchTerm
+  -- spawnOnce myBrowser
+  -- spawnOnce myPdfViewer
+  -- spawnOnce "zotero"
   -- spawnOnce "calibre"
   -- spawnOnce "Discord"
   -- spawnOnce "Zulip"
