@@ -156,7 +156,7 @@ startupApps :: X ()
 startupApps = do
   setDefaultCursor xC_left_ptr
   spawnOnce $ "feh --no-fehbg --bg-scale " ++ myWallpaper
-  spawnOnce "picom --config /home/manas/.config/picom/picom.conf"
+  spawnOnce "picom"
   spawnOnce "unclutter --timeout 2 --ignore-scrolling"
   spawnOnce "xrdb -merge /home/manas/.Xresources"
   spawnOnce "setxkbmap -option ctrl:nocaps"
