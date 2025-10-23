@@ -8,22 +8,23 @@ cp ~/.config/xmonad/.Xresources ~/.Xresources
 
 # Install appropriate fonts
 if [ $DISTRO == "fedora" ]; then
-  sudo dnf install \
-    google-noto-sans-fonts \
-    fira-code-fonts \
-    fontawesome-6-free-fonts \
-    alsa-utils libXScrnSaver libXft libXpm cairo pango \
+  sudo dnf install --skip-unavailable \
+    google-noto-sans-fonts fira-code-fonts fontawesome-6-free-fonts \
+    open-sans-fonts la-capitaine-cursor-theme \
+    alsa-utils libXScrnSaver libXft libXft-devel libXpm libXpm-devel \
+    alsa-lib-devel libX11-devel libXrandr-devel libXScrnSaver-devel \
+    cairo cairo-devel pango pango-devel \
     dmenu rofi feh kitty
 elif [ $DISTRO == "artix" ] || [ $DISTRO == "arch" ]; then
-  sudo pacman -S noto-fonts \
-    ttf-fira-code \
-    ttf-font-awesome \
-    alsa-utils libxss libxft libxpm cairo pango \
+  sudo pacman -S --noconfirm \
+    noto-fonts ttf-fira-code ttf-font-awesome ttf-open-sans \
+    capitaine-cursors alsa-utils libxss libxft libxpm cairo pango \
     dmenu rofi feh kitty
 elif [ $DISTRO == "gentoo" ]; then
   sudo emerge media-fonts/noto \
     media-fonts/fira-code \
     media-fonts/fontawesome \
+    media-fonts/open-sans \
     media-sound/alsa-utils x11-libs/libXScrnSaver \
     x11-libs/libXft x11-libs/libXpm \
     x11-libs/cairo x11-libs/pango \
@@ -36,6 +37,7 @@ Please try manually installing the following fonts:
   2. Fira Code
   3. Font Awesome 6 Free
   4. 0xProto Nerd Font
+  5. Open Sans
 EOF
 fi
 
