@@ -14,12 +14,12 @@ if [ $DISTRO == "fedora" ]; then
     alsa-utils libXScrnSaver libXft libXft-devel libXpm libXpm-devel \
     alsa-lib-devel libX11-devel libXrandr-devel libXScrnSaver-devel \
     cairo cairo-devel pango pango-devel \
-    dmenu rofi feh kitty unclutter-xfixes
+    dmenu rofi feh kitty yad unclutter-xfixes
 elif [ $DISTRO == "artix" ] || [ $DISTRO == "arch" ]; then
   sudo pacman -S --noconfirm \
     noto-fonts ttf-fira-code ttf-font-awesome ttf-opensans \
     capitaine-cursors alsa-utils libxss libxft libxpm cairo pango \
-    dmenu rofi feh kitty unclutter
+    dmenu rofi feh kitty yad unclutter
 elif [ $DISTRO == "gentoo" ]; then
   sudo emerge media-fonts/noto \
     media-fonts/fira-code \
