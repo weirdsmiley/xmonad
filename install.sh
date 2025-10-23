@@ -17,7 +17,7 @@ if [ $DISTRO == "fedora" ]; then
     dmenu rofi feh kitty unclutter-xfixes
 elif [ $DISTRO == "artix" ] || [ $DISTRO == "arch" ]; then
   sudo pacman -S --noconfirm \
-    noto-fonts ttf-fira-code ttf-font-awesome ttf-open-sans \
+    noto-fonts ttf-fira-code ttf-font-awesome ttf-opensans \
     capitaine-cursors alsa-utils libxss libxft libxpm cairo pango \
     dmenu rofi feh kitty unclutter
 elif [ $DISTRO == "gentoo" ]; then
