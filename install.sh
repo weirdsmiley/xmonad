@@ -44,3 +44,5 @@ fi
 
 echo "exec xmonad" > ~/.xinitrc
 echo "exec xmobar" >> ~/.xinitrc
+
+stack install

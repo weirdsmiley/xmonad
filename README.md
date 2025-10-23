@@ -12,7 +12,7 @@
 mkdir -p $HOME/.config/xmonad
 git clone --branch release https://github.com/weirdsmiley/xmonad $HOME/.config/xmonad/
 cd $HOME/.config/xmonad
-stack install
+./install.sh
 ```
 
 This will install the built `xmonad` and `xmobar` in `$HOME/.local/bin/`.
