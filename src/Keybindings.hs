@@ -477,16 +477,21 @@ help =
   intercalate "\" \""
     $ concatMap
         (\(x, y) -> [x, y])
-        [ ("mod-Shift-Enter", "Launch " ++ myTerminal ++ " terminal")
+        [ ("mod-shift-enter", "Launch " ++ myTerminal ++ " terminal")
         , ("mod-d", "Launch " ++ (head . words) myLauncher)
         , ("mod-space", "Bring up next available layout")
-        , ("mod-shift-q", "Quit XMonad")
+        , ("mod-shift-q", "Dmenu: Power Actions")
         , ("mod-? or mod-shift-/", "Open this help page")
         , ("mod-f", "Toggle focused window fullscreen")
         , ("mod-g", "Toggle gaps")
-        , ("mod-Enter", "Show/hide scratchpad")
+        , ("mod-b", "Hide XMobar")
         , ("mod-l", "Lock screen")
+        -- scratchpads
+        , ("Scratchpad chords\n---------------------------", "")
+        , ("mod-enter", "Show/hide scratchpad")
         , ("mod-x", "Open kanban board")
+        , ("mod-z", "Open calibre web")
+        , ("mod-m", "Open Anki")
         -- screenshotChords
         , ("Screenshot chords\n---------------------------", "")
         , ("PrtSc", "Screenshots the entire workspace")
@@ -518,17 +523,22 @@ help =
         , ("mod-a k", "Increase volume by 1%")
         , ("mod-a j", "Decrease volume by 1%")
         , ("mod-a l", "Mute volume")
+        , ("mod-a a", "Open alsamixer")
+        , ("mod-a b", "Open blueman-manager")
+        , ("mod-a o", "Open pavucontrol")
         -- pomodoroChords
         , ("Pomodoro chords\n--------------------------", "")
         , ("mod-p n", "Start new 60 min session")
         , ("mod-p p", "Pause or resume an already running session")
         , ("mod-p s", "Skip this session or break")
+        , ("mod-p o", "Open gnome-pomodoro")
         -- copyPasteChords
-        , ("Copy paste chords (TODO)\n---------------------------", "")
+        -- , ("Copy paste chords (TODO)\n---------------------------", "")
         -- notificationChords
         , ("Notification chords\n----------------------------", "")
         , ("mod-n p", "Show previous notification")
         , ("mod-n c", "clear all notifications from screen")
+        , ("mod-n t", "toggle notifications")
         , ("mod-n shift-c", "delete all notifications from history")
         -- customChords
         , ("Custom chords\n----------------------", "")
