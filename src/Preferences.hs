@@ -296,7 +296,7 @@ myScratchpads
       myBrowser
         ++ " --class "
         ++ "CalibreWeb"
-        ++ " --new-window -P "
+        ++ " --new-window --kiosk -P "
         ++ "CalibreWeb"
         ++ " '"
         ++ myCalibreWebUrl
