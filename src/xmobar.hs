@@ -74,7 +74,7 @@ config =
                 , ("considerable cloudiness", "⛈")
                 ]
                 [ "-t"
-                , "<fn=2><skyConditionS></fn> <tempC>° <rh>% <windKmh>Km/h"
+                , "<fn=2><skyConditionS></fn> <tempC>°C <rh>% <windKmh>Km/h"
                 , "-L"
                 , "10"
                 , "-H"
