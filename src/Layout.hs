@@ -38,7 +38,7 @@ myLayout =
   mkToggle (NOBORDERS ?? NBFULL ?? EOT) . avoidStruts . lessBorders Never
     $ boringWindows
     $ onWorkspace "1" (twoByThreeOnRight ||| twoByThreeOnLeft)
-    $ onWorkspace "2" (twoByThreeOnRightWithTabs ||| twoByThreeOnLeftWithTabs)
+    $ onWorkspace "2" (twoByThreeOnLeftWithTabs ||| twoByThreeOnRightWithTabs)
     $ onWorkspace "3" (multiColWithGaps ||| magnifiedMultiColWithGaps)
     $ onWorkspace "4" allLayouts
     $ onWorkspace "5" allLayouts
@@ -68,6 +68,7 @@ myLayout =
         $ Tall nmaster delta (2 / 3)
     twoByThreeOnRightWithTabs =
       rn "2x3 RT" . mkTabbed . addGaps . dragWindows
+        $ reflectHoriz
         $ combineTwoP
             (Tall nmaster delta (2 / 3))
             (tabbed shrinkText topBarTheme)
@@ -78,7 +79,6 @@ myLayout =
         $ Tall nmaster delta (2 / 3)
     twoByThreeOnLeftWithTabs =
       rn "2x3 LT" . mkTabbed . addGaps . dragWindows
-        $ reflectHoriz
         $ combineTwoP
             (Tall nmaster delta (2 / 3))
             (tabbed shrinkText topBarTheme)
