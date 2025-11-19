@@ -166,8 +166,13 @@ workspaceChords conf@XConfig {XMonad.modMask = modm} =
     ++ [ ((modm .|. shiftMask, xK_k), moveTo Prev nonNSP)
        , ((modm .|. shiftMask, xK_j), moveTo Next nonNSP)
        ]
+    ++ [ ((mod4Mask, xK_Page_Up), moveTo Prev nonEmptyNSP)
+       , ((mod4Mask, xK_Page_Down), moveTo Next nonEmptyNSP)
+       ]
   where
     nonNSP = ignoringWSs [scratchpadWorkspaceTag]
+    nonEmptyNSP =
+      hiddenWS :&: Not emptyWS :&: ignoringWSs [scratchpadWorkspaceTag]
 
 --------------------------------------------------------------------------------
 -- Keychords for standalone applications.
@@ -515,6 +520,8 @@ help =
         , ("mod-[1..9]", "Switch to nth workspace")
         , ("m-mod-key", "change xinerama")
         , ("win-tab", "Switch back to last workspace")
+        , ("win-pgup", "Go to previous non-empty workspace")
+        , ("win-pgdown", "Go to next non-empty workspace")
         -- soundChords
         , ("Sound chords\n--------------------", "")
         , ("mod-a m", "Play/pause music")
