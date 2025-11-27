@@ -142,12 +142,10 @@ myNotifHandler = "dunstctl"
 myLockscreen =
   [ "XSECURELOCK_NO_COMPOSITE=1"
   , "XSECURELOCK_AUTH_CURSOR_BLINK=0"
-  , "XSECURELOCK_AUTH_FOREGROUND_COLOR=#C7B9B9"
-  , "XSECURELOCK_AUTH_BACKGROUND_COLOR=#42372D"
   , "XSECURELOCK_PASSWORD_PROMPT=kaomoji"
   , "XSECURELOCK_SHOW_DATETIME=1"
   , "XSECURELOCK_DATETIME_FORMAT=%B %d, %Y"
-  , "XSECURELOCK_SAVER=saver_mpv"
+  , "XSECURELOCK_SAVER=/home/manas/workspace/scripts/saver_xsecurelock_blur"
   , "xsecurelock"
   ]
 
