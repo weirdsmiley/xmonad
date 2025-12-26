@@ -1,4 +1,5 @@
 import Plugins.Bluetooth
+import Plugins.Notifications
 import Plugins.Pomodoro
 import Plugins.Soundtrack
 import System.Environment (getEnv)
@@ -35,6 +36,7 @@ config =
     , commands =
         [ Run XMonadLog
         , Run $ Pomodoro 90 5 15 "/tmp/pomodoro.ctrl"
+        , Run Notifications
         , Run
             $ Battery
                 [ "-t"
@@ -225,7 +227,7 @@ config =
                 50
         ]
     , template =
-        "<hspace=10/> %XMonadLog% %pomodoro% }{ %dynnetwork%  %bluetooth%  %default:Master%  %multicpu% %cpufreq% %multicoretemp%  %memory%  %disku%  %VIDP%  %date%<hspace=10/>"
+        "<hspace=10/> %XMonadLog%  %notifications% %pomodoro% }{ %dynnetwork%  %bluetooth%  %default:Master%  %multicpu% %cpufreq% %multicoretemp%  %memory%  %disku%  %VIDP%  %date%<hspace=10/>"
     , alignSep = "}{"
     }
 

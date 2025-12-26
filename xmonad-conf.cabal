@@ -1,6 +1,6 @@
 cabal-version: 2.2
 
--- This file has been generated from package.yaml by hpack version 0.37.0.
+-- This file has been generated from package.yaml by hpack version 0.38.1.
 --
 -- see: https://github.com/sol/hpack
 
@@ -29,6 +29,7 @@ executable xmobar
       Keybindings
       Layout
       Plugins.Bluetooth
+      Plugins.Notifications
       Plugins.Pomodoro
       Plugins.Soundtrack
       Preferences
@@ -62,6 +63,7 @@ executable xmonad
       Keybindings
       Layout
       Plugins.Bluetooth
+      Plugins.Notifications
       Plugins.Pomodoro
       Plugins.Soundtrack
       Preferences
