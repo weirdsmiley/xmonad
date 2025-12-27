@@ -65,7 +65,8 @@ pomodoroLoop count mode duration w s l paused cb ctrlPath = do
           _ ->
             if newPaused
               then do
-                cb (render mode timeLeft ++ " <fc=#fa3b00>[PAUSED]</fc>")
+                cb
+                  (render mode timeLeft ++ " <fn=3><fc=orange>\xf04c</fc></fn>")
                 threadDelay 1000000
                 loop timeLeft newPaused
               else do
@@ -112,12 +113,12 @@ render mode secsLeft =
   let (m, s) = secsLeft `divMod` 60
       icon =
         case mode of
-          Work -> "⏱"
+          Work -> "<fn=1>\xf017</fn>"
           ShortBreak -> "☕"
           LongBreak -> "🛌"
       label =
         case mode of
-          Work -> "<fc=#92ff00>[Work]</fc>"
+          Work -> "<fn=1><fc=lightgreen>\xf121</fc></fn>"
           ShortBreak -> "<fc=#bababa>[Break]</fc>"
           LongBreak -> "<fc=#ab7bab>[Long]</fc>"
    in icon ++ " " ++ pad m ++ ":" ++ pad s ++ " " ++ label
