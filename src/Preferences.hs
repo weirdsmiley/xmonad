@@ -245,6 +245,7 @@ myManageHook =
     , className =? "zenity" -?> doCenterFloat
     , className =? "org.gnome.clocks" -?> doCenterFloat
     , className =? "org.gnome.Weather" -?> doCenterFloat
+    , className =? "org.gnome.Nautilus" -?> doCenterFloat
     , className =? "feh" -?> doCenterFloat
     , className =? "loupe" -?> customFloating
         $ W.RationalRect (1 / 6) (1 / 8) (2 / 3) (3 / 4)
