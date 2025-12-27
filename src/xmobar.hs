@@ -76,7 +76,8 @@ config =
                 , ("considerable cloudiness", "⛈")
                 ]
                 [ "-t"
-                , "<fn=2><skyConditionS></fn> <tempC>°C <rh>% <windKmh>Km/h"
+                -- , "<fn=2><skyConditionS></fn> <tempC>°C <rh>% <windKmh>Km/h"
+                , "<fc=#aaaaaa><tempC>°C</fc>"
                 , "-L"
                 , "10"
                 , "-H"
@@ -138,7 +139,11 @@ config =
                 , "True"
                 ]
                 10
-        , Run $ Date "%a %_d %b %Y <fc=#ff79c6>%I:%M:%S %p</fc> %Z" "date" 10
+        , Run
+            $ Date
+                "<fc=orange>%a %_d %b '%y</fc> <fc=yellow>%I:%M:%S %p</fc>"
+                "date"
+                10
         , Run
             $ Com
                 "/bin/sh"
@@ -227,7 +232,7 @@ config =
                 50
         ]
     , template =
-        "<hspace=10/> %XMonadLog%  %notifications% %pomodoro% }{ %dynnetwork%  %bluetooth%  %default:Master%  %multicpu% %cpufreq% %multicoretemp%  %memory%  %disku%  %VIDP%  %date%<hspace=10/>"
+        "<hspace=10/> %XMonadLog% %pomodoro% }{ %dynnetwork%  %bluetooth%  %default:Master%  %multicpu% %multicoretemp%  %memory%  %disku%  %VIDP%  %date% %notifications% <hspace=10/>"
     , alignSep = "}{"
     }
 
