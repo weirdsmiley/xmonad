@@ -91,6 +91,9 @@ myKanboardUrl =
 -- A frontend to calibre
 myCalibreWebUrl = "http://" ++ myRPiHost ++ ":8083"
 
+-- RSS Reader
+myMinifluxUrl = "http://" ++ myRPiHost ++ ":8086/unread"
+
 myPdfViewer = "sioyek"
 
 myScreenShotter = "scrot"
@@ -238,6 +241,7 @@ myManageHook =
     , className =? "Kanboard" -?> doFullFloat
     , className =? "Anki" -?> doFullFloat
     , className =? "CalibreWeb" -?> doFullFloat
+    , className =? "Miniflux" -?> doFullFloat
     , className =? "MPlayer" -?> doFloat
     , className =? "St-float" -?> doFloat
     , className =? "gnome-calculator" -?> doCenterFloat
@@ -272,6 +276,7 @@ myScratchpads
   , NS "Kanboard" spawnKanboard (className =? "Kanboard") doFullFloat
   , NS "Anki" spawnAnki (className =? "Anki") doFullFloat
   , NS "CalibreWeb" spawnCalibreWeb (className =? "CalibreWeb") doFullFloat
+  , NS "Miniflux" spawnMiniflux (className =? "Miniflux") doFullFloat
   ]
   where
     spawnTerm =
@@ -297,6 +302,15 @@ myScratchpads
         ++ "CalibreWeb"
         ++ " '"
         ++ myCalibreWebUrl
+        ++ "'"
+    spawnMiniflux =
+      myBrowser
+        ++ " --class "
+        ++ "Miniflux"
+        ++ " --new-window --kiosk  -P "
+        ++ "Miniflux"
+        ++ " '"
+        ++ myMinifluxUrl
         ++ "'"
 
 -- Border colors for unfocused and focused windows

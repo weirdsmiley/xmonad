@@ -393,7 +393,8 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
       -- Open Kanboard session
       , ((modm, xK_x), namedScratchpadAction myScratchpads "Kanboard")
       , ((modm, xK_z), namedScratchpadAction myScratchpads "CalibreWeb")
-      , ((modm, xK_m), namedScratchpadAction myScratchpads "Anki")
+      , ((modm, xK_u), namedScratchpadAction myScratchpads "Anki")
+      , ((modm, xK_m), namedScratchpadAction myScratchpads "Miniflux")
       ]
         ++ layoutChords modm
         ++ resizeChords modm
@@ -496,7 +497,8 @@ help =
         , ("mod-enter", "Show/hide scratchpad")
         , ("mod-x", "Open kanban board")
         , ("mod-z", "Open calibre web")
-        , ("mod-m", "Open Anki")
+        , ("mod-u", "Open Anki")
+        , ("mod-m", "Open Miniflux")
         -- screenshotChords
         , ("Screenshot chords\n---------------------------", "")
         , ("PrtSc", "Screenshots the entire workspace")
