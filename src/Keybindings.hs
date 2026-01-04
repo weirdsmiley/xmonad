@@ -363,6 +363,18 @@ controlChords = do
       , ("lockscreen", unGrab *> safeSpawn "env" myLockscreen)
       ]
 
+scratchpadChords modm =
+  makeChords
+    (modm, xK_z)
+    [ ( (0, xK_c)
+      , "Open CalibreWeb"
+      , namedScratchpadAction myScratchpads "CalibreWeb")
+    , ( (0, xK_m)
+      , "Open Miniflux"
+      , namedScratchpadAction myScratchpads "Miniflux")
+    , ((0, xK_a), "Open Anki", namedScratchpadAction myScratchpads "Anki")
+    ]
+
 --------------------------------------------------------------------------------
 -- All keybindings
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
@@ -392,9 +404,6 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
       -- TODO: Put scratchpads in a key chord.
       -- Open Kanboard session
       , ((modm, xK_x), namedScratchpadAction myScratchpads "Kanboard")
-      , ((modm, xK_z), namedScratchpadAction myScratchpads "CalibreWeb")
-      , ((modm, xK_u), namedScratchpadAction myScratchpads "Anki")
-      , ((modm, xK_m), namedScratchpadAction myScratchpads "Miniflux")
       ]
         ++ layoutChords modm
         ++ resizeChords modm
@@ -410,6 +419,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         ++ customChords modm
         ++ promptChords modm
         ++ pinningChords modm
+        ++ scratchpadChords modm
   where
     nonNSP = ignoringWSs [scratchpadWorkspaceTag]
     nonEmptyNSP =
@@ -496,9 +506,9 @@ help =
         , ("Scratchpad chords\n---------------------------", "")
         , ("mod-enter", "Show/hide scratchpad")
         , ("mod-x", "Open kanban board")
-        , ("mod-z", "Open calibre web")
-        , ("mod-u", "Open Anki")
-        , ("mod-m", "Open Miniflux")
+        , ("mod-z c", "Open calibre web")
+        , ("mod-z a", "Open Anki")
+        , ("mod-z m", "Open Miniflux")
         -- screenshotChords
         , ("Screenshot chords\n---------------------------", "")
         , ("PrtSc", "Screenshots the entire workspace")
