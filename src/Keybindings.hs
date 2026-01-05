@@ -234,6 +234,12 @@ soundChords modm =
      , ( (noModMask, xF86XK_AudioPlay)
        , getRunningPlayer' >>= \player ->
            spawn $ myMusicCtrl ++ " -p \"" ++ player ++ "\" play")
+     , ( (noModMask, xF86XK_AudioNext)
+       , getRunningPlayer' >>= \player ->
+           spawn $ myMusicCtrl ++ " -p \"" ++ player ++ "\" next")
+     , ( (noModMask, xF86XK_AudioPrev)
+       , getRunningPlayer' >>= \player ->
+           spawn $ myMusicCtrl ++ " -p \"" ++ player ++ "\" previous")
      ]
 
 --------------------------------------------------------------------------------
