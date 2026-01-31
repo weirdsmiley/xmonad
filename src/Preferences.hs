@@ -170,7 +170,7 @@ startupApps = do
   spawnOnce myBrowser
   spawnOnce myPdfViewer
   spawnOnce "zotero"
-  spawnOnce "calibre"
+  -- spawnOnce "calibre"
   -- spawnOnce "Discord"
   -- spawnOnce "Zulip"
   -- spawnOnce "gimp"
