@@ -68,9 +68,8 @@ myLayout =
         $ Tall nmaster delta (2 / 3)
     twoByThreeOnRightWithTabs =
       rn "2x3 RT" . mkTabbed . addGaps . dragWindows
-        $ reflectHoriz
         $ combineTwoP
-            (Tall nmaster delta (2 / 3))
+            (reflectHoriz (Tall nmaster delta (2 / 3)))
             (tabbed shrinkText topBarTheme)
             (tabbed shrinkText topBarTheme)
             (ClassName myPdfViewer)
