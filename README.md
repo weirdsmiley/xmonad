@@ -4,7 +4,7 @@
 
 ![XMonad Preview](./preview/xmonad.png)
 
-![Rofi Launcher](./preview/rofi.png)
+![XMonad Keybindings](./preview/keybindings.png)
 
 ## Installation
 
