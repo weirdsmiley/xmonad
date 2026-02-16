@@ -121,7 +121,7 @@ config =
                 , "-S"
                 , "True"
                 ]
-                10
+                50
         , Run
             $ Network
                 "enp2s0" -- Figure out dynamically TH?
@@ -170,12 +170,12 @@ config =
                 , "--scale"
                 , "1024"
                 ]
-                10
+                30
         , Run
             $ DiskU
                 [("/", "<fc=#ff79c6><fn=1>\xf1c0</fn></fc> <free>/<size>")]
                 ["-L", "50", "-H", "900", "-m", "1", "-p", "3"]
-                20
+                50
         , Run
             $ MultiCpu
                 [ "-t"
@@ -232,7 +232,7 @@ config =
                 50
         ]
     , template =
-        "<hspace=10/> %XMonadLog% } %pomodoro% { %dynnetwork%  %bluetooth%  %default:Master%  %multicpu% %multicoretemp%  %memory%  %disku%  %VIDP%  %date% %notifications% <hspace=10/>"
+        "<hspace=10/> %XMonadLog% } %pomodoro% { %dynnetwork%  %default:Master%  %multicpu% %multicoretemp%  %memory%  %disku%  %VIDP%  %date% %notifications% <hspace=10/>"
     , alignSep = "}{"
     }
 
