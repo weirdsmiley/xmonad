@@ -28,7 +28,7 @@ iconSilent = "<fn=3>\xec08</fn>"
 
 instance Exec Notifications where
   alias _ = "notifications"
-  rate _ = 1
+  rate _ = 10
   run _ = do
     state <- getState
     pure $ wrapAction (iconFor state)
