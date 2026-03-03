@@ -36,6 +36,7 @@ import Theme.Font
 import Workspaces
 import XMonad
 import XMonad.Actions.Commands
+import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.ManageHelpers
 import qualified XMonad.StackSet as W
 import XMonad.Util.Cursor
@@ -267,6 +268,7 @@ myManageHook =
     , transience
     ]
     <+> namedScratchpadManageHook myScratchpads
+    <+> insertPosition End Newer
 
 myScratchpads :: [NamedScratchpad]
 myScratchpads
