@@ -234,6 +234,7 @@ myManageHook =
     , className =? "Org.gnome.Boxes" -?> doShift (myWorkspaces !! 8)
     , className =? "Gnome-pomodoro" -?> doFullFloat
     , className =? "Rhythmbox" -?> doCenterFloat
+    , className =? "easyeffects" -?> doCenterFloat
     , appName =? "blueman-manager" -?> doCenterFloat
     , appName =? "snapshot" -?> doCenterFloat
     , className =? "Gammastep-indicator" -?> doCenterFloat
