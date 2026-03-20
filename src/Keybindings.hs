@@ -8,6 +8,7 @@ import Control.Monad (liftM2, void)
 import Data.List (intercalate)
 import qualified Data.Map as M
 import Graphics.X11.ExtraTypes.XF86
+import Overview
 import Plugins.Soundtrack (getRunningPlayer')
 import Preferences
 import System.Exit (exitSuccess)
@@ -381,6 +382,11 @@ scratchpadChords modm =
     , ((0, xK_a), "Open Anki", namedScratchpadAction myScratchpads "Anki")
     ]
 
+overviewChords =
+  [ ((mod4Mask, xK_space), myOverview)
+  -- , ((mod4Mask .|. shiftMask, xK_space), myWindowOverview)
+  ]
+
 --------------------------------------------------------------------------------
 -- All keybindings
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
@@ -426,6 +432,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         ++ promptChords modm
         ++ pinningChords modm
         ++ scratchpadChords modm
+        ++ overviewChords
   where
     nonNSP = ignoringWSs [scratchpadWorkspaceTag]
     nonEmptyNSP =
@@ -508,6 +515,7 @@ help =
         , ("mod-g", "Toggle gaps")
         , ("mod-b", "Hide XMobar")
         , ("mod-l", "Lock screen")
+        , ("super-space", "Overview of windows")
         -- scratchpads
         , ("Scratchpad chords\n---------------------------", "")
         , ("mod-enter", "Show/hide scratchpad")

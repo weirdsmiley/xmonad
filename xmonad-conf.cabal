@@ -28,6 +28,7 @@ executable xmobar
   other-modules:
       Keybindings
       Layout
+      Overview
       Plugins.Bluetooth
       Plugins.Notifications
       Plugins.Pomodoro
@@ -62,6 +63,7 @@ executable xmonad
   other-modules:
       Keybindings
       Layout
+      Overview
       Plugins.Bluetooth
       Plugins.Notifications
       Plugins.Pomodoro
