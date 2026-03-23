@@ -246,6 +246,7 @@ myManageHook =
     , className =? "MPlayer" -?> doFloat
     , className =? "St-float" -?> doFloat
     , className =? "gnome-calculator" -?> doCenterFloat
+    , className =? "gnome-calendar" -?> doCenterFloat
     , className =? "ibus-ui-gtk3" -?> doIgnore
     , className =? "zenity" -?> doCenterFloat
     , className =? "org.gnome.clocks" -?> doCenterFloat
