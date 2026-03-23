@@ -384,6 +384,7 @@ scratchpadChords modm =
 
 overviewChords =
   [ ((mod4Mask, xK_space), myOverview)
+  , ((mod4Mask .|. shiftMask, xK_space), myWorkspaceOverview)
   -- , ((mod4Mask .|. shiftMask, xK_space), myWindowOverview)
   ]
 
@@ -516,6 +517,7 @@ help =
         , ("mod-b", "Hide XMobar")
         , ("mod-l", "Lock screen")
         , ("super-space", "Overview of windows")
+        , ("super-shift-space", "Overview of workspaces")
         -- scratchpads
         , ("Scratchpad chords\n---------------------------", "")
         , ("mod-enter", "Show/hide scratchpad")
