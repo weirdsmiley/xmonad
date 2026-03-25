@@ -71,7 +71,7 @@ myGSConfig =
     , gs_cellpadding = 20
     , gs_font = "xft:Open Sans SemiBold:size=10"
     , gs_navigate = navNSearch
-    -- , gs_colorizer = myColorizer
+    , gs_colorizer = myColorizer
     }
 
 notScratchpad :: Window -> X Bool
