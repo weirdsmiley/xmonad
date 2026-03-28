@@ -146,8 +146,9 @@ myLockscreen =
   [ "XSECURELOCK_NO_COMPOSITE=1"
   , "XSECURELOCK_AUTH_CURSOR_BLINK=0"
   , "XSECURELOCK_PASSWORD_PROMPT=kaomoji"
+  , "XSECURELOCK_AUTH_BACKGROUND_COLOR=#3B3232"
   , "XSECURELOCK_SHOW_DATETIME=1"
-  , "XSECURELOCK_DATETIME_FORMAT=%B %d, %Y"
+  , "XSECURELOCK_DATETIME_FORMAT=%b %d, %Y  %I:%M:%S %p"
   , "XSECURELOCK_SAVER=/home/manas/workspace/scripts/saver_xsecurelock_blur"
   , "xsecurelock"
   ]
@@ -171,8 +172,8 @@ startupApps = do
   spawnOnce myPdfViewer
   spawnOnce "zotero"
   -- spawnOnce "calibre"
-  -- spawnOnce "Discord"
-  -- spawnOnce "Zulip"
+  spawnOnce "Discord"
+  spawnOnce "Zulip"
   -- spawnOnce "gimp"
   -- spawnOnce "zoom"
   -- spawnOnce "telegram-desktop"
@@ -191,7 +192,7 @@ applyOnlyOnCurrentWS = True
 
 -- Amount by which to fade inactive windows on current workspace only.
 fadeAmount :: Rational
-fadeAmount = 1.0
+fadeAmount = 0.7
 
 -- Music controller tool
 myMusicCtrl = "playerctl"
