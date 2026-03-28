@@ -254,6 +254,8 @@ myManageHook =
     , className =? "org.gnome.Weather" -?> doCenterFloat
     , className =? "org.gnome.Nautilus" -?> doCenterFloat
     , className =? "feh" -?> doCenterFloat
+    , className =? "Xdot" -?> customFloating
+        $ W.RationalRect (1 / 6) (1 / 8) (2 / 3) (3 / 4)
     , className =? "loupe" -?> customFloating
         $ W.RationalRect (1 / 6) (1 / 8) (2 / 3) (3 / 4)
     , title =? "GNOME Tweaks" -?> doCenterFloat
