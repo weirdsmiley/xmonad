@@ -25,7 +25,6 @@ import XMonad.Hooks.DynamicIcons
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.FadeInactive
-import XMonad.Hooks.FadeWindows
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.RefocusLast
 import XMonad.Hooks.StatusBar
@@ -78,14 +77,9 @@ myHandleEventHook =
 
 -- Enable transparency for inactive windows.
 fadeHook :: X ()
-fadeHook =
-  fadeWindowsLogHook
-    $ composeAll
-        [ isUnfocused
-            <&&> (not <$> isFloating)
-            --> transparency (1 - fadeAmount)
-        , isFloating --> opaque
-        ]
+fadeHook
+  | Preferences.applyOnlyOnCurrentWS = fadeInactiveCurrentWSLogHook fadeAmount
+  | otherwise = fadeInactiveLogHook fadeAmount
 
 -- Main logHook function
 myLogHook :: X ()
