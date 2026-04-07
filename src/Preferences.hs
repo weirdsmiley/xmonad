@@ -172,8 +172,8 @@ startupApps = do
   spawnOnce myPdfViewer
   spawnOnce "zotero"
   -- spawnOnce "calibre"
-  spawnOnce "Discord"
-  spawnOnce "Zulip"
+  -- spawnOnce "Discord"
+  -- spawnOnce "Zulip"
   -- spawnOnce "gimp"
   -- spawnOnce "zoom"
   -- spawnOnce "telegram-desktop"
