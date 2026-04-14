@@ -92,6 +92,7 @@ myLogHook =
     -- that all windows remain visible until specifically closed.
     onlyCertainScratchpads =
       filter (\(NS _n _ _ _) -> _n /= "CalibreWeb")
+        $ filter (\(NS _n _ _ _) -> _n /= "Miniflux")
         $ filter (\(NS _n _ _ _) -> _n /= "Anki") myScratchpads
 
 myStartupHook :: X ()
