@@ -383,9 +383,9 @@ scratchpadChords modm =
     , ((0, xK_a), "Open Anki", namedScratchpadAction myScratchpads "Anki")
     ]
 
-overviewChords =
-  [ ((mod4Mask, xK_space), myOverview)
-  , ((mod4Mask .|. shiftMask, xK_space), myWorkspaceOverview)
+overviewChords modm =
+  [ ((modm, xK_slash), myOverview)
+  , ((mod4Mask, xK_slash), myWorkspaceOverview)
   -- , ((mod4Mask .|. shiftMask, xK_space), myWindowOverview)
   ]
 
@@ -434,7 +434,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         ++ promptChords modm
         ++ pinningChords modm
         ++ scratchpadChords modm
-        ++ overviewChords
+        ++ overviewChords modm
   where
     nonNSP = ignoringWSs [scratchpadWorkspaceTag]
     nonEmptyNSP =
@@ -517,8 +517,9 @@ help =
         , ("mod-g", "Toggle gaps")
         , ("mod-b", "Hide XMobar")
         , ("mod-l", "Lock screen")
-        , ("super-space", "Overview of windows")
-        , ("super-shift-space", "Overview of workspaces")
+        , ("Overview chords\n---------------------------", "")
+        , ("mod-/", "Overview of windows")
+        , ("super-/", "Overview of workspaces")
         -- scratchpads
         , ("Scratchpad chords\n---------------------------", "")
         , ("mod-enter", "Show/hide scratchpad")
