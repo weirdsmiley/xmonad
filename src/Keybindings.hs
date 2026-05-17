@@ -184,6 +184,26 @@ applicationChords modm =
   ]
 
 --------------------------------------------------------------------------------
+-- Brightness controls
+brightnessChords modm =
+  makeChords (modm, xK_v)
+    $ [ ( (0, xK_j)
+        , "decrease brightness by 5%"
+        , spawn $ myBrightnessCtrl ++ " setvcp 10 - 5")
+      , ( (0, xK_k)
+        , "increase brightness by 5%"
+        , spawn $ myBrightnessCtrl ++ " setvcp 10 + 5")
+      ]
+        ++ [ ( (0, key)
+             , "change to level " ++ level
+             , spawn $ myBrightnessCtrl ++ " setvcp 10 " ++ level)
+           | (level, key) <- zip (map (show . (* 10)) [0 .. 9]) [xK_0 .. xK_9]
+           ]
+  where
+    -- TODO: Show notification of current display brightness
+    notify = myNotifCtrl ++ " set brightness to certain level"
+
+--------------------------------------------------------------------------------
 -- Sound related chords
 soundChords modm =
   makeChords
@@ -390,6 +410,10 @@ overviewChords modm =
   ]
 
 --------------------------------------------------------------------------------
+-- TODO: Remove default keybindings
+-- I don't like mod+b hiding xmobar.
+-- myRemovedKeys = `removeKeys` [(modm, xK_b)]
+--------------------------------------------------------------------------------
 -- All keybindings
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@XConfig {XMonad.modMask = modm} =
@@ -427,6 +451,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
         ++ applicationChords modm
         ++ workspaceChords conf
         ++ soundChords modm
+        ++ brightnessChords modm
         ++ pomodoroChords modm
         -- ++ copyPasteChords -- TODO
         ++ notificationChords modm
@@ -520,6 +545,11 @@ help =
         , ("Overview chords\n---------------------------", "")
         , ("mod-/", "Overview of windows")
         , ("super-/", "Overview of workspaces")
+        -- brightness
+        , ("Brightness chords\n---------------------------", "")
+        , ("mod-v j", "decrease brightness by 5%")
+        , ("mod-v k", "increase brightness by 5%")
+        , ("mod-v [0..9]", "set brightness level [00-90]")
         -- scratchpads
         , ("Scratchpad chords\n---------------------------", "")
         , ("mod-enter", "Show/hide scratchpad")

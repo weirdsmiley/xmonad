@@ -13,6 +13,7 @@ module Preferences
   , myScratchpads
   , myScreenShotter
   , myGaps
+  , myNotifCtrl
   , myNotifHandler
   , myLockscreen
   , myManageHook
@@ -27,6 +28,7 @@ module Preferences
   , startupApps
   , applyOnlyOnCurrentWS
   , myMusicCtrl
+  , myBrightnessCtrl
   , myPomodoro
   , myCustomCommands
   , isTerminal
@@ -140,6 +142,8 @@ nightLight = "redshift -O 2600"
 
 xmobar = "~/.local/bin/xmobar"
 
+myNotifCtrl = "dunstify"
+
 myNotifHandler = "dunstctl"
 
 myLockscreen =
@@ -197,6 +201,9 @@ fadeAmount = 1.0
 
 -- Music controller tool
 myMusicCtrl = "playerctl"
+
+-- Brightness controller
+myBrightnessCtrl = "ddcutil"
 
 ------------------------------------------------------------------------
 -- Window rules:
