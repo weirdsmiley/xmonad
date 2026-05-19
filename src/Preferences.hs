@@ -248,10 +248,10 @@ myManageHook =
     , appName =? "snapshot" -?> doCenterFloat
     , className =? "Gammastep-indicator" -?> doCenterFloat
     , className =? "Ibus-extension-gtk3" -?> doFloat
-    , className =? "Kanboard" -?> doFullFloat
+    , className =? "Kanboard" -?> scratchpadsRect
     , className =? "Anki" -?> doFullFloat
-    , className =? "CalibreWeb" -?> doFullFloat
-    , className =? "Miniflux" -?> doFullFloat
+    , className =? "CalibreWeb" -?> scratchpadsRect
+    , className =? "Miniflux" -?> scratchpadsRect
     , className =? "MPlayer" -?> doFloat
     , className =? "St-float" -?> doFloat
     , className =? "gnome-calculator" -?> doCenterFloat
@@ -280,6 +280,8 @@ myManageHook =
     , transience
     ]
     <+> namedScratchpadManageHook myScratchpads
+  where
+    scratchpadsRect = customFloating $ W.RationalRect 0 (1 / 30) 1 1
 
 myScratchpads :: [NamedScratchpad]
 myScratchpads
