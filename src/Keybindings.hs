@@ -235,10 +235,10 @@ soundChords modm =
       , safeSpawn "pactl" ["set-sink-mute", "@DEFAULT_SINK@", "toggle"])
     , ( (0, xK_o)
       , "pavucontrol"
-      , safeSpawn "env" ["GTK_THEME=Adwaita:dark", "pavucontrol"])
+      , safeSpawn "env" ["GTK_THEME=Breeze-Dark", "pavucontrol"])
     , ( (0, xK_b)
       , "bluetooth manager"
-      , safeSpawn "env" ["GTK_THEME=Adwaita:dark", "blueman-manager"])
+      , safeSpawn "env" ["GTK_THEME=Breeze-Dark", "blueman-manager"])
     , ((0, xK_e), "easyeffects", safeSpawn "easyeffects" [])
   -- , ( (mod4Mask, xF86XK_AudioMute)
   --   , safeSpawn "pactl" ["set-source-mute", "@DEFAULT_SOURCE@", "toggle"])
@@ -427,7 +427,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
       -- Show help page
       , ( (modm .|. shiftMask, xK_slash)
         , unsafeSpawn
-            ("GTK_THEME=Adwaita:dark zenity --width 600 --height 800 --list --title='XMonad Keybindings' --text='Default modifier (mod) key is 'alt'.' --column='Keymaps' --column='Description' \""
+            ("GTK_THEME=Breeze-Dark zenity --width 600 --height 800 --list --title='XMonad Keybindings' --text='Default modifier (mod) key is 'alt'.' --column='Keymaps' --column='Description' \""
                ++ help
                ++ "\""))
       -- Toggle fullscreen
