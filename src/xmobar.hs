@@ -35,7 +35,7 @@ config =
     , iconOffset = -1
     , commands =
         [ Run XMonadLog
-        , Run $ Pomodoro 90 5 15 "/tmp/pomodoro.ctrl"
+        , Run $ Pomodoro 30 2 2 "/tmp/pomodoro.ctrl"
         , Run Notifications
         , Run
             $ Battery
