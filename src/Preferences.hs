@@ -167,7 +167,7 @@ startupApps = do
   spawnOnce "xrdb -merge /home/manas/.Xresources"
   spawnOnce "setxkbmap -option ctrl:nocaps"
   spawnOnce "xcape -e 'Control_L=Escape' -t 1000"
-  spawnOnce "easyeffects --gapplication-service"
+  -- spawnOnce "easyeffects --gapplication-service"
   spawnOnce nightLight
   spawnOnce Preferences.xmobar
   spawnOnce myCodeSprintTerm
@@ -261,6 +261,7 @@ myManageHook =
     , className =? "org.gnome.clocks" -?> doCenterFloat
     , className =? "org.gnome.Weather" -?> doCenterFloat
     , className =? "org.gnome.Nautilus" -?> doCenterFloat
+    , className =? "filelight" -?> doCenterFloat
     , className =? "feh" -?> doCenterFloat
     , className =? "Xdot" -?> customFloating
         $ W.RationalRect (1 / 6) (1 / 8) (2 / 3) (3 / 4)
