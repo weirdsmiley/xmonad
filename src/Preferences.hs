@@ -162,6 +162,7 @@ startupApps :: X ()
 startupApps = do
   setDefaultCursor xC_left_ptr
   spawnOnce $ "feh --no-fehbg --bg-scale " ++ myWallpaper
+  spawnOnce "systemctl --user start dunst"
   spawnOnce "picom"
   spawnOnce "unclutter --timeout 2 --ignore-scrolling"
   spawnOnce "xrdb -merge /home/manas/.Xresources"
@@ -176,6 +177,10 @@ startupApps = do
   spawnOnce myBrowser
   spawnOnce myPdfViewer
   spawnOnce "zotero"
+  -- -- Open some scratchpads
+  -- namedScratchpadAction myScratchpads "Kanboard"
+  -- namedScratchpadAction myScratchpads "calibreWeb"
+  -- namedScratchpadAction myScratchpads "Miniflux"
   -- spawnOnce "calibre"
   -- spawnOnce "Discord"
   -- spawnOnce "Zulip"
