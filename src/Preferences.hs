@@ -166,8 +166,8 @@ startupApps = do
   spawnOnce "picom"
   spawnOnce "unclutter --timeout 2 --ignore-scrolling"
   spawnOnce "xrdb -merge /home/manas/.Xresources"
-  spawnOnce "setxkbmap -option ctrl:nocaps"
-  spawnOnce "xcape -e 'Control_L=Escape' -t 1000"
+  -- spawnOnce "setxkbmap -option ctrl:nocaps"
+  -- spawnOnce "xcape -e 'Control_L=Escape' -t 1000"
   -- spawnOnce "easyeffects --gapplication-service"
   spawnOnce nightLight
   spawnOnce Preferences.xmobar
