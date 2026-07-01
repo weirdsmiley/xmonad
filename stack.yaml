@@ -17,7 +17,7 @@
 #
 # snapshot: ./custom-snapshot.yaml
 # snapshot: https://example.com/snapshots/2024-01-01.yaml
-resolver: lts-22.44
+resolver: lts-24.46
 
 # User packages to be built.
 # Various formats can be used as shown in the example below.
@@ -41,10 +41,9 @@ packages:
 #
 # extra-deps: []
 extra-deps:
-  - xmonad-0.18.0
-  - xmonad-contrib-0.18.0
-  - xmobar-0.48.1
-  - hashtables-1.4.2
+  - xmonad-0.18.1
+  - xmonad-contrib-0.18.2
+  - xmobar-0.51.1
 
 # Override default flag values for project packages and extra-deps
 # flags: {}

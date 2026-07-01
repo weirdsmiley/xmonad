@@ -5,36 +5,29 @@
 
 packages:
 - completed:
-    hackage: xmonad-0.18.0@sha256:22300a2626ba5b00dcf0e5071d56ccb42140fb849ee6ea7bf1337ed07de33642,5453
+    hackage: xmonad-0.18.1@sha256:63fc2e9165f1eba3437fbdd144b263d3c87b41d062340962b1e88a175bdc227b,5971
     pantry-tree:
-      sha256: 475b273803119d4b6f3f0ad496d93092ad53bb7b2306182603531093899b26d1
+      sha256: 3b54b66c750c75be50b3c8b6a5093ebbe4dc36e8c79140436e90dcd0f6084f1d
       size: 2486
   original:
-    hackage: xmonad-0.18.0
+    hackage: xmonad-0.18.1
 - completed:
-    hackage: xmonad-contrib-0.18.0@sha256:aae129651391ec65e4c7cf4c23b280cc5e69f709d86668502426a41eebab9d3c,22370
+    hackage: xmonad-contrib-0.18.2@sha256:03c2e5e0c947e92edb4d46b7f252fe5b0fcc12881edc1e562214c7ae4720d479,23552
     pantry-tree:
-      sha256: d2987f3843f1c5ca11bf63d22630679a34b7578f432a96f0dec97b98c4984e72
-      size: 23806
+      sha256: 2be92ba1ad618c0f37b33b1b767eac6a51c6fce2038ba6cbfc71bed72e36e796
+      size: 24216
   original:
-    hackage: xmonad-contrib-0.18.0
+    hackage: xmonad-contrib-0.18.2
 - completed:
-    hackage: xmobar-0.48.1@sha256:95baa3aa157182134b1e21d2ffb42ee0e148518ca21afda187faa5ae63917f17,15154
+    hackage: xmobar-0.51.1@sha256:bc768aea174f4be81ee1dc3232efa8b845caa957c5ae8d2f55b3e8847b7dd7df,13492
     pantry-tree:
-      sha256: 408cf5e51845cd593bccbc0efd1569c77f1846f99bea1bb0c78568b4513dcdfc
-      size: 9769
+      sha256: 2a1df6192da0c5e408a49994fad5379b1c9799d3ca56a50bd47fa7b8f2f2e083
+      size: 9975
   original:
-    hackage: xmobar-0.48.1
-- completed:
-    hackage: hashtables-1.4.2@sha256:4940cab94a15d469845ccf5225f9cb3d354c15e8127ebb58425c8b681f7721d9,10386
-    pantry-tree:
-      sha256: 65107f0c970351b971ea1f676a5e00b61e37c298a4c83c867d937f2a774501eb
-      size: 2895
-  original:
-    hackage: hashtables-1.4.2
+    hackage: xmobar-0.51.1
 snapshots:
 - completed:
-    sha256: 238fa745b64f91184f9aa518fe04bdde6552533d169b0da5256670df83a0f1a9
-    size: 721141
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/22/44.yaml
-  original: lts-22.44
+    sha256: 2e84de3088a8643c3743210ec31c50b2aeccf5fb085042d2e43e3ef700e7a2cd
+    size: 732461
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/24/46.yaml
+  original: lts-24.46

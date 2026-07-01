@@ -48,7 +48,7 @@ executable xmobar
   build-depends:
       X11
     , async
-    , base >=4.7 && <5
+    , base >=4.20 && <5
     , containers
     , directory
     , process
@@ -83,7 +83,7 @@ executable xmonad
   build-depends:
       X11
     , async
-    , base >=4.7 && <5
+    , base >=4.20 && <5
     , containers
     , directory
     , process
