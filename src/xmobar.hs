@@ -141,7 +141,7 @@ config =
                 10
         , Run
             $ Date
-                "<fc=orange>%a %_d %b '%y</fc> <fc=yellow>%I:%M:%S %p</fc>"
+                "<fc=orange>%a %_d %b '%y</fc> <fc=yellow>%I:%M %p</fc>"
                 "date"
                 10
         , Run
@@ -170,12 +170,12 @@ config =
                 , "--scale"
                 , "1024"
                 ]
-                30
+                50
         , Run
             $ DiskU
                 [("/", "<fc=#ff79c6><fn=1>\xf1c0</fn></fc> <free>/<size>")]
                 ["-L", "50", "-H", "900", "-m", "1", "-p", "3"]
-                50
+                100
         , Run
             $ MultiCpu
                 [ "-t"
@@ -232,7 +232,7 @@ config =
                 50
         ]
     , template =
-        "<hspace=10/> %XMonadLog% } %pomodoro% { %dynnetwork%  %default:Master%  %multicpu% %multicoretemp%  %memory%  %disku%  %VIDP%  %date% %notifications% <hspace=10/>"
+        "<hspace=10/> %XMonadLog% } %pomodoro% { %dynnetwork%  %default:Master%  %multicpu% %multicoretemp%  %memory%  %disku%  %VIDP%  %date% <hspace=10/>"
     , alignSep = "}{"
     }
 
