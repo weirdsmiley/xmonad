@@ -121,7 +121,7 @@ config =
                 , "-S"
                 , "True"
                 ]
-                50
+                100
         , Run
             $ Network
                 "enp2s0" -- Figure out dynamically TH?
@@ -175,7 +175,7 @@ config =
             $ DiskU
                 [("/", "<fc=#ff79c6><fn=1>\xf1c0</fn></fc> <free>/<size>")]
                 ["-L", "50", "-H", "900", "-m", "1", "-p", "3"]
-                100
+                200
         , Run
             $ MultiCpu
                 [ "-t"
@@ -191,7 +191,7 @@ config =
                 , "--high"
                 , "#ffcccb"
                 ]
-                20
+                50
         , Run
             $ MultiCoreTemp
                 [ "-t"
