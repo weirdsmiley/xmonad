@@ -273,7 +273,7 @@ pomodoroChords modm =
       , "pause/resume pomodoro session"
       , spawn
           $ myPomodoro
-              ++ " --pause-resume && echo 'toggle' > /tmp/pomodoro.ctrl")
+              ++ " --start-pause-resume && echo 'toggle' > /tmp/pomodoro.ctrl")
     , ( (0, xK_n)
       , "start 60 min session"
       , spawn $ myPomodoro ++ " --start && echo 'start' > /tmp/pomodoro.ctrl")

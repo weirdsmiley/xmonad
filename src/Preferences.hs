@@ -162,7 +162,6 @@ startupApps :: X ()
 startupApps = do
   setDefaultCursor xC_left_ptr
   spawnOnce $ "feh --no-fehbg --bg-scale " ++ myWallpaper
-  spawnOnce "systemctl --user start dunst"
   spawnOnce "picom"
   spawnOnce "unclutter --timeout 2 --ignore-scrolling"
   spawnOnce "xrdb -merge /home/manas/.Xresources"
@@ -171,19 +170,21 @@ startupApps = do
   -- spawnOnce "easyeffects --gapplication-service"
   spawnOnce nightLight
   spawnOnce Preferences.xmobar
-  spawnOnce myCodeSprintTerm
-  spawnOnce myWritingTerm
-  spawnOnce myResearchTerm
-  spawnOnce myBrowser
-  spawnOnce myPdfViewer
-  spawnOnce "zotero"
+  spawnOnce "dex -a -s /etc/xdg/autostart/:~/.config/autostart/"
+  spawnOnce "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+  -- spawnOnce myCodeSprintTerm
+  -- spawnOnce myWritingTerm
+  -- spawnOnce myResearchTerm
+  -- spawnOnce myBrowser
+  -- spawnOnce myPdfViewer
+  -- spawnOnce "zotero"
   -- -- Open some scratchpads
   -- namedScratchpadAction myScratchpads "Kanboard"
   -- namedScratchpadAction myScratchpads "calibreWeb"
   -- namedScratchpadAction myScratchpads "Miniflux"
   -- spawnOnce "calibre"
-  -- spawnOnce "Discord"
-  -- spawnOnce "Zulip"
+  -- spawnOnce "discord"
+  -- spawnOnce "zulip-desktop"
   -- spawnOnce "gimp"
   -- spawnOnce "zoom"
   -- spawnOnce "telegram-desktop"
@@ -246,7 +247,7 @@ myManageHook =
     , className =? "Gimp" -?> doShift (myWorkspaces !! 7)
     , className =? "qemu" -?> doShift (myWorkspaces !! 8)
     , className =? "Org.gnome.Boxes" -?> doShift (myWorkspaces !! 8)
-    , className =? "Gnome-pomodoro" -?> doFullFloat
+    , className =? "io.github.focustimerhq.FocusTimer" -?> doFullFloat
     , className =? "Rhythmbox" -?> doCenterFloat
     , className =? "easyeffects" -?> doCenterFloat
     , appName =? "blueman-manager" -?> doCenterFloat
@@ -268,6 +269,7 @@ myManageHook =
     , className =? "org.gnome.Nautilus" -?> doCenterFloat
     , className =? "filelight" -?> doCenterFloat
     , className =? "feh" -?> doCenterFloat
+    , className =? "thunar" -?> doCenterFloat
     , className =? "Xdot" -?> customFloating
         $ W.RationalRect (1 / 6) (1 / 8) (2 / 3) (3 / 4)
     , className =? "loupe" -?> customFloating
@@ -345,7 +347,7 @@ myXMonadLogAppLength :: Int
 myXMonadLogAppLength = 16
 
 -- Pomodoro app
-myPomodoro = "gnome-pomodoro"
+myPomodoro = "focus-timer"
 
 myCustomCommands :: X [(String, X ())]
 myCustomCommands = do
