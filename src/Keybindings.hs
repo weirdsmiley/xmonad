@@ -103,10 +103,35 @@ screenshotChords =
 
 --------------------------------------------------------------------------------
 -- Chords for anything related to focusing windows.
+
+-- Helper to cycle focus while skipping "Picture-in-Picture" windows
+focusSkipPiP :: (WindowSet -> WindowSet) -> X ()
+focusSkipPiP move = do
+    origW <- withWindowSet (return . W.peek)
+    case origW of
+        Nothing -> return ()
+        Just ow -> do
+            windows move
+            skipIfNeeded ow move
+  where
+    skipIfNeeded origW move = do
+        curW <- withWindowSet (return . W.peek)
+        case curW of
+            Nothing -> return ()
+            Just w
+                | w == origW -> return () -- Stop if we've cycled all the way around
+                | otherwise  -> do
+                    t <- runQuery title w
+                    if t == "Picture-in-Picture"
+                        then do
+                            windows move
+                            skipIfNeeded origW move
+                        else return ()
+
 focusChords modm =
   [ ((modm, xK_c), kill1) -- Close focused window
-  , ((modm, xK_k), windows W.focusUp) -- Focus on previous window
-  , ((modm, xK_j), windows W.focusDown) -- Focus on next window
+  , ((modm, xK_k), focusSkipPiP W.focusUp) -- Focus on previous window
+  , ((modm, xK_j), focusSkipPiP W.focusDown) -- Focus on next window
   -- , ((modm, xK_m), windows W.focusMaster) -- Focus on master window
   , ((modm, xK_s), promote) -- Swap focused window with master
   -- Focus to next window
