@@ -135,7 +135,7 @@ focusChords modm =
   -- , ((modm, xK_m), windows W.focusMaster) -- Focus on master window
   , ((modm, xK_s), promote) -- Swap focused window with master
   -- Focus to next window
-  , ((modm, xK_Tab), windows W.focusDown)
+  , ((modm, xK_Tab), focusSkipPiP W.focusDown)
   -- Move focus to most recently used window (this will work across workspaces,
   -- but also considers scratchpads)
   -- , ((modm, xK_Tab), mostRecentlyUsed [xK_Alt_L, xK_Alt_R] xK_Tab)
