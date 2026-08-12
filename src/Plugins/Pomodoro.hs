@@ -16,7 +16,7 @@ import Data.Time
 import Data.Time.Clock
 import Data.Time.Format
 import System.Directory (doesFileExist, removeFile)
-import System.IO (readFile, writeFile)
+import System.IO (withFile, hGetLine, IOMode(ReadMode))
 import Xmobar
 import Xmobar.Plugins.Monitors.Common
 
@@ -102,9 +102,9 @@ readControl path = do
   exists <- doesFileExist path
   if exists
     then do
-      content <- readFile path
+      content <- withFile path ReadMode $ \h -> hGetLine h
       removeFile path
-      pure (Just $ takeWhile (/= '\n') content)
+      pure (Just content)
     else pure Nothing
 
 -- Render output for Xmobar
