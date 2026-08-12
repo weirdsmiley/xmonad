@@ -1,5 +1,7 @@
 #!/bin/sh
 
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
+
 SRC_DIR=$HOME/.config/xmonad
 WM=xmonad
 
