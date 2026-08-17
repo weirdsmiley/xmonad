@@ -260,10 +260,10 @@ soundChords modm =
       , safeSpawn "pactl" ["set-sink-mute", "@DEFAULT_SINK@", "toggle"])
     , ( (0, xK_o)
       , "pavucontrol"
-      , safeSpawn "env" ["GTK_THEME=Breeze-Dark", "pavucontrol"])
+      , safeSpawn "env" ["pavucontrol"])
     , ( (0, xK_b)
       , "bluetooth manager"
-      , safeSpawn "env" ["GTK_THEME=Breeze-Dark", "blueman-manager"])
+      , safeSpawn "env" ["blueman-manager"])
     , ((0, xK_e), "easyeffects", safeSpawn "easyeffects" [])
   -- , ( (mod4Mask, xF86XK_AudioMute)
   --   , safeSpawn "pactl" ["set-source-mute", "@DEFAULT_SOURCE@", "toggle"])
