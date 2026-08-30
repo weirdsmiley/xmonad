@@ -54,6 +54,8 @@ myHandleEventHook =
           (className
              =? "Alacritty"
              <||> className
+             =? "XTerm"
+             <||> className
              =? "St"
              <||> className
              =? "org.wezfurlong.wezterm"
