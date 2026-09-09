@@ -275,7 +275,8 @@ myManageHook =
     , className =? "loupe" -?> customFloating
         $ W.RationalRect (1 / 6) (1 / 8) (2 / 3) (3 / 4)
     , title =? "GNOME Tweaks" -?> doCenterFloat
-    , title =? "alsamixer" -?> doCenterFloat
+    , title =? "alsamixer" -?> customFloating
+        $ W.RationalRect (1 / 6) (1 / 8) (2 / 3) (3 / 4)
     , className =? "pavucontrol" -?> doCenterFloat
     , isDialog -?> doCenterFloat
     , isFullscreen -?> doFullFloat
