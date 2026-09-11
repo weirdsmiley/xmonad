@@ -452,7 +452,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
       -- Show help page
       , ( (modm .|. shiftMask, xK_slash)
         , unsafeSpawn
-            ("GTK_THEME=Breeze-Dark zenity --width 600 --height 800 --list --title='XMonad Keybindings' --text='Default modifier (mod) key is 'alt'.' --column='Keymaps' --column='Description' \""
+            ("zenity --width 600 --height 800 --list --title='XMonad Keybindings' --text='Default modifier (mod) key is 'alt'.' --column='Keymaps' --column='Description' \""
                ++ help
                ++ "\""))
       -- Toggle fullscreen
