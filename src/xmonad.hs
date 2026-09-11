@@ -126,9 +126,9 @@ myXmobarPP =
   def
     { ppSep = magenta "  "
     , ppTitleSanitize = xmobarStrip
-    , ppCurrent = wrap " " "" . showCurrentWorkspace
+    , ppCurrent = grey . wrap " " "" . showCurrentWorkspace
     , ppHidden = white . wrap " " "" . showNamedWorkspaces
-    , ppHiddenNoWindows = grey . wrap " " "" . showNamedWorkspaces
+    -- , ppHiddenNoWindows = grey . wrap " " "" . showNamedWorkspaces
     , ppUrgent = red . wrap (yellow "!") (yellow "!")
     , ppOrder = \[ws, l, _, _] -> [ws, l]
     , ppExtras = [logTitles formatFocused formatUnfocused]
@@ -171,11 +171,11 @@ myXmobarPP =
     grey = xmobarColor "#808080" ""
     showNamedWorkspaces wsId =
       if any (`elem` wsId) (unwords myWorkspaces)
-        then "●"
+        then "<icon=ws/" ++ wsId ++ ".xpm/>"
         else ""
     showCurrentWorkspace wsId =
       if any (`elem` wsId) (unwords myWorkspaces)
-        then "<icon=currentWorkspace.xpm/>"
+        then "●"
         else ""
 
 main :: IO ()
