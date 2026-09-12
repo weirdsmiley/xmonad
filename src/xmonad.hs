@@ -175,7 +175,7 @@ myXmobarPP =
         else ""
     showCurrentWorkspace wsId =
       if any (`elem` wsId) (unwords myWorkspaces)
-        then "●"
+        then "<icon=ws/focused.xpm/>"
         else ""
 
 main :: IO ()

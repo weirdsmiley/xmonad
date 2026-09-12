@@ -17,3 +17,10 @@ for i in {1..10}; do
 done
 
 echo "All 10 bold circular XPM images generated successfully!"
+
+magick -size 100x100 xc:none \
+    -fill "#808080" -stroke white -strokewidth 16 \
+    -draw "circle 50,50 50,13" \
+    -gravity center -fill black -font "$FONT" -weight 800 -pointsize 85 \
+    "focused.xpm"
+magick "focused.xpm" -resize x14 "focused.xpm"
