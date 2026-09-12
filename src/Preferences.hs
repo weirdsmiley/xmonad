@@ -270,6 +270,7 @@ myManageHook =
     , className =? "filelight" -?> doCenterFloat
     , className =? "feh" -?> doCenterFloat
     , className =? "thunar" -?> doCenterFloat
+    , className =? "scx-manager" -?> doCenterFloat
     , className =? "Xdot" -?> customFloating
         $ W.RationalRect (1 / 6) (1 / 8) (2 / 3) (3 / 4)
     , className =? "loupe" -?> customFloating
