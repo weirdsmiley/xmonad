@@ -107,7 +107,7 @@ myLauncher =
     ++ " -font '"
     ++ myFont
     ++ "'"
-    ++ " -show combi -combi-modi window,drun -modi combi -show-icons"
+    ++ " -show combi -combi-modi drun -modi combi -show-icons"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse, myClickJustFocuses :: Bool
