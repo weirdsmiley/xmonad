@@ -144,14 +144,7 @@ config =
                 "<fc=grey>%a %_d %b '%y</fc> <fc=white>%I:%M %p</fc>"
                 "date"
                 10
-        , Run
-            $ Com
-                "/bin/sh"
-                [ "-c"
-                , "if [[ $(bluetoothctl show | awk -F': ' '/Powered:/ { print $2 }') == 'yes' ]]; then echo \"<fc=lightgreen><fn=2>\xe1a8</fn></fc>\"; else echo \"<fn=2>\xe1a9</fn>\"; fi"
-                ]
-                "bluetooth"
-                1
+        , Run $ Com "/home/manas/.config/xmonad/src/scripts/bluetooth.sh" [] "bluetooth" 10
         , Run
             $ Uptime ["-t", "<fc=#ff79c6><days> <hours></fc>", "-S", "True"] 10
         , Run
@@ -234,7 +227,7 @@ config =
                 50
         ]
     , template =
-        "<hspace=10/> %XMonadLog% } %pomodoro% { %default:Master%  %multicoretemp%  %memory%  %disku%  %VIDP%  %date% <hspace=10/>"
+        "<hspace=10/> %XMonadLog% } %pomodoro% { %bluetooth%  %default:Master%  %multicoretemp%  %memory%  %disku%  %VIDP%  %date% <hspace=10/>"
     , alignSep = "}{"
     }
 
