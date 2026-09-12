@@ -48,9 +48,9 @@ workspaceMap = do
 myColorizer _ active =
   return
     ( if active
-        then "#ffffff"
-        else "#a6a6a6"
-    , "#1c1f24")
+        then "#2e3440"
+        else "#3b4252"
+    , "#eceff4")
 
 myGridConfig :: GSConfig Window
 myGridConfig =
