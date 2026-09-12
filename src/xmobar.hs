@@ -145,6 +145,7 @@ config =
                 "date"
                 10
         , Run $ Com "/home/manas/.config/xmonad/src/scripts/bluetooth.sh" [] "bluetooth" 10
+        , Run $ CommandReader "/home/manas/.config/xmonad/src/scripts/music.sh" "music"
         , Run
             $ Uptime ["-t", "<fc=#ff79c6><days> <hours></fc>", "-S", "True"] 10
         , Run
@@ -227,7 +228,7 @@ config =
                 50
         ]
     , template =
-        "<hspace=10/> %XMonadLog% } %pomodoro% { %bluetooth%  %default:Master%  %multicoretemp%  %memory%  %disku%  %VIDP%  %date% <hspace=10/>"
+        "<hspace=10/> %XMonadLog% <fc=#a3be8c>%music%</fc> } %pomodoro% { %bluetooth%  %default:Master%  %multicoretemp%  %memory%  %disku%  %VIDP%  %date% <hspace=10/>"
     , alignSep = "}{"
     }
 
