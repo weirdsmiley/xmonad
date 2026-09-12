@@ -141,7 +141,7 @@ config =
                 10
         , Run
             $ Date
-                "<fc=orange>%a %_d %b '%y</fc> <fc=yellow>%I:%M %p</fc>"
+                "<fc=grey>%a %_d %b '%y</fc> <fc=white>%I:%M %p</fc>"
                 "date"
                 10
         , Run
@@ -163,7 +163,8 @@ config =
         , Run
             $ Memory
                 [ "-t"
-                , "<fc=#ff79c6><fn=2>\xf035b</fn></fc>  <usedratio>% (<used>G)"
+                -- , "<fc=#ff79c6><fn=2>\xf035b</fn></fc>  <usedratio>% (<used>G)"
+                , "<fc=#ff79c6><fn=2>\xf035b</fn></fc>  <usedratio>%"
                 , "-d"
                 , "1"
                 , "--"
@@ -173,7 +174,8 @@ config =
                 50
         , Run
             $ DiskU
-                [("/", "<fc=#ff79c6><fn=1>\xf1c0</fn></fc> <free>/<size>")]
+                -- [("/", "<fc=#ff79c6><fn=1>\xf1c0</fn></fc> <free>/<size>")]
+                [("/", "<fc=#ff79c6><fn=1>\xf1c0</fn></fc> <free>")]
                 ["-L", "50", "-H", "900", "-m", "1", "-p", "3"]
                 200
         , Run
@@ -195,7 +197,7 @@ config =
         , Run
             $ MultiCoreTemp
                 [ "-t"
-                , "<avg>°C"
+                , "<fc=#ff79c6><fn=2>\xf4bc</fn></fc>   <avg>°C"
                 , "-L"
                 , "40"
                 , "-H"
@@ -232,7 +234,7 @@ config =
                 50
         ]
     , template =
-        "<hspace=10/> %XMonadLog% } %pomodoro% { %dynnetwork%  %default:Master%  %multicpu% %multicoretemp%  %memory%  %disku%  %VIDP%  %date% <hspace=10/>"
+        "<hspace=10/> %XMonadLog% } %pomodoro% { %default:Master%  %multicoretemp%  %memory%  %disku%  %VIDP%  %date% <hspace=10/>"
     , alignSep = "}{"
     }
 
