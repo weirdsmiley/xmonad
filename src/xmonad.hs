@@ -124,7 +124,7 @@ myConfig =
 myXmobarPP :: PP
 myXmobarPP =
   def
-    { ppSep = magenta "  "
+    { ppSep = blue " | "
     , ppTitleSanitize = xmobarStrip
     , ppCurrent = grey . wrap " " "" . showCurrentWorkspace
     , ppHidden = white . wrap " " "" . showNamedWorkspaces
