@@ -141,7 +141,7 @@ config =
                 10
         , Run
             $ Date
-                "<fc=grey>%a %_d %b '%y</fc> <fc=white>%I:%M %p</fc>"
+                "<fc=#D1D1D1>%a %_d %b '%y</fc> <fc=white>%I:%M %p</fc>"
                 "date"
                 10
         , Run $ Com "/home/manas/.config/xmonad/src/scripts/bluetooth.sh" [] "bluetooth" 10
