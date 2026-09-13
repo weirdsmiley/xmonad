@@ -221,12 +221,11 @@ brightnessChords modm =
       ]
         ++ [ ( (0, key)
              , "change to level " ++ level
-             , spawn $ myBrightnessCtrl ++ " setvcp 10 " ++ level)
+             , spawn $ myBrightnessCtrl ++ " setvcp 10 " ++ level <> " && " <> notify level)
            | (level, key) <- zip (map (show . (* 10)) [0 .. 9]) [xK_0 .. xK_9]
            ]
   where
-    -- TODO: Show notification of current display brightness
-    notify = myNotifCtrl ++ " set brightness to certain level"
+    notify level = myNotifCtrl ++ " --icon=brightness -u low \"Brightness set to " ++ level ++ "\""
 
 --------------------------------------------------------------------------------
 -- Sound related chords
