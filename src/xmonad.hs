@@ -97,9 +97,6 @@ myLogHook =
         $ filter (\(NS _n _ _ _) -> _n /= "Miniflux")
         $ filter (\(NS _n _ _ _) -> _n /= "Anki") myScratchpads
 
-myStartupHook :: X ()
-myStartupHook = startupApps
-
 myConfig =
   def
     { terminal = myTerminal
@@ -117,7 +114,7 @@ myConfig =
     , layoutHook = myLayout
     , manageHook = myManageHook
     , handleEventHook = myHandleEventHook
-    , startupHook = myStartupHook
+    , startupHook = startupApps
     , logHook = myLogHook
     }
 
