@@ -62,3 +62,11 @@ executables:
     dependencies:
       - xmobar
     ghc-options: -rtsopts -threaded -with-rtsopts=-N
+
+tests:
+  xmonad-tests:
+    main: Spec.hs
+    source-dirs: test
+    dependencies:
+      - xmonad
+      - hspec
