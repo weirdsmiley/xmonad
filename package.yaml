@@ -47,6 +47,7 @@ ghc-options:
 - -Wno-unused-local-binds
 - -Wno-incomplete-uni-patterns
 - -Wno-type-defaults
+- -Wno-x-partial
 
 source-dirs: src
 

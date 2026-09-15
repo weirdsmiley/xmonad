@@ -13,7 +13,7 @@ module Theme.Xresources
 
 import Data.Bifunctor (bimap)
 import Data.Char (isSpace)
-import Data.List (dropWhileEnd, elemIndex, find)
+import Data.List (dropWhileEnd, elemIndex, find, drop)
 import Data.Maybe (fromMaybe, mapMaybe)
 import Prelude
   ( IO
@@ -47,7 +47,7 @@ splitAtColon :: String -> Maybe (String, String)
 splitAtColon str = splitAtTrimming str <$> elemIndex ':' str
 
 splitAtTrimming :: String -> Int -> (String, String)
-splitAtTrimming str idx = bimap trim (trim . tail) $ splitAt idx str
+splitAtTrimming str idx = bimap trim (trim . drop 1) $ splitAt idx str
 
 trim, xprop :: ShowS
 trim = dropWhileEnd isSpace . dropWhile isSpace
