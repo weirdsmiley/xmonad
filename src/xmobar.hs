@@ -16,9 +16,9 @@ config =
   defaultConfig
     { font = myXmobarFont
     , additionalFonts =
-        [ "Font Awesome 6 Free-Regular-400 10"
-        , "Material Icons Regular 10"
-        , "0xProto Nerd Font Regular 10"
+        [ "xft:Font Awesome 6 Free-Regular-400:pixelsize=10"
+        , "xft:Material Icons Regular:pixelsize=10"
+        , "xft:0xProto Nerd Font Regular:pixelsize=10"
         ]
     , allDesktops = True
     -- , position = Static {xpos = 10, ypos = 1050, width = 1900, height = 20}
@@ -95,13 +95,29 @@ config =
                 "default"
                 "Master"
                 [ "-t"
-                , "<action=`amixer set Master toggle` button=1><action=`amixer set Master 5%+` button=4><action=`amixer set Master 5%-` button=5><fc=#ff79c6><fn=2>\xf028</fn></fc> <volume></action></action></action>"
+                , "<action=`amixer set Master toggle` button=1><action=`amixer set Master 5%+` button=4><action=`amixer set Master 5%-` button=5>\
+                  \<fc=#ff79c6><fn=2><status></fn></fc> <volume>%</action></action></action>"
                 , "-L"
-                , "0"
+                , "10"
                 , "-M"
-                , "40"
+                , "30"
                 , "-H"
-                , "70"
+                , "50"
+                , "--"
+                , "--off"
+                , "<fn=2>\xf026</fn>"
+                , "-c"
+                , "grey"
+                , "--on"
+                , "\xf028"
+                , "-C"
+                , "#ff79c6"
+                -- , "--highs", "<fn=2>\xf028</fn>"
+                -- , "--mediums", "<fn=2>\xf6a8</fn>"
+                -- , "--lows", "<fn=2>\xf027</fn>"
+                , "--highs", "..."
+                , "--mediums", ".."
+                , "--lows", "."
                 ]
                 10
         , Run
