@@ -115,9 +115,9 @@ config =
                 -- , "--highs", "<fn=2>\xf028</fn>"
                 -- , "--mediums", "<fn=2>\xf6a8</fn>"
                 -- , "--lows", "<fn=2>\xf027</fn>"
-                , "--highs", "..."
-                , "--mediums", ".."
-                , "--lows", "."
+                , "--highs", "┆"
+                , "--mediums", ": "
+                , "--lows", ". "
                 ]
                 10
         , Run
