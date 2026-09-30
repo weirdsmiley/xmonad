@@ -119,8 +119,8 @@ render mode secsLeft =
       label =
         case mode of
           Work -> "<fn=1><fc=lightgreen>\xf121</fc></fn>"
-          ShortBreak -> "<fc=#bababa>[Break]</fc>"
-          LongBreak -> "<fc=#ab7bab>[Long]</fc>"
+          ShortBreak -> "<fc=#bababa></fc>"
+          LongBreak -> "<fc=#ab7bab></fc>"
    in icon ++ " " ++ pad m ++ ":" ++ pad s ++ " " ++ label
 
 pad :: Int -> String
