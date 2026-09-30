@@ -21,14 +21,13 @@ config =
         , "xft:0xProto Nerd Font Regular:pixelsize=10"
         ]
     , allDesktops = True
-    -- , position = Static {xpos = 10, ypos = 1050, width = 1900, height = 20}
     , position = Static {xpos = 0, ypos = 0, width = 1920, height = 30}
-    , border = NoBorder
+    , border = TopB
     , lowerOnStart = True
     , hideOnStart = False
     , pickBroadest = False
     , persistent = True
-    , alpha = 200
+    , alpha = 170
     , fgColor = "#f8f8f8"
     , bgColor = "#3B3232"
     , iconRoot = homeDir <> "/.config/xmonad/icons"
