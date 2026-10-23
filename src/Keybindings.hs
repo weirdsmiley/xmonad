@@ -130,7 +130,7 @@ focusSkipPiP move = do
                         else return ()
 
 focusChords modm =
-  [ ((modm, xK_c), kill1) -- Close focused window
+  [ ((modm, xK_c), confirmPrompt myXPControlConfig "close window?" kill1) -- Close focused window
   , ((modm, xK_k), focusSkipPiP W.focusUp) -- Focus on previous window
   , ((modm, xK_j), focusSkipPiP W.focusDown) -- Focus on next window
   -- , ((modm, xK_m), windows W.focusMaster) -- Focus on master window
